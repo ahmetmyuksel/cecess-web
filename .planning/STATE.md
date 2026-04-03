@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to plan
-last_updated: "2026-04-03T12:12:10.809Z"
+last_updated: "2026-04-03T13:45:00.000Z"
 progress:
-  total_phases: 5
-  completed_phases: 2
-  total_plans: 7
-  completed_plans: 3
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
   percent: 0
 ---
 
@@ -19,31 +19,34 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-03)
 
 **Core value:** The web must look like a legitimate, trust-worthy fintech startup to pass Google's strict financial app audits and convert visitors into mobile app users.
-**Current focus:** Phase 02 — google-play-compliance-pages
+**Current focus:** Awaiting new phases from user feedback.
 
 ## Current Milestone
 
 **v1.0 — Web Presence & Google Play Compliance**
 
+_Previous phases (01–05) archived to `.planning/milestones/v1.0-phases/`._
+_New phases will be added after user feedback review._
+
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
-| 1 | Stripe Cleanup & Read-Only Refactor | ○ Pending | 0/0 |
-| 2 | Google Play Compliance Pages | ○ Pending | 0/0 |
-| 3 | Landing Page Redesign | ○ Pending | 0/0 |
-| 4 | Dashboard Read-Only V1 | ○ Pending | 0/0 |
-| 5 | CI/CD, Deployment & Documentation | ○ Pending | 0/0 |
+| — | No active phases | — | — |
 
 Progress: ░░░░░░░░░░ 0%
 
 ## Phase History
 
-(None yet)
+| Phase | Name | Archived |
+|-------|------|---------|
+| 01–05 | v1.0 initial phases (incomplete) | 2026-04-03 |
 
 ## Decisions Log
 
 | Decision | Phase | Impact |
 |----------|-------|--------|
-| (None yet) | — | — |
+| Cloudflare Pages build locked | infra | wrangler.toml + cloudflare-pages.json |
+| Build: pnpm run build → .next output | infra | Matches Cloudflare Dashboard settings |
+| opennextjs-cloudflare removed from build | infra | Conflicts with Pages setup |
 
 ---
-*Last updated: 2026-04-03 after initialization*
+*Last updated: 2026-04-03 — phases cleared, Cloudflare build locked*

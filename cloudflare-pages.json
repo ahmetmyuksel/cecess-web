@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "_comment": "CLOUDFLARE PAGES BUILD LOCK — DO NOT MODIFY without updating the Cloudflare Dashboard",
+  "_locked": "2026-04-03",
+  "project": {
+    "name": "cecess-web",
+    "productionBranch": "main"
+  },
+  "build": {
+    "command": "pnpm run build",
+    "outputDirectory": ".next",
+    "frameworkPreset": "None",
+    "nodeVersion": "20",
+    "pnpmVersion": "10.33.0"
+  },
+  "environmentVariables": [
+    { "name": "SUPABASE_URL", "required": true, "secret": true },
+    { "name": "SUPABASE_ANON_KEY", "required": true, "secret": true },
+    { "name": "SUPABASE_SERVICE_ROLE_KEY", "required": true, "secret": true },
+    { "name": "GEMINI_API_KEY", "required": true, "secret": true },
+    { "name": "NODE_VERSION", "required": true, "value": "20", "secret": false },
+    { "name": "PNPM_VERSION", "required": true, "value": "10.33.0", "secret": false }
+  ]
+}

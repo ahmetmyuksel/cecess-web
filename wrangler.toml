@@ -1,8 +1,21 @@
+# Cloudflare Pages Build Configuration
+# Locked: 2026-04-03
+# DO NOT MODIFY without updating Cloudflare Pages Dashboard settings accordingly.
+#
+# Cloudflare Pages Dashboard (cecess.net) — Locked Settings:
+#   Production branch:      main
+#   Framework preset:       None
+#   Build command:          pnpm run build
+#   Build output directory: .next
+#   Node version:           20
+#
+# Environment variables required in Cloudflare Dashboard:
+#   SUPABASE_URL
+#   SUPABASE_ANON_KEY
+#   SUPABASE_SERVICE_ROLE_KEY
+#   GEMINI_API_KEY
+#   NODE_VERSION = 20
+
 name = "cecess-web"
-main = ".open-next/worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
-
-[assets]
-directory = ".open-next/assets"
-binding = "ASSETS"
