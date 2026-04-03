@@ -1,5 +1,4 @@
-﻿export const runtime = 'edge';
-import { LandingView } from "@/features/public/components/landing-view";
+﻿import { LandingView } from "@/features/public/components/landing-view";
 import { createClient } from "@/utils/supabase/server";
 import { LanguageProvider } from "@/features/i18n/context/language-context";
 

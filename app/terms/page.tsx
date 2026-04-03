@@ -1,5 +1,4 @@
-﻿export const runtime = 'edge';
-
+﻿
 import { TermsView } from "@/features/public/components/terms-view";
 import { createClient } from "@/utils/supabase/server";
 
