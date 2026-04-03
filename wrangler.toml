@@ -4,7 +4,7 @@
 # Cloudflare Pages Dashboard (cecess.net) — Locked Settings:
 #   Production branch:      main
 #   Framework preset:       None
-#   Build command:          pnpm run build && npx @cloudflare/next-on-pages
+#   Build command:          pnpm install && pnpm run build && npx @cloudflare/next-on-pages
 #   Build output directory: .vercel/output/static
 #   Node version:           20
 #
