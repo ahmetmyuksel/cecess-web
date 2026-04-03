@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
 
   experimental: {
-    optimizePackageImports: ["lucide-react", "recharts"],
+    optimizePackageImports: ["lucide-react", "recharts", "date-fns"],
   },
   images: {
     remotePatterns: [

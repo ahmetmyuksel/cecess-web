@@ -1,9 +1,8 @@
-﻿export const runtime = 'edge';
+export const runtime = 'edge';
 
 import { LanguageProvider } from "@/features/i18n/context/language-context";
-import { FaqView } from "@/features/public/components/faq-view";
-
 import { createClient } from "@/utils/supabase/server";
+import { DynamicFaqView } from "@/features/public/components/dynamic-views";
 
 export default async function FaqPage() {
   const supabase = await createClient();
@@ -11,7 +10,7 @@ export default async function FaqPage() {
 
   return (
     <LanguageProvider>
-      <FaqView isLoggedIn={!!user} />
+      <DynamicFaqView isLoggedIn={!!user} />
     </LanguageProvider>
   );
 }

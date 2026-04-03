@@ -1,9 +1,8 @@
-﻿export const runtime = 'edge';
+export const runtime = 'edge';
 
-import { TermsView } from "@/features/public/components/terms-view";
 import { createClient } from "@/utils/supabase/server";
-
 import { LanguageProvider } from "@/features/i18n/context/language-context";
+import { DynamicTermsView } from "@/features/public/components/dynamic-views";
 
 export default async function TermsPage() {
     const supabase = await createClient();
@@ -11,7 +10,7 @@ export default async function TermsPage() {
 
     return (
         <LanguageProvider>
-            <TermsView isLoggedIn={!!user} />
+            <DynamicTermsView isLoggedIn={!!user} />
         </LanguageProvider>
     );
 }

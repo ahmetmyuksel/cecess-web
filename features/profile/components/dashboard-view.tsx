@@ -3,8 +3,18 @@
 import Link from "next/link";
 import { useState, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { IncomeExpenseChart } from "@/components/charts/income-expense-chart";
-import { CategoryPieChart } from "@/components/charts/category-pie-chart";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const IncomeExpenseChart = dynamic(() => import("@/components/charts/income-expense-chart").then(mod => mod.IncomeExpenseChart), { 
+    ssr: false,
+    loading: () => <Skeleton className="h-full w-full rounded-xl" />
+});
+
+const CategoryPieChart = dynamic(() => import("@/components/charts/category-pie-chart").then(mod => mod.CategoryPieChart), { 
+    ssr: false,
+    loading: () => <Skeleton className="h-full w-full rounded-xl" />
+});
 import { DatePicker } from "@/components/ui/date-picker";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { formatCurrency, convertCurrency } from "@/utils/currency-converter";
