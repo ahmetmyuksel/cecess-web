@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { createClient } from "@/utils/supabase/client";
-import { PhoneInput } from "@/components/ui/phone-input";
-import { DatePicker } from "@/components/ui/date-picker";
 import {
     Select,
     SelectContent,
@@ -123,6 +121,19 @@ export function ProfileView() {
                         <ReadonlyStatus />
                     </h2>
                     <p className="text-sm text-slate-500">{t.settings.profile.subtitle}</p>
+                </div>
+            </div>
+
+            {/* Read-only Banner */}
+            <div className="rounded-xl border border-blue-100 bg-blue-50/50 p-4 flex items-center gap-4">
+                <div className="h-10 w-10 flex-shrink-0 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 className="text-sm font-semibold text-blue-900">{t.settings.profile.manageInApp}</h3>
+                    <p className="text-xs text-blue-700 mt-0.5">{t.settings.profile.managementDesc}</p>
                 </div>
             </div>
 

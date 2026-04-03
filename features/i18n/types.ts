@@ -72,6 +72,7 @@ export type Dictionary = {
             notifications: string;
             managementTitle: string;
             managementDesc: string;
+            manageInApp: string;
         };
         notifications: {
             title: string;
@@ -225,7 +226,7 @@ export type Dictionary = {
             privacy: string;
             faq: string;
             login: string;
-            signup: string;
+            googleLogin: string;
             profile: string;
             logout: string;
         };

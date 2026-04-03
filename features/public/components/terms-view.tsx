@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Footer } from "./footer";
-import { PublicNavbar } from "./public-navbar";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 
 interface TermsViewProps {
@@ -29,7 +27,6 @@ export function TermsView({ }: TermsViewProps) {
 
     return (
         <div className="flex min-h-screen flex-col bg-white">
-            <PublicNavbar />
 
             <main className="flex-1 py-12 pt-24">
                 <article className="container mx-auto px-4 max-w-3xl prose prose-slate prose-lg">
@@ -76,7 +73,6 @@ export function TermsView({ }: TermsViewProps) {
                 </article>
             </main>
 
-            <Footer />
         </div>
     );
 }

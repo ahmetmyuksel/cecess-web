@@ -36,23 +36,19 @@ The web must look like a legitimate, trust-worthy fintech startup — not a hobb
 
 <!-- Current scope. Building toward these. -->
 
-- [x] Phase 01: [DONE] Stripe Cleanup & Read-Only Refactor
-- [x] Phase 02: [DONE] Google Play Compliance Pages
-- [x] Phase 03: [DONE] Landing Page Redesign (Mobit Style)
-- [ ] Phase 04: [ACTIVE] Dashboard Read-Only V1
-- [ ] Phase 05: [TODO] CI/CD & Deployment Documentation
-- [ ] Redesigned scroll-animated landing page with mobile app mockup
-- [ ] App Store & Google Play download badges on landing page
-- [ ] Scroll-triggered animations (text/sections appearing on scroll)
-- [ ] Dashboard converted to read-only (no write/delete operations)
-- [ ] Remove all Stripe/payment code from web codebase
-- [ ] Update pricing/subscription pages to reflect RevenueCat (mobile-only payments)
-- [ ] PROJECT_STRUCTURE.md documentation
-- [ ] STORE_CHECKLIST.md for Google Play submission
-- [ ] GitHub Actions CI/CD (build + tests)
-- [ ] Vercel deployment pipeline
-- [ ] Docker/Docker Compose files kept updated as fallback
-- [ ] Push to clean GitHub repo (ahmetmyuksel/cecess-web.git)
+- [ ] Phase 01: Build Recovery & Layout Refactor
+- [ ] Phase 02: Signup Cleanup & Pricing Updates
+- [ ] Phase 03: Landing Page & Market Badges
+- [ ] Phase 04: Google Login
+- [ ] Phase 05: Bundle Optimization
+- [ ] Phase 06: Bugfixes
+- [ ] Fix double refresh (LanguageProvider)
+- [ ] Move Navbar to shared layout for smooth navigation
+- [ ] Market badges on landing page (Apple/Google)
+- [ ] Pricing structure (€4.99/mo, €49.90/yr; €12.99/mo, €129.90/yr) + toggle
+- [ ] Remove all "Signup" related code and buttons
+- [ ] Implement Google Login on web
+- [ ] Package size <24MB audit
 
 ### Out of Scope
 
@@ -124,4 +120,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-03 after Phase 02 completion*
+*Last updated: 2026-04-03 after Bugfixes milestone initiation*

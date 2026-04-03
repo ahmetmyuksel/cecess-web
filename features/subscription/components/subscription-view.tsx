@@ -135,8 +135,8 @@ export function SubscriptionView({ initialProfile }: SubscriptionViewProps) {
                                 className={cn(
                                     "w-full rounded-lg py-2.5 text-sm font-semibold transition-colors flex items-center justify-center gap-2 mt-auto",
                                     isTierMatch
-                                        ? "bg-slate-100 text-slate-500"
-                                        : "bg-white border border-slate-200 text-slate-400"
+                                        ? "bg-blue-50 text-blue-600 border border-blue-100"
+                                        : "bg-slate-50 border border-slate-200 text-slate-400"
                                 )}
                             >
                                 {isTierMatch

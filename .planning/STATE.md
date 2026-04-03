@@ -1,60 +1,23 @@
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: Ready to plan
-last_updated: "2026-04-03T13:45:00.000Z"
-progress:
-  total_phases: 0
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
----
+# State: Cecess Web Bugfixes
 
-# Project State: Cecess Web
+**Current Milestone:** Bugfixes  
+**Active Phase:** Phase 01: Build Recovery & Layout Refactor  
+**Objective:** Fix TS errors and architectural layout issues to fix double-refresh and smooth navigation.
 
-## Project Reference
+## Current Progress
 
-See: .planning/PROJECT.md (updated 2026-04-03)
+- [ ] Phase 01: [ACTIVE] Build Recovery & Layout Refactor
+- [ ] Phase 02: [TODO] Signup Cleanup & Auth Updates
+- [ ] Phase 03: [TODO] Pricing Structure & Refinement
+- [ ] Phase 04: [TODO] Market Badges & Landing Finalization
+- [ ] Phase 05: [TODO] Bundle Audit & Cleanup
 
-**Core value:** The web must look like a legitimate, trust-worthy fintech startup to pass Google's strict financial app audits and convert visitors into mobile app users.
-**Current focus:** Awaiting new phases from user feedback.
+## Issues & Blockers
 
-## Current Milestone
-
-**v1.0 — Web Presence & Google Play Compliance**
-
-_Previous phases (01–05) archived to `.planning/milestones/v1.0-phases/`._
-_New phases will be added after user feedback review._
-
-| Phase | Name | Status | Plans |
-|-------|------|--------|-------|
-| 1 | Read-only refactor and xlsx removal for bundle optimization | Not planned | 0 |
-
-Progress: ░░░░░░░░░░ 0%
-
-## Phase History
-
-| Phase | Name | Archived |
-|-------|------|---------|
-| 01–05 | v1.0 initial phases (incomplete) | 2026-04-03 |
-
-## Decisions Log
-
-| Decision | Phase | Impact |
-|----------|-------|--------|
-| Cloudflare Pages build locked | infra | wrangler.toml + cloudflare-pages.json |
-| Build: pnpm run build → .next output | infra | Matches Cloudflare Dashboard settings |
-| opennextjs-cloudflare removed from build | infra | Conflicts with Pages setup |
-
-## Accumulated Context
-
-### Roadmap Evolution
-
-- Phase 1 added: Read-only refactor and xlsx removal for bundle optimization (2026-04-03)
-- Phase 2 added: Bundle size optimization with dynamic imports and layout refactoring (2026-04-03)
+- [ ] TS error in `app/faq/page.tsx` causing build failure.
+- [ ] Double `LanguageProvider` wraps causing flickering and state issues.
+- [ ] Navbar re-mounting on every client navigation.
 
 ---
-*Last updated: 2026-04-03 — Phase 2 added*
 
+*State Reset: 2026-04-03 for Bugfixes Milestone*

@@ -11,8 +11,6 @@ import {
     ShieldCheck,
     ArrowRight
 } from "lucide-react";
-import { Footer } from "./footer";
-import { PublicNavbar } from "./public-navbar";
 import { useIntersectionObserver } from "@/hooks/use-scroll-animation";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { cn } from "@/lib/utils";
@@ -58,8 +56,6 @@ export function LandingView({ }: LandingViewProps) {
                 </span>
             </div>
 
-            {/* Navbar */}
-            <PublicNavbar />
 
             <main className="flex-1">
                 {/* Hero Section */}
@@ -78,26 +74,36 @@ export function LandingView({ }: LandingViewProps) {
                             {t.public.landing.hero.subtitle}
                         </p>
                         
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-                            <Link
-                                href="/signup"
-                                className="group relative inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-base font-bold text-white shadow-xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center"
-                            >
-                                {t.public.landing.hero.ctaMain} 
-                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                            <Link
-                                href="/pricing"
-                                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-8 py-4 text-base font-bold text-slate-600 hover:border-slate-300 hover:bg-slate-50 hover:-translate-y-0.5 transition-all w-full sm:w-auto justify-center"
-                            >
-                                {t.public.landing.hero.ctaSecondary}
-                            </Link>
-                        </div>
-
                         {/* App Market Badges */}
-                        <div className="flex justify-center gap-4 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                            <div className="h-10 w-32 relative bg-slate-100 rounded-lg animate-pulse" />
-                            <div className="h-10 w-32 relative bg-slate-100 rounded-lg animate-pulse" />
+                        <div className="flex flex-col sm:flex-row justify-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+                            <a 
+                                href="https://apps.apple.com/app/cecess/id6740698114"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1"
+                            >
+                                <svg className="h-7 w-7" viewBox="0 0 384 512" fill="currentColor">
+                                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-83.6-20.8-42.3 0-81.8 24.4-103.2 61.9-43.2 75.3-11.1 185.9 31 246.6 20.6 29.8 45.2 63.3 77.3 63.3 31.1 0 42.7-19.3 80.5-19.3 37.8 0 48.2 19.3 81 19.3 32.8 0 55.4-30.1 76-60 24.3-35.2 34.3-69.3 34.6-70.9-.8-.3-67.2-25.9-67.4-103.5zm-33.1-155.1c32.3-39.7 24.5-85.3 22.8-93.5-27.1 2.3-59.5 20.1-78.5 42.4-18 20.9-33.5 63-28.9 94.5 30.6 3 59.8-13.4 84.6-43.4z" />
+                                </svg>
+                                <div className="text-left">
+                                    <div className="text-[10px] font-medium opacity-80 leading-none">Download on the</div>
+                                    <div className="text-[17px] font-bold leading-tight">App Store</div>
+                                </div>
+                            </a>
+                            <a 
+                                href="https://play.google.com/store/apps/details?id=com.ahmetmyuksel.cecess"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1"
+                            >
+                                <svg className="h-7 w-7" viewBox="0 0 512 512" fill="currentColor">
+                                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+                                </svg>
+                                <div className="text-left">
+                                    <div className="text-[10px] font-medium opacity-80 leading-none">GET IT ON</div>
+                                    <div className="text-[17px] font-bold leading-tight">Google Play</div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -192,12 +198,36 @@ export function LandingView({ }: LandingViewProps) {
                                 <p className="mx-auto max-w-2xl text-lg text-slate-400 mb-10 leading-relaxed">
                                     {t.public.landing.cta.subtitle}
                                 </p>
-                                <Link
-                                    href="/signup"
-                                    className="inline-flex items-center rounded-full bg-white px-10 py-5 text-lg font-black text-slate-950 hover:bg-slate-100 hover:scale-105 transition-all shadow-xl"
-                                >
-                                    {t.public.landing.cta.button}
-                                </Link>
+                                <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+                                    <a 
+                                        href="https://apps.apple.com/app/cecess/id6740698114"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1"
+                                    >
+                                        <svg className="h-7 w-7" viewBox="0 0 384 512" fill="currentColor">
+                                            <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-83.6-20.8-42.3 0-81.8 24.4-103.2 61.9-43.2 75.3-11.1 185.9 31 246.6 20.6 29.8 45.2 63.3 77.3 63.3 31.1 0 42.7-19.3 80.5-19.3 37.8 0 48.2 19.3 81 19.3 32.8 0 55.4-30.1 76-60 24.3-35.2 34.3-69.3 34.6-70.9-.8-.3-67.2-25.9-67.4-103.5zm-33.1-155.1c32.3-39.7 24.5-85.3 22.8-93.5-27.1 2.3-59.5 20.1-78.5 42.4-18 20.9-33.5 63-28.9 94.5 30.6 3 59.8-13.4 84.6-43.4z" />
+                                        </svg>
+                                        <div className="text-left">
+                                            <div className="text-[10px] font-medium opacity-80 leading-none">Download on the</div>
+                                            <div className="text-[17px] font-bold leading-tight">App Store</div>
+                                        </div>
+                                    </a>
+                                    <a 
+                                        href="https://play.google.com/store/apps/details?id=com.ahmetmyuksel.cecess"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1"
+                                    >
+                                        <svg className="h-7 w-7" viewBox="0 0 512 512" fill="currentColor">
+                                            <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+                                        </svg>
+                                        <div className="text-left">
+                                            <div className="text-[10px] font-medium opacity-80 leading-none">GET IT ON</div>
+                                            <div className="text-[17px] font-bold leading-tight">Google Play</div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
 
                             {/* Background mesh effects */}
@@ -210,7 +240,6 @@ export function LandingView({ }: LandingViewProps) {
                 </section>
             </main>
 
-            <Footer />
         </div>
     );
 }

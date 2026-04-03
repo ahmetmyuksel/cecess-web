@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
@@ -23,7 +24,6 @@ export function Footer() {
                         <ul className="space-y-2 text-sm">
                             <li><Link href="/pricing" className="hover:text-white transition-colors">{t.public.nav.pricing}</Link></li>
                             <li><Link href="/login" className="hover:text-white transition-colors">{t.public.nav.login}</Link></li>
-                            <li><Link href="/signup" className="hover:text-white transition-colors">{t.public.nav.signup}</Link></li>
                         </ul>
                     </div>
 

@@ -4,9 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { useLanguage } from "@/features/i18n/context/language-context";
-import { Footer } from "./footer";
 import { Switch } from "@/components/ui/switch";
-import { PublicNavbar } from "./public-navbar";
 
 
 interface PricingViewProps {
@@ -45,7 +43,7 @@ export function PricingView({ }: PricingViewProps) {
             name: t.public.pricing.plans.premium.name,
             description: t.public.pricing.plans.premium.desc,
             priceMonthly: "€4.99",
-            priceAnnual: "€4.17",
+            priceAnnual: "€49.90",
             cta: t.public.pricing.plans.premium.cta,
             popular: true,
             accent: "from-blue-600 to-blue-700",
@@ -61,8 +59,8 @@ export function PricingView({ }: PricingViewProps) {
         {
             name: t.public.pricing.plans.pro.name,
             description: t.public.pricing.plans.pro.desc,
-            priceMonthly: "€9.99",
-            priceAnnual: "€8.33",
+            priceMonthly: "€12.99",
+            priceAnnual: "€129.90",
             cta: t.public.pricing.plans.pro.cta,
             popular: false,
             accent: "from-slate-100 to-slate-50",
@@ -137,7 +135,6 @@ export function PricingView({ }: PricingViewProps) {
             <div className="pointer-events-none absolute left-[-120px] top-28 h-64 w-64 rounded-full bg-blue-200/40 blur-3xl" />
             <div className="pointer-events-none absolute right-[-120px] top-48 h-72 w-72 rounded-full bg-sky-200/40 blur-3xl" />
 
-            <PublicNavbar />
 
             <main className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-24 pt-20">
                 <section className="space-y-6 text-center">
@@ -187,17 +184,8 @@ export function PricingView({ }: PricingViewProps) {
                                 </div>
                                 <div className="flex items-baseline gap-2 pb-4">
                                     <span className="text-4xl font-bold text-slate-900">{price}</span>
-                                    <span className="text-sm text-slate-500">/ {t.public.pricing.monthly.toLowerCase()}</span>
+                                    <span className="text-sm text-slate-500">/ {billingCycle === 'monthly' ? t.public.pricing.monthly.toLowerCase() : t.public.pricing.annual.toLowerCase()}</span>
                                 </div>
-                                <Link
-                                    href="/signup"
-                                    className={`mb-5 block w-full rounded-full px-5 py-3 text-center text-sm font-semibold text-white shadow-lg transition ${plan.popular
-                                        ? "bg-gradient-to-r from-blue-600 to-blue-700 shadow-blue-200/70 hover:translate-y-[-1px] hover:shadow-blue-300/80"
-                                        : "bg-slate-900/90 hover:-translate-y-0.5"
-                                        }`}
-                                >
-                                    {plan.cta}
-                                </Link>
                                 <div className="space-y-3 border-t border-slate-200 pt-4 text-sm text-slate-700">
                                     <div className="text-base font-semibold text-slate-900">What&apos;s included:</div>
                                     <ul className="space-y-3">
@@ -272,7 +260,6 @@ export function PricingView({ }: PricingViewProps) {
                 </section>
             </main>
 
-            <Footer />
         </div>
     );
 }

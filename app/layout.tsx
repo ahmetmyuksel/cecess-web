@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 import { UserProvider } from "@/features/auth/hooks/use-user";
 import { LanguageProvider } from "@/features/i18n/context/language-context";
 import { CookieConsent } from "@/features/public/components/cookie-consent";
+import { PublicNavWrapper } from "@/components/layout/public-nav-wrapper";
 
 export default function RootLayout({
   children,
@@ -33,8 +34,10 @@ export default function RootLayout({
       >
         <UserProvider>
           <LanguageProvider>
-            {children}
-            <CookieConsent />
+            <PublicNavWrapper>
+                {children}
+                <CookieConsent />
+            </PublicNavWrapper>
           </LanguageProvider>
         </UserProvider>
       </body>

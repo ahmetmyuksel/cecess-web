@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Footer } from "./footer";
-import { PublicNavbar } from "./public-navbar";
 import {
     Accordion,
     AccordionContent,
@@ -17,7 +15,6 @@ interface FaqViewProps {
 export function FaqView({ }: FaqViewProps) {
     return (
         <div className="flex min-h-screen flex-col bg-white">
-            <PublicNavbar />
 
             <main className="flex-1 py-16 bg-slate-50 pt-24">
                 <div className="container mx-auto px-4 max-w-3xl">
@@ -85,7 +82,6 @@ export function FaqView({ }: FaqViewProps) {
                 </div>
             </main>
 
-            <Footer />
         </div>
     );
 }

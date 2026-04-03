@@ -42,10 +42,6 @@ export function LanguageProvider({ children, forcedLanguage }: { children: React
     const finalLanguage = forcedLanguage || language;
     const t = finalLanguage === "tr" ? tr : en;
 
-    if (!isLoaded && !forcedLanguage) {
-        return null; // Or a loading spinner
-    }
-
     return (
         <LanguageContext.Provider value={{ language: finalLanguage, setLanguage, t }}>
             {children}

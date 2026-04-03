@@ -73,7 +73,8 @@ export const tr: Dictionary = {
             preferences: "Tercihler",
             notifications: "Bildirimler",
             managementTitle: "Hesap Yönetimi",
-            managementDesc: "Hesabınızı yönetmek, profilinizi güncellemek, şifrenizi değiştirmek veya hesabınızı silmek için lütfen Cecess mobil uygulamasını kullanın."
+            managementDesc: "Hesabınızı yönetmek, profilinizi güncellemek, şifrenizi değiştirmek veya hesabınızı silmek için lütfen Cecess mobil uygulamasını kullanın.",
+            manageInApp: "Profil ayarları mobil uygulamadan yönetilir"
         },
         notifications: {
             title: "Bildirimler",
@@ -227,7 +228,7 @@ export const tr: Dictionary = {
             privacy: "Gizlilik",
             faq: "SSS",
             login: "Giriş Yap",
-            signup: "Kayıt Ol",
+            googleLogin: "Google ile Giriş Yap",
             profile: "Profil",
             logout: "Çıkış Yap",
         },

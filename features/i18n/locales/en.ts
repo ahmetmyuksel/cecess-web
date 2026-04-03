@@ -73,7 +73,8 @@ export const en: Dictionary = {
             preferences: "Preferences",
             notifications: "Notifications",
             managementTitle: "Account Management",
-            managementDesc: "To manage your account, update your profile, change your password, or delete your account, please use the Cecess mobile application."
+            managementDesc: "To manage your account, update your profile, change your password, or delete your account, please use the Cecess mobile application.",
+            manageInApp: "Profile settings are managed in the mobile app"
         },
         notifications: {
             title: "Notifications",
@@ -227,7 +228,7 @@ export const en: Dictionary = {
             privacy: "Privacy",
             faq: "FAQ",
             login: "Log in",
-            signup: "Sign up",
+            googleLogin: "Sign in with Google",
             profile: "Profile",
             logout: "Logout",
         },
