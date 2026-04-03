@@ -1,4 +1,3 @@
-﻿export const runtime = 'edge';
 import { ProfileView } from "@/features/settings/components/profile-view";
 
 export default function SettingsPage() {

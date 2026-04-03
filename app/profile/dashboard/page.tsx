@@ -1,4 +1,3 @@
-﻿export const runtime = 'edge';
 import { DashboardView } from "@/features/profile/components/dashboard-view";
 import { createClient } from "@/utils/supabase/server";
 import { getTransactions } from "@/features/transactions/services/transaction-service";

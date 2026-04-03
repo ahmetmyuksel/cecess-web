@@ -1,4 +1,3 @@
-﻿export const runtime = 'edge';
 
 import { LoginView } from "@/features/auth/components/login-view";
 

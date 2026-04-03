@@ -1,4 +1,3 @@
-export const dynamic = 'force-static';
 import { DynamicFaqView } from "@/features/public/components/dynamic-views";
 
 export default function FaqPage() {

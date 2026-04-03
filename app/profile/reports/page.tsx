@@ -1,4 +1,3 @@
-﻿export const runtime = 'edge';
 import { ReportsView } from "@/features/reports/components/reports-view";
 import { createClient } from "@/utils/supabase/server";
 

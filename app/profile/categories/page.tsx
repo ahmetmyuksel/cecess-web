@@ -1,4 +1,3 @@
-﻿export const runtime = 'edge';
 import { CategoriesView } from "@/features/categories/components/categories-view";
 import { createClient } from "@/utils/supabase/server";
 

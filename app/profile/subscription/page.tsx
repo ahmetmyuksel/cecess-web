@@ -1,4 +1,3 @@
-﻿export const runtime = 'edge';
 import { SubscriptionView } from "@/features/subscription/components/subscription-view";
 import { createClient } from "@/utils/supabase/server";
 
