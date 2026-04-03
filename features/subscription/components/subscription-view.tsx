@@ -6,6 +6,7 @@ import { useState } from "react";
 import { TIERS, PLAN_FEATURES, TIER_FEATURES, SubscriptionTier } from "../types/subscription-types";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { cn } from "@/lib/utils";
+import { ReadonlyStatus } from "@/components/ui/readonly-status";
 
 interface SubscriptionViewProps {
     initialProfile?: any;
@@ -27,9 +28,12 @@ export function SubscriptionView({ initialProfile }: SubscriptionViewProps) {
 
     return (
         <main className="flex-1 overflow-auto px-8 py-6">
-            <header className="mb-8 text-center">
-                <h1 className="text-3xl font-bold text-slate-900">{t.subscriptionPage.title}</h1>
-                <p className="text-slate-600 mt-2">{t.subscriptionPage.subtitle}</p>
+            <header className="mb-8 text-center flex flex-col items-center">
+                <div className="flex items-center gap-3 mb-2">
+                    <h1 className="text-3xl font-bold text-slate-900">{t.subscriptionPage.title}</h1>
+                    <ReadonlyStatus />
+                </div>
+                <p className="text-slate-600">{t.subscriptionPage.subtitle}</p>
             </header>
 
             <div className="flex justify-center mb-8">
@@ -136,8 +140,8 @@ export function SubscriptionView({ initialProfile }: SubscriptionViewProps) {
                                 )}
                             >
                                 {isTierMatch
-                                    ? "Active Plan"
-                                    : "Upgrade in App"
+                                    ? t.subscriptionPage.actions.activePlan
+                                    : t.subscriptionPage.actions.upgradeInApp
                                 }
                             </button>
                         </div>

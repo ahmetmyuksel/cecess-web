@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { formatCurrency } from "@/utils/currency-converter";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
+import { ReadonlyStatus } from "@/components/ui/readonly-status";
 
 const CURRENCIES = ["USD", "EUR", "TRY", "GBP", "JPY"];
 
@@ -65,9 +66,7 @@ export function AccountsView({ initialAccounts = [] }: AccountsViewProps) {
                         <h1 className="text-3xl font-bold text-slate-900">{t.accounts.title}</h1>
                         <p className="text-sm text-slate-600">{t.accounts.subtitle}</p>
                     </div>
-                    <div className="flex gap-3 items-center text-sm text-slate-500 font-medium">
-                        Read-only on Web
-                    </div>
+                    <ReadonlyStatus />
                 </header>
 
                 <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -76,7 +75,7 @@ export function AccountsView({ initialAccounts = [] }: AccountsViewProps) {
                             <div className="mb-4 text-4xl">🏦</div>
                             <h3 className="text-lg font-medium text-slate-900">{t.accounts.noAccounts.title}</h3>
                             <p className="mt-1 max-w-sm text-sm text-slate-500">
-                                {t.accounts.noAccounts.desc} Add accounts using the mobile app.
+                                {t.dashboard.empty.generic}
                             </p>
                         </div>
                     ) : (

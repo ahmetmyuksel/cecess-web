@@ -14,8 +14,11 @@ import {
 } from "@/components/ui/select";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Switch } from "@/components/ui/switch";
+import { useLanguage } from "@/features/i18n/hooks/use-language";
+import { ReadonlyStatus } from "@/components/ui/readonly-status";
 
 export function ProfileView() {
+    const { t } = useLanguage();
     const { user, profile, loading } = useUser();
     const supabase = createClient();
 
@@ -116,9 +119,10 @@ export function ProfileView() {
             <div className="flex items-center justify-between">
                 <div>
                     <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-                        Profile
+                        {t.settings.profile.title}
+                        <ReadonlyStatus />
                     </h2>
-                    <p className="text-sm text-slate-500">Manage your profile information.</p>
+                    <p className="text-sm text-slate-500">{t.settings.profile.subtitle}</p>
                 </div>
             </div>
 
@@ -138,10 +142,10 @@ export function ProfileView() {
 
                 {/* Personal Information Group */}
                 <div>
-                    <h3 className="text-base font-semibold text-slate-900 mb-4">Personal Information</h3>
+                    <h3 className="text-base font-semibold text-slate-900 mb-4">{t.settings.profile.personalInfo}</h3>
                     <div className="grid gap-6 md:grid-cols-2">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">First Name</label>
+                            <label className="text-sm font-medium text-slate-700">{t.settings.profile.username.split(' ')[0]} Name</label>
                             <input
                                 disabled
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 cursor-not-allowed"
@@ -150,7 +154,7 @@ export function ProfileView() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Last Name</label>
+                            <label className="text-sm font-medium text-slate-700">{t.settings.profile.username.split(' ')[0]} Last Name</label>
                             <input
                                 disabled
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 cursor-not-allowed"
@@ -159,7 +163,7 @@ export function ProfileView() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Gender</label>
+                            <label className="text-sm font-medium text-slate-700">{t.settings.profile.gender}</label>
                             <input
                                 disabled
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 cursor-not-allowed"
@@ -167,7 +171,7 @@ export function ProfileView() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Date of Birth</label>
+                            <label className="text-sm font-medium text-slate-700">{t.settings.profile.dob}</label>
                             <input
                                 disabled
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 cursor-not-allowed"
@@ -182,10 +186,10 @@ export function ProfileView() {
 
                 {/* Contact Information Group */}
                 <div>
-                    <h3 className="text-base font-semibold text-slate-900 mb-4">Contact Information</h3>
+                    <h3 className="text-base font-semibold text-slate-900 mb-4">{t.settings.profile.contactInfo}</h3>
                     <div className="grid gap-6 md:grid-cols-2">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Email Address</label>
+                            <label className="text-sm font-medium text-slate-700">{t.settings.profile.email}</label>
                             <div className="flex gap-2">
                                 <input
                                     disabled
@@ -195,7 +199,7 @@ export function ProfileView() {
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Phone Number</label>
+                            <label className="text-sm font-medium text-slate-700">{t.settings.profile.phone}</label>
                             <input
                                 disabled
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 cursor-not-allowed"
@@ -209,10 +213,10 @@ export function ProfileView() {
 
                 {/* Preferences Group */}
                 <div>
-                    <h3 className="text-base font-semibold text-slate-900 mb-4">Preferences</h3>
+                    <h3 className="text-base font-semibold text-slate-900 mb-4">{t.settings.profile.preferences}</h3>
                     <div className="grid gap-6 md:grid-cols-2">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Language</label>
+                            <label className="text-sm font-medium text-slate-700">{t.settings.preferences.language}</label>
                             <input
                                 disabled
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 cursor-not-allowed"
@@ -220,7 +224,7 @@ export function ProfileView() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Currency</label>
+                            <label className="text-sm font-medium text-slate-700">{t.settings.preferences.currency}</label>
                             <input
                                 disabled
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 cursor-not-allowed"
@@ -234,26 +238,26 @@ export function ProfileView() {
 
                 {/* Notifications Group */}
                 <div>
-                    <h3 className="text-base font-semibold text-slate-900 mb-4">Notifications</h3>
+                    <h3 className="text-base font-semibold text-slate-900 mb-4">{t.settings.profile.notifications}</h3>
                     <div className="space-y-4">
                         <div className="flex items-center justify-between rounded-lg border border-slate-100 p-4 bg-slate-50">
                             <div className="space-y-0.5">
-                                <label className="text-sm font-medium text-slate-500">Budget Alerts</label>
-                                <p className="text-xs text-slate-400">Get notified when you exceed your budget limits.</p>
+                                <label className="text-sm font-medium text-slate-500">{t.settings.notifications.budget.title}</label>
+                                <p className="text-xs text-slate-400">{t.settings.notifications.budget.desc}</p>
                             </div>
                             <Switch checked={formData.notifications.budgetAlerts} disabled />
                         </div>
                         <div className="flex items-center justify-between rounded-lg border border-slate-100 p-4 bg-slate-50">
                             <div className="space-y-0.5">
-                                <label className="text-sm font-medium text-slate-500">Weekly Summary</label>
-                                <p className="text-xs text-slate-400">Receive a weekly digest of your spending habits.</p>
+                                <label className="text-sm font-medium text-slate-500">{t.settings.notifications.weekly.title}</label>
+                                <p className="text-xs text-slate-400">{t.settings.notifications.weekly.desc}</p>
                             </div>
                             <Switch checked={formData.notifications.weeklySummary} disabled />
                         </div>
                         <div className="flex items-center justify-between rounded-lg border border-slate-100 p-4 bg-slate-50">
                             <div className="space-y-0.5">
-                                <label className="text-sm font-medium text-slate-500">Product Updates</label>
-                                <p className="text-xs text-slate-400">Stay informed about new features and improvements.</p>
+                                <label className="text-sm font-medium text-slate-500">{t.settings.notifications.updates.title}</label>
+                                <p className="text-xs text-slate-400">{t.settings.notifications.updates.desc}</p>
                             </div>
                             <Switch checked={formData.notifications.productUpdates} disabled />
                         </div>
@@ -262,9 +266,9 @@ export function ProfileView() {
 
                 {/* Note about App Usage */}
                 <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 mt-6">
-                    <h3 className="text-lg font-medium text-slate-700">Account Management</h3>
+                    <h3 className="text-lg font-medium text-slate-700">{t.settings.profile.managementTitle}</h3>
                     <p className="mt-1 text-sm text-slate-600">
-                        To manage your account, update your profile, change your password, or delete your account, please use the Cecess mobile application.
+                        {t.settings.profile.managementDesc}
                     </p>
                 </div>
             </div>

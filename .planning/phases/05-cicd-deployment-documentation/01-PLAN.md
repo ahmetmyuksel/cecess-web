@@ -2,68 +2,79 @@
 wave: 1
 depends_on: []
 files_modified:
-  - .github/workflows/validate.yml
-  - vercel.json
+  - pnpm-lock.yaml
   - PROJECT_STRUCTURE.md
   - STORE_CHECKLIST.md
 autonomous: true
-requirements: [CICD-01, CICD-02, CICD-03, CICD-04, CICD-05, CICD-06, DOC-01, DOC-02]
+requirements: [CICD-05, DOC-01, DOC-02]
 ---
 
-# Phase 5, Plan 1: CI/CD & Documentation
+# Phase 5: Fix, Push & Documentation
 
 ## Objective
-Establish the automated build validation pipeline via GitHub Actions, configure Vercel for production deployments, and write critical project documentation for both the architecture and the Google Play submission process.
+Resolve the dependency lockfile parity issue to enable Cloudflare Dashboard builds, push the current validated codebase to GitHub, and finalize architectural and compliance documentation.
 
-## Tasks
+## Wave 1: Fix & Git
 
-### 1. Configure GitHub Actions
+### 1. Commit Dependency Fix (pnpm-lock.yaml)
 <read_first>
 - package.json
+- pnpm-lock.yaml
 </read_first>
 
 <action>
-Create `.github/workflows/validate.yml`.
-Configure a workflow triggered on push to `main` and all `pull_requests`.
-Use `ubuntu-latest` and `actions/setup-node@v4` with Node 20.
-Run `npm ci`, `npm run lint`, and `npm run build` to validate code quality and typing.
+Stage the updated `pnpm-lock.yaml` (locally repaired in previous turn).
+Commit ONLY this file with the message: "fix: resolve pnpm-lock.yaml parity for Cloudflare build".
+This ensures that when we push, the Cloudflare Dashboard build will not fail with `ERR_PNPM_OUTDATED_LOCKFILE`.
 </action>
 
 <acceptance_criteria>
-- `.github/workflows/validate.yml` exists.
-- The file contains `npm run build` and `npm run lint`.
+- `pnpm-lock.yaml` is committed.
+- No CI/CD workflow files are created.
 </acceptance_criteria>
 
-### 2. Configure Vercel
+### 2. Push to GitHub
 <read_first>
-- package.json
+- .git/config
 </read_first>
 
 <action>
-Create `vercel.json` in the root directory.
-Configure it for a Next.js framework deployment including standard build settings: `"framework": "nextjs"`.
+Verify remote `origin` is set to `https://github.com/ahmetmyuksel/cecess-web.git`.
+Push the `master` branch (and any other relevant branches) to `origin`.
+This triggers the automatic deployment on Cloudflare (which the user has already configured).
 </action>
 
 <acceptance_criteria>
-- `vercel.json` exists in the root.
-- `cat vercel.json | grep nextjs` returns a match.
+- `git push origin master` succeeds.
+- Repository at GitHub reflects current local state.
 </acceptance_criteria>
+
+## Wave 2: Documentation
 
 ### 3. Create Project Documentation
 <read_first>
-- resets_db.sql (for understanding DB schema if needed)
+- app/
+- features/
 </read_first>
 
 <action>
-Create `PROJECT_STRUCTURE.md`: Document the directory layout (app vs features), the separation of concerns (Domain -> Service -> Hook -> Component), and tech stack.
-Create `STORE_CHECKLIST.md`: A markdown checklist specifically for the Google Play submission for a financial app. Include steps like generating an AAB, running the 14-day closed test with 20 testers, filling the Data Safety Form, entering the Privacy Policy URL, and completing the Financial Features Declaration.
+Create `PROJECT_STRUCTURE.md`: Document the core architecture (Domain-Service-Hook-Component).
+Create `STORE_CHECKLIST.md`: Document steps for Google Play Store submission (AAB, 20 testers, 14-day rule).
 </action>
 
 <acceptance_criteria>
-- `PROJECT_STRUCTURE.md` exists and describes "App vs Features".
-- `STORE_CHECKLIST.md` exists and contains "20 testers".
+- both files exist in the root directory.
 </acceptance_criteria>
 
+## Global Rule: Phase-End Push
+> [!IMPORTANT]
+> From now on, at the conclusion of every phase (and once more at the end of this phase), the entire repository must be pushed to `origin`.
+
 ## Verification
-- Run `npm run build` locally to verify codebase is sound.
-- Ensure all markdown files are well-formatted.
+- **GitHub:** Verify that the code is visible on the repository.
+- **Cloudflare:** (User action) Verify that the build triggered by the push succeeds in the Cloudflare Dashboard.
+- **Documentation:** Review markdown for clarity and accuracy.
+
+## must_haves
+- Lockfile MUST be synced before pushing to prevent build failure.
+- Documentation MUST mention the 20-tester rule for compliance.

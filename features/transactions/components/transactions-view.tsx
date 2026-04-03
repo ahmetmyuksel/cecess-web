@@ -8,6 +8,7 @@ import { DatePicker } from "@/components/ui/date-picker";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { Category } from "@/features/categories/hooks/use-categories";
+import { ReadonlyStatus } from "@/components/ui/readonly-status";
 
 export function TransactionsView({
     initialTransactions,
@@ -62,9 +63,7 @@ export function TransactionsView({
                     <div>
                         <h1 className="text-2xl font-bold text-slate-900">{t.transactions.title}</h1>
                     </div>
-                    <div className="flex gap-3 items-center text-sm text-slate-500 font-medium">
-                        Read-only on Web
-                    </div>
+                    <ReadonlyStatus />
                 </header>
 
                 <div className="mt-5 flex flex-wrap gap-4 items-center">

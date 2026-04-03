@@ -36,6 +36,11 @@ The web must look like a legitimate, trust-worthy fintech startup — not a hobb
 
 <!-- Current scope. Building toward these. -->
 
+- [x] Phase 01: [DONE] Stripe Cleanup & Read-Only Refactor
+- [x] Phase 02: [DONE] Google Play Compliance Pages
+- [x] Phase 03: [DONE] Landing Page Redesign (Mobit Style)
+- [ ] Phase 04: [ACTIVE] Dashboard Read-Only V1
+- [ ] Phase 05: [TODO] CI/CD & Deployment Documentation
 - [ ] Redesigned scroll-animated landing page with mobile app mockup
 - [ ] App Store & Google Play download badges on landing page
 - [ ] Scroll-triggered animations (text/sections appearing on scroll)

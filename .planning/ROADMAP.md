@@ -13,7 +13,7 @@
 | 2 | Google Play Compliance Pages | Privacy, Terms, Account Deletion — audit-ready | COMP-01..08 | 4 |
 | 3 | Landing Page Redesign | Scroll-animated, fintech-grade landing with app mockup | LAND-01..08 | 5 |
 | 4 | Dashboard Read-Only V1 | Authenticated read-only viewer for user financial data | DASH-01..08 | 5 |
-| 5 | CI/CD, Deployment & Documentation | GitHub Actions, Vercel, Docker, docs, push to repo | CICD-01..05, DOC-01..02 | 4 |
+| 5 | CI/CD, Deployment & Documentation | GitHub Actions, Cloudflare Pages, Docker, docs, push to repo | CICD-01..05, DOC-01..02 | 4 |
 
 ---
 
@@ -86,7 +86,7 @@
 
 ## Phase 5: CI/CD, Deployment & Documentation
 
-**Goal:** Set up automated build/deploy pipeline with GitHub Actions + Vercel, keep Docker updated, create project documentation, and push everything to the clean GitHub repo.
+**Goal:** Set up automated build/deploy pipeline with GitHub Actions + Cloudflare Pages, keep Docker updated, create project documentation, and push everything to the clean GitHub repo.
 
 **Requirements:** CICD-01, CICD-02, CICD-03, CICD-04, CICD-05, DOC-01, DOC-02
 
@@ -94,7 +94,7 @@
 
 **Success criteria:**
 1. GitHub Actions runs build + lint on push to main and PRs
-2. Vercel deployment pipeline configured (vercel.json or Vercel Git integration)
+2. Cloudflare Pages deployment pipeline configured (wrangler.toml or Pages Dashboard integration)
 3. Docker build succeeds with updated Dockerfile
 4. PROJECT_STRUCTURE.md exists with architecture summary
 5. STORE_CHECKLIST.md exists with Google Play submission steps (AAB, 20 testers, 14-day rule)

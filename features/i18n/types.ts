@@ -33,6 +33,8 @@ export type Dictionary = {
             upgradeYearly: string;
             downgrade: string;
             current: string;
+            activePlan: string;
+            upgradeInApp: string;
         };
         features: {
             unlimitedTransactions: string;
@@ -64,6 +66,12 @@ export type Dictionary = {
             recommended: string;
             changePhoto: string;
             remove: string;
+            personalInfo: string;
+            contactInfo: string;
+            preferences: string;
+            notifications: string;
+            managementTitle: string;
+            managementDesc: string;
         };
         notifications: {
             title: string;
@@ -127,6 +135,13 @@ export type Dictionary = {
         spendingByCategory: string;
         noTransactions: string;
         balance: string;
+        status: {
+            readonly: string;
+            manageInApp: string;
+        };
+        empty: {
+            generic: string;
+        };
     };
     transactions: {
         title: string;
@@ -425,6 +440,32 @@ export type Dictionary = {
                 mobileApp: { title: string; body: string[] };
                 dataHandling: { title: string; body: string[] };
                 contact: { title: string; body: string[] };
+            };
+        };
+        landing: {
+            hero: {
+                title: string;
+                subtitle: string;
+                ctaMain: string;
+                ctaSecondary: string;
+            };
+            trustBar: string;
+            features: {
+                title: string;
+                subtitle: string;
+                items: {
+                    dashboard: { title: string; description: string };
+                    ai: { title: string; description: string };
+                    currency: { title: string; description: string };
+                    import: { title: string; description: string };
+                    analytics: { title: string; description: string };
+                    security: { title: string; description: string };
+                };
+            };
+            cta: {
+                title: string;
+                subtitle: string;
+                button: string;
             };
         };
         cookieConsent: {

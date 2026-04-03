@@ -34,7 +34,9 @@ export const tr: Dictionary = {
             upgrade: "Yükselt",
             upgradeYearly: "Yıllık Plana Geç",
             downgrade: "Düşür",
-            current: "Mevcut Plan"
+            current: "Mevcut Plan",
+            activePlan: "Aktif Planınız",
+            upgradeInApp: "Uygulamadan Yönet"
         },
         features: {
             unlimitedTransactions: "Sınırsız İşlem",
@@ -65,7 +67,13 @@ export const tr: Dictionary = {
             changePassword: "Şifre Değiştir...",
             recommended: "Önerilen: Kare JPG, PNG.",
             changePhoto: "Fotoğraf değiştir",
-            remove: "Kaldır"
+            remove: "Kaldır",
+            personalInfo: "Kişisel Bilgiler",
+            contactInfo: "İletişim Bilgileri",
+            preferences: "Tercihler",
+            notifications: "Bildirimler",
+            managementTitle: "Hesap Yönetimi",
+            managementDesc: "Hesabınızı yönetmek, profilinizi güncellemek, şifrenizi değiştirmek veya hesabınızı silmek için lütfen Cecess mobil uygulamasını kullanın."
         },
         notifications: {
             title: "Bildirimler",
@@ -128,7 +136,14 @@ export const tr: Dictionary = {
         expenseByCategory: "Kategoriye Göre Gider",
         spendingByCategory: "Kategoriye Göre Harcama",
         noTransactions: "Bu dönem için işlem bulunamadı.",
-        balance: "Güncel Bakiye"
+        balance: "Güncel Bakiye",
+        status: {
+            readonly: "Sadece Görüntüleme (Uygulama ile Senkronize)",
+            manageInApp: "Veri eklemek, düzenlemek veya silmek için lütfen Cecess mobil uygulamasını kullanın."
+        },
+        empty: {
+            generic: "Henüz veri bulunamadı. Finansal verilerinizi mobil uygulamadan senkronize edin."
+        }
     },
     transactions: {
         title: "Tüm İşlemler",
@@ -574,34 +589,75 @@ export const tr: Dictionary = {
         accountDeletion: {
             title: "Hesap Silme Talimatları",
             lastUpdated: "Son Güncelleme: 3 Nisan 2026",
-            intro: "cecess olarak verileriniz üzerinde tam kontrole sahip olmanız gerektiğine inanıyoruz. Hizmetlerimizi artık kullanmamaya karar verirseniz, hesabınızı ve ilişkili tüm verileri kolayca silebilirsiniz.",
+            intro: "cecess'te gizlilik hakkınıza saygı duyuyoruz ve hesabınızı ve ilgili tüm kişisel verilerinizi silmek için net bir yol sunuyoruz. Google Play'in Unutulma Hakkı gereksinimlerine uymak için lütfen aşağıdaki adımları izleyin.",
             sections: {
                 mobileApp: {
-                    title: "1. Hesabınızı Silmek (Mobil Uygulama)",
+                    title: "Hesabınızı Nasıl Silersiniz?",
                     body: [
-                        "Hesap silme işlemi, güvenliğinizi sağlamak ve cihazınızı doğrulamak amacıyla bilinçli olarak sadece cecess mobil uygulaması üzerinden yapılabilmektedir.",
-                        "Hesabınızı silmek için:",
-                        "1. iOS veya Android cihazınızda cecess mobil uygulamasını açın.",
-                        "2. Silmek istediğiniz hesaba giriş yapın.",
-                        "3. Ayarlar bölümüne (profil sayfanızdaki dişli çark simgesi) gidin.",
-                        "4. 'Profil'e dokunun ve 'Hesabımı Sil' seçeneğini seçin.",
-                        "5. Uyarıyı dikkatlice okuyun ve verilerinizi kalıcı olarak silme işlemini onaylayın."
+                        "Adım 1: Cihazınızda cecess mobil uygulamasını açın.",
+                        "Adım 2: Hesabınıza giriş yapın.",
+                        "Adım 3: Profil sekmesi üzerinden 'Ayarlar'a gidin.",
+                        "Adım 4: Menünün altındaki 'Hesabımı Sil' seçeneğine dokunun.",
+                        "Adım 5: Kararınızı onaylayın. Hesabınız ve ilgili tüm veriler derhal silinmek üzere işleme alınacaktır."
                     ]
                 },
                 dataHandling: {
-                    title: "2. Verilerinizi Nasıl İşliyoruz?",
+                    title: "Hangi Veriler Silinir?",
                     body: [
-                        "Silme işlemini onayladığınızda talebiniz anında işleme alınır.",
-                        "Neler silinir: Hesap profiliniz, ilgili tüm işlem geçmişiniz, özel bütçeleriniz, kategorileriniz ve senkronizasyon kayıtlarınız aktif veritabanımızdan kalıcı olarak silinir.",
-                        "Neler saklanır: Yasal zorunluluklar, güvenlik denetimleri veya (ücretsiz deneme istismarı gibi) dolandırıcılık faaliyetlerini önlemek amacıyla kesinlikle güvenlik gereği çok kısıtlı loglar geçici süreyle saklanabilir. Bu loglar hiçbir ticari amaçla kullanılmaz ve zamanla otomatik olarak silinir."
+                        "Onayınızın ardından şu veriler aktif veritabanlarımızdan kalıcı olarak kaldırılır: kullanıcı profiliniz (ad, e-posta), tüm işlem geçmişi, hesap kayıtları, özel kategoriler ve oluşturulan finansal raporlar.",
+                        "Silme işlemi tamamlandıktan sonra finansal verilerinizin kopyalarını tutmuyoruz."
                     ]
                 },
                 contact: {
-                    title: "3. Yardıma mı İhtiyacınız Var?",
+                    title: "Manuel Silme Talebi",
                     body: [
-                        "Artık mobil uygulamaya erişiminiz yoksa veya hesabınızı güvenli bir şekilde silerken herhangi bir sorun yaşarsanız, lütfen support@cecess.com adresinden destek ekibimizle iletişime geçin. Manuel bir silme işlemi gerçekleştirilmeden önce kimliğinizi doğrulamanız gerekeceğini unutmayın."
+                        "Mobil uygulamaya erişemiyorsanız, hesabınızla ilişkili e-posta adresinden support@cecess.com adresine e-posta göndererek manuel hesap silme talebinde bulunabilirsiniz. Talebinizi 48 saat içinde işleme alacağız."
                     ]
                 }
+            }
+        },
+        landing: {
+            hero: {
+                title: "AI ile Finansal Geleceğini Yönet",
+                subtitle: "Varlıklarını takip et, Gemini ile kategorize et ve gizlilik odaklı, profesyonel dashboard ile net değerini artır.",
+                ctaMain: "Hemen Başla",
+                ctaSecondary: "Fiyatlandırma"
+            },
+            trustBar: "Kişisel finansını dönüştüren 10.000'den fazla kullanıcıya katılın",
+            features: {
+                title: "Büyümek için ihtiyacınız olan her şey",
+                subtitle: "Finansal sağlığınızı bir bakışta anlamanıza yardımcı olacak güçlü özellikler.",
+                items: {
+                    dashboard: {
+                        title: "Akıllı Dashboard",
+                        description: "Sezgisel grafikler ve gerçek zamanlı güncellemelerle finansal durumunuza kuş bakışı bakın."
+                    },
+                    ai: {
+                        title: "AI Kategorizasyon",
+                        description: "Özel Gemini modellerimizi kullanarak işlemlerinizi otomatik olarak etiketleyin ve düzenleyin."
+                    },
+                    currency: {
+                        title: "Çoklu Döviz",
+                        description: "USD, EUR, TRY ve daha fazlasını takip edin. Küresel net değeriniz anında hesaplansın."
+                    },
+                    import: {
+                        title: "Akıllı İçe Aktarma",
+                        description: "Herhangi bir bankadan kayıtları içe aktarın. Kararsız doğrudan banka bağlantılarına gerek yok."
+                    },
+                    analytics: {
+                        title: "Gelişmiş Analitik",
+                        description: "Pro raporlarla harcama alışkanlıklarınıza, eğilimlere ve tahminlere derinlemesine dalın."
+                    },
+                    security: {
+                        title: "Özel ve Güvenli",
+                        description: "Verileriniz sizindir. AES-256 şifreleme. Katı gizlilik standartlarını karşılıyoruz."
+                    }
+                }
+            },
+            cta: {
+                title: "Kontrolü ele almaya hazır mısınız?",
+                subtitle: "Finansal hayatını cecess ile düzenleyen binlerce kullanıcıya katılın.",
+                button: "Hemen Başlayın"
             }
         },
         cookieConsent: {

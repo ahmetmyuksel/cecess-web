@@ -19,13 +19,14 @@ Set up automated build/deploy pipeline with GitHub Actions + Vercel, keep Docker
 - **D-03:** Type check (`npm run build`) to catch TypeScript errors
 - **D-04:** Node.js 20 LTS as CI runtime
 
-### Vercel Deployment
-- **D-05:** Vercel as primary deployment platform (replacing VM)
-- **D-06:** Configure `vercel.json` for Next.js
-- **D-07:** GitHub Actions deploys to Vercel using CLI (`vercel deploy --prebuilt --prod`)
-- **D-08:** Secrets needed: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`
-- **D-09:** Environment variables configured in Vercel dashboard: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
-- **D-10:** Preview deployments on PRs, production on merge to main
+### Deployment (Manual/Dashboard)
+- **D-05:** Cloudflare Pages deployment managed via Dashboard integration (build starts on push)
+- **D-06:** No GitHub Actions for build/deploy automation (explicitly cancelled)
+- **D-07:** Manual push to `main` branch triggers Cloudflare build
+- **D-08:** Lockfile fix (`pnpm-lock.yaml`) is critical for Dashboard build success
+- **D-09:** Environment variables (Supabase keys) configured in Cloudflare Dashboard
+- **D-10:** Node.js version 20+ and `nodejs_compat` flag enabled in Dashboard settings
+- **D-11:** **Phase-End Push Rule:** At the conclusion of every phase, all committed work MUST be pushed to the remote repository.
 
 ### Docker (Fallback)
 - **D-11:** Keep existing `Dockerfile` updated and buildable
@@ -83,9 +84,9 @@ Set up automated build/deploy pipeline with GitHub Actions + Vercel, keep Docker
 - ESLint configured via `eslint.config.mjs`
 
 ### Integration Points
-- `.github/workflows/` — new directory for CI/CD
-- `vercel.json` — new file for Vercel config
-- Remote git repo — needs `git remote add origin`
+- `pnpm-lock.yaml` — updated fix for Cloudflare build
+- Remote git repo — `origin` at `ahmetmyuksel/cecess-web.git`
+- Cloudflare Dashboard — build settings, env vars, compatibility flags
 
 </code_context>
 

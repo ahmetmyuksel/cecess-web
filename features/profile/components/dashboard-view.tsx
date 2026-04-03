@@ -11,6 +11,7 @@ import { formatCurrency, convertCurrency } from "@/utils/currency-converter";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { useTransactions } from "@/features/transactions/hooks/use-transactions";
 import { format } from "date-fns";
+import { ReadonlyStatus } from "@/components/ui/readonly-status";
 
 import { Tx } from "@/features/transactions/hooks/use-transactions";
 import { Category } from "@/features/categories/hooks/use-categories";
@@ -230,6 +231,7 @@ export function DashboardView({ initialTransactions = [], initialCategories = []
                             ) : (
                                 <>
                                     {t.dashboard.welcome.replace("{name}", username || "User")}
+                                    <ReadonlyStatus />
                                     {error && <span className="text-sm font-normal text-red-500" title={error}>(Error loading profile)</span>}
                                 </>
                             )}
@@ -252,6 +254,18 @@ export function DashboardView({ initialTransactions = [], initialCategories = []
                         </div>
                     </div>
                 </header>
+
+                <div className="mt-6 rounded-xl border border-blue-100 bg-blue-50/50 p-4 flex items-start gap-4 shadow-sm animate-in fade-in slide-in-from-top-4 duration-500">
+                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div>
+                        <h3 className="text-sm font-bold text-blue-900">{t.dashboard.status.readonly}</h3>
+                        <p className="mt-1 text-sm text-blue-700/80 leading-relaxed">
+                            {t.dashboard.status.manageInApp}
+                        </p>
+                    </div>
+                </div>
 
                 <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap">
                     <div className="flex flex-wrap gap-3 text-sm font-semibold text-slate-600">

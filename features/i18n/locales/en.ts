@@ -34,7 +34,9 @@ export const en: Dictionary = {
             upgrade: "Upgrade",
             upgradeYearly: "Upgrade to Yearly",
             downgrade: "Downgrade",
-            current: "Current Plan"
+            current: "Current Plan",
+            activePlan: "Your Active Plan",
+            upgradeInApp: "Manage in Mobile App"
         },
         features: {
             unlimitedTransactions: "Unlimited Transactions",
@@ -65,7 +67,13 @@ export const en: Dictionary = {
             changePassword: "Change Password...",
             recommended: "Recommended: Square JPG, PNG.",
             changePhoto: "Change Photo",
-            remove: "Remove"
+            remove: "Remove",
+            personalInfo: "Personal Information",
+            contactInfo: "Contact Information",
+            preferences: "Preferences",
+            notifications: "Notifications",
+            managementTitle: "Account Management",
+            managementDesc: "To manage your account, update your profile, change your password, or delete your account, please use the Cecess mobile application."
         },
         notifications: {
             title: "Notifications",
@@ -128,7 +136,14 @@ export const en: Dictionary = {
         expenseByCategory: "Expense by Category",
         spendingByCategory: "Spending by Category",
         noTransactions: "No transactions found for this period.",
-        balance: "Current Balance"
+        balance: "Current Balance",
+        status: {
+            readonly: "Read-Only (Synced with App)",
+            manageInApp: "Please use the Cecess mobile app to add, edit or delete data."
+        },
+        empty: {
+            generic: "No data found yet. Sync your finances from the mobile app."
+        }
     },
     transactions: {
         title: "All Transactions",
@@ -574,34 +589,75 @@ export const en: Dictionary = {
         accountDeletion: {
             title: "Account Deletion Instructions",
             lastUpdated: "Last Updated: April 3, 2026",
-            intro: "At cecess, we believe you should have full control over your data. If you decide to no longer use our services, you can easily delete your account and all associated data.",
+            intro: "At cecess, we respect your right to privacy and offer a clear path to delete your account and all associated personal data. To comply with Google Play's Right to be Forgotten requirements, please follow the steps below.",
             sections: {
                 mobileApp: {
-                    title: "1. Deleting Your Account (Mobile App)",
+                    title: "How to Delete Your Account",
                     body: [
-                        "Account deletion is intentionally restricted to the cecess mobile app to ensure your security and verify your device.",
-                        "To delete your account:",
-                        "1. Open the cecess mobile application on your iOS or Android device.",
-                        "2. Log in to the account you wish to delete.",
-                        "3. Navigate to Settings (the gear icon on your profile page).",
-                        "4. Tap on 'Profile' and select 'Delete My Account'.",
-                        "5. Read the warning carefully and confirm your choice to permanently erase your data."
+                        "Step 1: Open the cecess mobile application on your device.",
+                        "Step 2: Sign in to your account.",
+                        "Step 3: Navigate to 'Settings' via the profile tab.",
+                        "Step 4: Tap on 'Delete My Account' at the bottom of the menu.",
+                        "Step 5: Confirm your decision. Your account and all associated data will be processed for immediate deletion."
                     ]
                 },
                 dataHandling: {
-                    title: "2. How We Handle Your Data",
+                    title: "What Data is Deleted?",
                     body: [
-                        "Upon confirming the deletion, your request is processed immediately.",
-                        "What is deleted: Your account profile, all associated transaction history, custom budgets, categories, and sync records are permanently removed from our active database.",
-                        "What is retained: We may retain certain minimal logs temporarily strictly for security audits, legal compliance, or to prevent fraudulent activity (such as abuse of free trials), as required by law. These logs are not used for any commercial purpose and are automatically purged over time."
+                        "Upon confirmation, the following data is permanently removed from our active databases: your user profile (name, email), all transaction history, account records, custom categories, and generated financial reports.",
+                        "We do not retain copies of your financial data once the deletion is processed."
                     ]
                 },
                 contact: {
-                    title: "3. Need Help?",
+                    title: "Manual Deletion Request",
                     body: [
-                        "If you no longer have access to the mobile app or encounter any issues deleting your account securely, please contact our support team at support@cecess.com. Be prepared to verify your identity before any manual deletion request is processed."
+                        "If you are unable to access the mobile application, you can request manual account deletion by emailing us at support@cecess.com from the email address associated with your account. We will process your request within 48 hours."
                     ]
                 }
+            }
+        },
+        landing: {
+            hero: {
+                title: "Manage Your Financial Future with AI",
+                subtitle: "Track your wealth, categorize with Gemini, and grow your net worth with a professional, privacy-first dashboard.",
+                ctaMain: "Get Started",
+                ctaSecondary: "See Pricing"
+            },
+            trustBar: "Join 10,000+ users transforming their personal finance",
+            features: {
+                title: "Everything you need to grow",
+                subtitle: "Powerful features to help you understand your financial health at a glance.",
+                items: {
+                    dashboard: {
+                        title: "Smart Dashboard",
+                        description: "Get a bird's eye view of your finances with intuitive charts and real-time updates."
+                    },
+                    ai: {
+                        title: "AI Categorization",
+                        description: "Automatically tag and organize your transactions using our private Gemini models."
+                    },
+                    currency: {
+                        title: "Multi-Currency",
+                        description: "Track accounts in USD, EUR, TRY, and more. Global net worth calculated instantly."
+                    },
+                    import: {
+                        title: "Smart Import",
+                        description: "Import records from any bank. No unstable direct bank connections required."
+                    },
+                    analytics: {
+                        title: "Advanced Analytics",
+                        description: "Deep dive into spending habits, trends, and projections with Pro reports."
+                    },
+                    security: {
+                        title: "Private & Secure",
+                        description: "Your data is yours. AES-256 encryption. We meet strict privacy standards."
+                    }
+                }
+            },
+            cta: {
+                title: "Ready to take control?",
+                subtitle: "Join thousands of users organizing their financial life with cecess.",
+                button: "Get Started Now"
             }
         },
         cookieConsent: {
