@@ -3,9 +3,19 @@
 import { useState, useEffect } from "react";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { getReportsHistoryAction, ReportHistoryItem } from "@/features/reports/actions/get-reports-history-action";
-import { CategoryExpenseChart } from "@/features/reports/components/category-expense-chart";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const CategoryExpenseChart = dynamic(() => import("@/features/reports/components/category-expense-chart").then(mod => mod.CategoryExpenseChart), { 
+    ssr: false,
+    loading: () => <Skeleton className="h-64 w-full rounded-3xl" />
+});
+
+const ReportsChart = dynamic(() => import("@/features/reports/components/reports-chart").then(mod => mod.ReportsChart), { 
+    ssr: false,
+    loading: () => <Skeleton className="h-[400px] w-full rounded-2xl" />
+});
 import Link from "next/link";
-import { ReportsChart } from "@/features/reports/components/reports-chart";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 
 export function ReportsView({ isPro = false }: { isPro?: boolean }) {

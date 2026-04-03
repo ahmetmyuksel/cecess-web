@@ -53,7 +53,8 @@ Progress: ░░░░░░░░░░ 0%
 ### Roadmap Evolution
 
 - Phase 1 added: Read-only refactor and xlsx removal for bundle optimization (2026-04-03)
+- Phase 2 added: Bundle size optimization with dynamic imports and layout refactoring (2026-04-03)
 
 ---
-*Last updated: 2026-04-03 — Phase 1 added*
+*Last updated: 2026-04-03 — Phase 2 added*
 

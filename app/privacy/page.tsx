@@ -1,12 +1,16 @@
-export const dynamic = 'force-static';
+export const runtime = 'edge';
 
 import { LanguageProvider } from "@/features/i18n/context/language-context";
-import { PrivacyView } from "@/features/public/components/privacy-view";
+import { createClient } from "@/utils/supabase/server";
+import { DynamicPrivacyView } from "@/features/public/components/dynamic-views";
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
     <LanguageProvider>
-      <PrivacyView />
+      <DynamicPrivacyView isLoggedIn={!!user} />
     </LanguageProvider>
   );
 }
