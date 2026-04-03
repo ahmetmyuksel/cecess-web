@@ -1,4 +1,5 @@
-﻿
+﻿export const runtime = 'edge';
+
 import { LanguageProvider } from "@/features/i18n/context/language-context";
 import { PricingView } from "@/features/public/components/pricing-view";
 

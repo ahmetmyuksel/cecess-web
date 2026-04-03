@@ -1,4 +1,5 @@
-﻿import { AccountDeletionView } from "@/features/public/components/account-deletion-view";
+﻿export const runtime = 'edge';
+import { AccountDeletionView } from "@/features/public/components/account-deletion-view";
 import { createClient } from "@/utils/supabase/server";
 
 import { LanguageProvider } from "@/features/i18n/context/language-context";
