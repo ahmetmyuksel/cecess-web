@@ -444,80 +444,83 @@ export const tr: Dictionary = {
         },
         privacy: {
             title: "Gizlilik Politikası",
-            lastUpdated: "Son Güncelleme: 10 Aralık 2025",
-            intro: "cecess'e hoş geldiniz. Gizliliğinizi korumaya kararlıyız. Bu Gizlilik Politikası, web uygulamamızı kullandığınızda bilgilerinizi nasıl topladığımızı, kullandığımızı, ifşa ettiğimizi ve koruduğumuzu açıklar. Lütfen bu gizlilik politikasını dikkatlice okuyun. Bu gizlilik politikasının şartlarını kabul etmiyorsanız, lütfen uygulamaya erişmeyin.",
+            lastUpdated: "Son Güncelleme: 3 Nisan 2026",
+            intro: "cecess'e hoş geldiniz. Gizliliğinizi korumaya kararlıyız. Bu Gizlilik Politikası, mobil uygulamamızı ve ilgili web hizmetlerimizi kullandığınızda bilgilerinizi nasıl topladığımızı, kullandığımızı, ifşa ettiğimizi ve koruduğumuzu açıklar. Lütfen bu gizlilik politikasını dikkatlice okuyun. Bu gizlilik politikasının şartlarını kabul etmiyorsanız, lütfen uygulamaya erişmeyin.",
             sections: {
                 info: {
                     title: "1. Topladığımız Bilgiler",
                     body: [
                         "Hakkınızdaki bilgileri çeşitli şekillerde toplayabiliriz. Uygulama aracılığıyla toplayabileceğimiz bilgiler şunları içerir:",
-                        "Kişisel Veriler: Uygulamaya kaydolduğunuzda bize gönüllü olarak verdiğiniz adınız, gönderim adresiniz, e-posta adresiniz ve telefon numaranız gibi kişisel olarak tanımlanabilir bilgiler ve yaşınız, cinsiyetiniz, memleketiniz ve ilgi alanlarınız gibi demografik bilgiler.",
-                        "Finansal Veriler: Uygulama üzerinden hizmetlerimiz hakkında bilgi satın aldığınızda, sipariş verdiğinizde, iade ettiğinizde, değiştirdiğinizde veya talep ettiğinizde toplayabileceğimiz ödeme yönteminizle ilgili veriler (ör. geçerli kredi kartı numarası, kart markası, son kullanma tarihi). Ayrıca gider takibi hizmetimizi sağlamak için bağlı banka hesaplarınızdan işlem verilerini de topluyoruz."
+                        "Kişisel Veriler: Ad, e-posta adresi, telefon numarası (isteğe bağlı), doğum tarihi, cinsiyet.",
+                        "Finansal Veriler: Uygulama içinde oluşturduğunuz işlem kayıtları, hesap adları, bakiyeler, özel kategoriler ve bütçeler.",
+                        "Cihaz Verileri: Cihaz türü, işletim sistemi, uygulama sürümü ve anonimleştirilmiş kullanım analitiği."
                     ]
                 },
                 use: {
-                    title: "2. Bilgilerinizin Kullanımı",
+                    title: "2. Bilgilerinizi Nasıl Kullanıyoruz",
                     body: [
-                        "Hakkınızda doğru bilgilere sahip olmak, size sorunsuz, verimli ve özelleştirilmiş bir deneyim sunmamızı sağlar. Özellikle, Uygulama aracılığıyla hakkınızda toplanan bilgileri şu amaçlarla kullanabiliriz:",
-                        "Hesabınızı oluşturmak ve yönetmek.",
-                        "İşlemlerinizi işlemek ve satın alma onayları ve faturalar dahil olmak üzere ilgili bilgileri size göndermek.",
-                        "Hesabınız veya siparişinizle ilgili olarak size e-posta göndermek.",
+                        "Hakkınızda doğru bilgilere sahip olmak, size sorunsuz, verimli ve özelleştirilmiş bir deneyim sunmamızı sağlar. Özellikle, hakkınızda toplanan bilgileri şu amaçlarla kullanırız:",
+                        "Hesabınızı oluşturmak, sürdürmek ve güvence altına almak.",
+                        "İşlem kategorizasyonu Google Gemini AI tarafından desteklenmektedir. İşlem açıklamalarınız otomatik kategorizasyon için Google Gemini API'sine gönderilir. Bu isteklere kişisel olarak tanımlanabilir hiçbir bilgi dahil edilmez.",
+                        "Google Play (RevenueCat) aracılığıyla abonelik ödemelerini işlemek.",
+                        "Hesabınız veya güncellemeler hakkında size e-posta göndermek.",
                         "Size müşteri desteği sağlamak.",
-                        "Uygulama ile deneyiminizi geliştirmek için kullanım ve eğilimleri analiz etmek.",
-                        "Uygulamadaki güncellemelerden sizi haberdar etmek."
+                        "Deneyiminizi geliştirmek için kullanım eğilimlerini analiz etmek."
                     ]
                 },
                 disclosure: {
-                    title: "3. Bilgilerinizin İfşası",
+                    title: "3. Veri Depolama ve Güvenlik",
                     body: [
-                        "Hakkınızda topladığımız bilgileri belirli durumlarda paylaşabiliriz. Bilgileriniz şu şekilde ifşa edilebilir:",
-                        "Yasa Gereği veya Hakları Korumak İçin: Hakkınızdaki bilgilerin yayınlanmasının yasal sürece yanıt vermek, politikalarımızın olası ihlallerini araştırmak veya çözmek veya başkalarının haklarını, mülkiyetini ve güvenliğini korumak için gerekli olduğuna inanırsak, bilgilerinizi geçerli herhangi bir yasa, kural veya düzenlemenin izin verdiği veya gerektirdiği şekilde paylaşabiliriz.",
-                        "Üçüncü Taraf Hizmet Sağlayıcıları: Ödeme işleme, veri analizi, e-posta teslimi, barındırma hizmetleri, müşteri hizmetleri ve pazarlama yardımı dahil olmak üzere bizim için veya bizim adımıza hizmet veren üçüncü taraflarla bilgilerinizi paylaşabiliriz."
+                        "Verileriniz Supabase (PostgreSQL) üzerinde durağan halde şifreleme (AES-256) ve aktarım sırasında şifreleme (TLS 1.2+) ile saklanır.",
+                        "Parolalar Supabase Auth aracılığıyla Bcrypt kullanılarak hashlenir — düz metin kimlik bilgilerini asla saklamıyoruz."
                     ]
                 },
                 security: {
-                    title: "4. Bilgilerinizin Güvenliği",
+                    title: "4. Üçüncü Taraf Paylaşımı",
                     body: [
-                        "Kişisel bilgilerinizi korumaya yardımcı olmak için idari, teknik ve fiziksel güvenlik önlemleri kullanıyoruz. Bize sağladığınız kişisel bilgileri güvence altına almak için makul adımlar atmış olsak da, çabalarımıza rağmen hiçbir güvenlik önleminin mükemmel veya aşılamaz olmadığını ve hiçbir veri iletim yönteminin herhangi bir müdahaleye veya diğer kötüye kullanım türlerine karşı garanti edilemeyeceğini lütfen unutmayın."
+                        "Kişisel verilerinizi üçüncü taraflara satmıyor, takas etmiyor veya kiralamıyoruz.",
+                        "Bilgileri yalnızca hizmetimizi işletmek için gerekli olan hizmet sağlayıcılarla paylaşabiliriz: Google Gemini AI (işlem kategorizasyonu), Supabase (veritabanı ve kimlik doğrulama), RevenueCat (Google Play aracılığıyla abonelik yönetimi).",
+                        "Yasa Gereği veya Hakları Korumak İçin: Hakkınızdaki bilgilerin yayınlanmasının yasal sürece yanıt vermek, olası ihlalleri araştırmak veya başkalarının haklarını, mülkiyetini ve güvenliğini korumak için gerekli olduğuna inanırsak, bilgilerinizi geçerli yasaların izin verdiği veya gerektirdiği şekilde paylaşabiliriz."
                     ]
                 },
                 rights: {
-                    title: "5. Haklarınız ve Seçimleriniz",
+                    title: "5. Haklarınız (Unutulma Hakkı)",
                     body: [
-                        "Hakkınızda tuttuğumuz kişisel bilgilerle ilgili belirli haklarınız vardır. İstediğiniz zaman hesap ayarlarınıza giriş yaparak ve hesabınızı güncelleyerek veya bizimle iletişime geçerek hesabınızdaki bilgileri inceleyebilir veya değiştirebilir veya hesabınızı sonlandırabilirsiniz.",
-                        "Hesabınızı sonlandırma talebiniz üzerine, hesabınızı ve bilgilerinizi aktif veritabanlarımızdan devre dışı bırakacağız veya sileceğiz. Ancak, dolandırıcılığı önlemek, sorunları gidermek, herhangi bir soruşturmaya yardımcı olmak, Kullanım Koşullarımızı uygulamak ve/veya yasal gerekliliklere uymak için bazı bilgiler dosyalarımızda tutulabilir."
+                        "Cecess mobil uygulaması üzerinden istediğiniz zaman hesabınızı ve ilgili tüm verileri silebilirsiniz (Ayarlar → Hesabı Sil).",
+                        "Silme işlemi sonrasında şu veriler kalıcı olarak kaldırılır: profil bilgileri, işlem geçmişi, hesap kayıtları, özel kategoriler, AI tarafından oluşturulan raporlar ve ilgili tüm meta veriler.",
+                        "Yasal zorunluluklar gereği güvenlik denetimleri ve yasal uyumluluk için bazı minimal loglar geçici olarak saklanabilir. Bu loglar hiçbir ticari amaçla kullanılmaz ve zamanla otomatik olarak silinir."
                     ]
                 },
                 passwordSecurity: {
-                    title: "5. Parola Güvenliği",
+                    title: "6. Parola Güvenliği",
                     body: [
                         "Parola güvenliğiniz bizim için en büyük önceliktir. Kimlik bilgilerinizi doğrudan saklamıyoruz. Bunun yerine, parolanızı sıkı bir şekilde korumak için endüstri standardı Bcrypt hashing yöntemini kullanan Supabase Auth'u kullanıyoruz. Bu, parolanızı bizim bile göremeyeceğimiz anlamına gelir."
                     ]
                 },
                 changes: {
-                    title: "6. Bu Gizlilik Politikasındaki Değişiklikler",
+                    title: "7. Bu Gizlilik Politikasındaki Değişiklikler",
                     body: [
                         "Örneğin uygulamalarımızdaki değişiklikleri yansıtmak veya diğer operasyonel, yasal veya düzenleyici nedenlerle bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Herhangi bir değişikliği bu sayfada yeni Gizlilik Politikasını yayınlayarak size bildireceğiz."
                     ]
                 },
                 contact: {
-                    title: "7. Bize Ulaşın",
+                    title: "8. Bize Ulaşın",
                     body: [
-                        "Bu Gizlilik Politikası hakkında sorularınız veya yorumlarınız varsa, lütfen profil ayarlarınızdaki destek bölümüne bakın."
+                        "Gizlilik sorularınız için bize support@cecess.com adresinden ulaşabilirsiniz."
                     ]
                 }
             }
         },
         terms: {
-            title: "Hizmet Şartları",
-            lastUpdated: "Son Güncelleme: 10 Aralık 2025",
-            intro: "cecess'e hoş geldiniz. Web sitemize ve hizmetlerimize erişerek veya bunları kullanarak, bu Hizmet Şartlarına ve yürürlükteki tüm yasalara ve düzenlemelere bağlı kalmayı kabul edersiniz. Bu şartlardan herhangi birini kabul etmiyorsanız, bu siteyi kullanmanız veya siteye erişmeniz yasaktır.",
+            title: "Kullanım Koşulları",
+            lastUpdated: "Son Güncelleme: 3 Nisan 2026",
+            intro: "cecess'e hoş geldiniz. Web sitemize ve hizmetlerimize erişerek veya bunları kullanarak, bu Kullanım Koşullarına ve yürürlükteki tüm yasalara ve düzenlemelere bağlı kalmayı kabul edersiniz. Bu koşullardan herhangi birini kabul etmiyorsanız, bu siteyi kullanmanız veya siteye erişmeniz yasaktır.",
             sections: {
                 acceptance: {
-                    title: "1. Şartların Kabulü",
+                    title: "1. Koşulların Kabulü",
                     body: [
-                        "Bir hesap oluşturarak veya hizmetlerimizi kullanarak, bu Şartları okuduğunuzu, anladığınızı ve bunlara bağlı kalmayı kabul ettiğinizi beyan edersiniz.",
-                        "Bu Şartları herhangi bir zamanda önceden bildirimde bulunmaksızın güncelleme veya değiştirme hakkını saklı tutarız. Herhangi bir değişiklikten sonra hizmeti kullanmaya devam etmeniz, yeni Şartları kabul ettiğiniz anlamına gelir."
+                        "Bir hesap oluşturarak veya hizmetlerimizi kullanarak, bu Koşulları okuduğunuzu, anladığınızı ve bunlara bağlı kalmayı kabul ettiğinizi beyan edersiniz.",
+                        "Bu Koşulları herhangi bir zamanda önceden bildirimde bulunmaksızın güncelleme veya değiştirme hakkını saklı tutarız. Herhangi bir değişiklikten sonra hizmeti kullanmaya devam etmeniz, yeni Koşulları kabul ettiğiniz anlamına gelir."
                     ]
                 },
                 use: {
@@ -535,29 +538,35 @@ export const tr: Dictionary = {
                     ]
                 },
                 payment: {
-                    title: "4. Ödeme ve Abonelikler",
+                    title: "4. Abonelik Planları ve Fiyatlandırma",
                     body: [
-                        "Hizmetin bazı bölümleri abonelik esasına göre ücretlendirilir. Düzenli ve periyodik olarak (örneğin aylık veya yıllık) önceden faturalandırılırsınız.",
-                        "Ödemeler Stripe aracılığıyla güvenli bir şekilde işlenir. Ödeme bilgilerinizi sunucularımızda saklamıyoruz."
+                        "Ücretsiz Plan: 100'e kadar işlem, temel kategorizasyon, günde 1 AI kategorizasyon isteği.",
+                        "Premium Plan: Sınırsız işlem, gelişmiş kategorizasyon, sınırsız AI isteği. Aylık: €4.99/ay. Yıllık: €49.90/yıl (~%17 tasarruf).",
+                        "Pro Plan: Premium'daki her şey artı AI destekli finansal raporlar, gelişmiş analitik ve öncelikli destek. Aylık: €12.99/ay. Yıllık: €129.90/yıl (~%17 tasarruf)."
                     ]
                 },
                 cancellation: {
-                    title: "5. İptal ve Fesih",
+                    title: "5. Ödeme İşlemleri",
                     body: [
-                        "Aboneliğinizi istediğiniz zaman hesap ayarlarınızdan iptal edebilirsiniz. Hizmetiniz, mevcut fatura döneminin sonuna kadar devam edecektir.",
-                        "Şartları ihlal etmeniz dahil ancak bununla sınırlı olmamak üzere herhangi bir nedenle, önceden bildirimde bulunmaksızın veya sorumluluk kabul etmeksizin Hizmete erişiminizi derhal sonlandırabilir veya askıya alabiliriz."
+                        "Tüm abonelik ödemeleri yalnızca RevenueCat aracılığıyla Google Play üzerinden işlenir. Cecess web üzerinden doğrudan ödeme almaz.",
+                        "İade politikası Google Play'in standart iade koşullarına tabidir.",
+                        "Aboneliğinizi istediğiniz zaman Google Play üzerinden iptal edebilirsiniz. Hizmetiniz mevcut fatura döneminin sonuna kadar devam edecektir."
                     ]
                 },
                 liability: {
-                    title: "6. Sorumluluk Sınırlaması",
+                    title: "6. AI Özellikleri ve Kullanım Limitleri",
                     body: [
+                        "Ücretsiz kullanıcılar: Günde 1 AI kategorizasyon isteği.",
+                        "Premium kullanıcılar: Sınırsız AI kategorizasyon isteği.",
+                        "Pro kullanıcılar: Sınırsız AI kategorizasyon artı AI destekli finansal analiz raporları.",
+                        "AI özellikleri Google Gemini tarafından desteklenmektedir ve hatalı sonuçlar üretebilir. Kullanıcılar AI tarafından oluşturulan kategorizasyonları doğrulamalıdır.",
                         "cecess, yöneticileri, çalışanları, ortakları, acenteleri, tedarikçileri veya iştirakleri, Hizmete erişiminizden veya Hizmeti kullanımınızdan veya kullanamamanızdan kaynaklanan kâr, veri, kullanım, iyi niyet veya diğer maddi olmayan kayıplar dahil ancak bunlarla sınırlı olmamak üzere hiçbir doğrudan, dolaylı, arızi, özel, sonuçsal veya cezai hasardan sorumlu olmayacaktır."
                     ]
                 },
                 contact: {
                     title: "7. Bize Ulaşın",
                     body: [
-                        "Bu Şartlar hakkında herhangi bir sorunuz varsa, lütfen profilinizdeki destek hizmeti bölümünü ziyaret edin."
+                        "Bu Koşullar hakkında herhangi bir sorunuz varsa, lütfen bize support@cecess.com adresinden ulaşın."
                     ]
                 }
             }

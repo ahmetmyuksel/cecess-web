@@ -444,57 +444,61 @@ export const en: Dictionary = {
         },
         privacy: {
             title: "Privacy Policy",
-            lastUpdated: "Last Updated: December 10, 2025",
-            intro: "Welcome to cecess. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our web application. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application.",
+            lastUpdated: "Last Updated: April 3, 2026",
+            intro: "Welcome to cecess. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and associated web services. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application.",
             sections: {
                 info: {
                     title: "1. Information We Collect",
                     body: [
                         "We may collect information about you in a variety of ways. The information we may collect via the Application includes:",
-                        "Personal Data: Personally identifiable information, such as your name, email address, and telephone number (optional), and demographic information, such as your age, gender, and interests, that you voluntarily give to us when you register with the Application.",
-                        "Financial Data: We utilize Stripe, a secure third-party payment processor, to handle payment information. We do not store your credit card details or bank account numbers on our servers. We may process transaction data that you explicitly import for expense tracking purposes, which remains under your control."
+                        "Personal Data: Name, email address, phone number (optional), date of birth, gender.",
+                        "Financial Data: Transaction records, account names, balances, custom categories, and budgets that you create within the application.",
+                        "Device Data: Device type, operating system, app version, and anonymized usage analytics."
                     ]
                 },
                 use: {
-                    title: "2. Use of Your Information",
+                    title: "2. How We Use Your Information",
                     body: [
-                        "Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Generally, we use information collected about you via the Application to:",
-                        "Create and manage your account.",
-                        "Process your subscriptions securely via Stripe.",
+                        "Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we use information collected about you to:",
+                        "Create, maintain, and secure your account.",
+                        "Transaction categorization is powered by Google Gemini AI. Your transaction descriptions are sent to Google's Gemini API for automated categorization. No personally identifiable information is included in these requests.",
+                        "Process subscription payments via Google Play (RevenueCat).",
                         "Email you regarding your account or updates.",
                         "Provide you with customer support.",
                         "Analyze usage trends to improve your experience."
                     ]
                 },
                 disclosure: {
-                    title: "3. Disclosure of Your Information",
+                    title: "3. Data Storage & Security",
                     body: [
-                        "We generally do not share your personal information with third parties, except in specific situations:",
-                        "By Law or to Protect Rights: If we believe the release of information is necessary to respond to legal process, to investigate potential violations, or to protect the rights, property, and safety of others, we may share your information as permitted or required by applicable law.",
-                        "Third-Party Service Providers: We may share necessary information with third parties that perform services for us, such as payment processing (Stripe), data analysis, email delivery, and hosting services."
+                        "Your data is stored in Supabase (PostgreSQL) with encryption at rest (AES-256) and encryption in transit (TLS 1.2+).",
+                        "Passwords are hashed using Bcrypt via Supabase Auth — we never store plaintext credentials."
                     ]
                 },
                 security: {
-                    title: "4. Security of Your Information",
+                    title: "4. Third-Party Sharing",
                     body: [
-                        "We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse."
+                        "We do not sell, trade, or rent your personal data to third parties.",
+                        "We may share information strictly with service providers necessary to operate our service: Google Gemini AI (transaction categorization), Supabase (database and authentication), RevenueCat (subscription management via Google Play).",
+                        "By Law or to Protect Rights: If we believe the release of information is necessary to respond to legal process, to investigate potential violations, or to protect the rights, property, and safety of others, we may share your information as permitted or required by applicable law."
                     ]
                 },
                 rights: {
-                    title: "5. Your Rights and Choices",
+                    title: "5. Your Rights (Right to Be Forgotten)",
                     body: [
-                        "You have certain rights regarding your personal information. You may review or change the information in your account or delete your account at any time via the settings page.",
-                        "Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. Some information may be retained in our files for a limited period to prevent fraud, troubleshoot problems, or comply with legal requirements."
+                        "You can delete your account and all associated data at any time through the Cecess mobile application (Settings → Delete Account).",
+                        "Upon deletion, the following data is permanently removed: profile information, transaction history, account records, custom categories, AI-generated reports, and all related metadata.",
+                        "Some minimal logs may be retained temporarily for security audits and legal compliance as required by law. These logs are not used for any commercial purpose and are automatically purged over time."
                     ]
                 },
                 passwordSecurity: {
-                    title: "5. Password Security",
+                    title: "6. Password Security",
                     body: [
                         "Your password security is our top priority. We do not store your credentials directly. Instead, we use Supabase Auth, which employs industry-standard Bcrypt hashing to strictly secure your password. This means even we cannot see your password."
                     ]
                 },
                 changes: {
-                    title: "6. Changes to This Privacy Policy",
+                    title: "7. Changes to This Privacy Policy",
                     body: [
                         "We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page."
                     ]
@@ -502,14 +506,14 @@ export const en: Dictionary = {
                 contact: {
                     title: "8. Contact Us",
                     body: [
-                        "If you have questions or comments about this Privacy Policy, please refer to the support section in your profile settings."
+                        "For privacy inquiries, contact us at support@cecess.com."
                     ]
                 }
             }
         },
         terms: {
             title: "Terms of Service",
-            lastUpdated: "Last Updated: December 10, 2025",
+            lastUpdated: "Last Updated: April 3, 2026",
             intro: "Welcome to cecess. By accessing or using our website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.",
             sections: {
                 acceptance: {
@@ -534,29 +538,35 @@ export const en: Dictionary = {
                     ]
                 },
                 payment: {
-                    title: "4. Payment and Subscriptions",
+                    title: "4. Subscription Tiers & Pricing",
                     body: [
-                        "Some parts of the Service are billed on a subscription basis. You will be billed in advance on a recurring and periodic basis (such as monthly or annually).",
-                        "Payments are processed securely via Stripe. We do not store your payment information on our servers."
+                        "Free Plan: Up to 100 transactions, basic categorization, 1 AI categorization request per day.",
+                        "Premium Plan: Unlimited transactions, advanced categorization, unlimited AI requests. Monthly: €4.99/month. Yearly: €49.90/year (save ~17%).",
+                        "Pro Plan: Everything in Premium plus AI-generated financial reports, advanced analytics, and priority support. Monthly: €12.99/month. Yearly: €129.90/year (save ~17%)."
                     ]
                 },
                 cancellation: {
-                    title: "5. Cancellation and Termination",
+                    title: "5. Payment Processing",
                     body: [
-                        "You may cancel your subscription at any time via your account settings. Your service will continue until the end of the current billing period.",
-                        "We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms."
+                        "All subscription payments are processed exclusively through Google Play via RevenueCat. Cecess does not process payments directly on the web.",
+                        "Refund policy follows Google Play's standard refund terms.",
+                        "You may cancel your subscription at any time via Google Play. Your service will continue until the end of the current billing period."
                     ]
                 },
                 liability: {
-                    title: "6. Limitation of Liability",
+                    title: "6. AI Features & Usage Limits",
                     body: [
+                        "Free users: 1 AI categorization request per day.",
+                        "Premium users: Unlimited AI categorization requests.",
+                        "Pro users: Unlimited AI categorization plus AI-generated financial analysis reports.",
+                        "AI features are powered by Google Gemini and may produce inaccurate results. Users should verify AI-generated categorizations.",
                         "In no event shall cecess, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service."
                     ]
                 },
                 contact: {
                     title: "7. Contact Us",
                     body: [
-                        "If you have any questions about these Terms, please visit the support section in your profile settings."
+                        "If you have any questions about these Terms, please contact us at support@cecess.com."
                     ]
                 }
             }
