@@ -19,6 +19,7 @@ The project follows a **Feature-Based + Clean Architecture** pattern, strictly s
 Next.js App Router. Contains entry points, layouts, and route definitions. Orchestrates features but contains minimal logic.
 - `(auth)/`: Authentication-related routes.
 - `dashboard/`: Main application dashboard.
+- `proxy.ts`: Next.js request interception (formerly middleware.ts).
 - `api/`: External integration endpoints (e.g., webhooks).
 
 ### `/features`
