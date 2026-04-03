@@ -20,13 +20,17 @@ The web must look like a legitimate, trust-worthy fintech startup — not a hobb
 - ✓ i18n system with EN + TR locales — existing
 - ✓ Protected dashboard routes under /profile/* — existing
 - ✓ Sidebar navigation with dashboard sections — existing
-- ✓ Privacy Policy page — existing
-- ✓ Terms of Service page — existing
+- ✓ Privacy Policy page — existing (Updated in Phase 02)
+- ✓ Terms of Service page — existing (Updated in Phase 02)
 - ✓ Pricing information page — existing
 - ✓ FAQ page — existing
 - ✓ Cookie consent component — existing
 - ✓ shadcn/ui design system — existing
 - ✓ Tailwind CSS styling — existing
+- ✓ Account Deletion instructions page (text-only) — Validated in Phase 02
+- ✓ Privacy Policy updated with Gemini AI, Supabase encryption, RTBF — Validated in Phase 02
+- ✓ Terms of Service updated with subscription tiers and AI limits — Validated in Phase 02
+- ✓ Translation-ready structure (no hardcoded strings) — Validated in Phase 02
 
 ### Active
 
@@ -38,16 +42,12 @@ The web must look like a legitimate, trust-worthy fintech startup — not a hobb
 - [ ] Dashboard converted to read-only (no write/delete operations)
 - [ ] Remove all Stripe/payment code from web codebase
 - [ ] Update pricing/subscription pages to reflect RevenueCat (mobile-only payments)
-- [ ] Account Deletion instructions page (text-only, deletion from mobile app)
-- [ ] Privacy Policy updated with Gemini AI, Supabase encryption, no third-party selling, RTBF
-- [ ] Terms of Service updated with subscription terms and AI usage limits
 - [ ] PROJECT_STRUCTURE.md documentation
 - [ ] STORE_CHECKLIST.md for Google Play submission
 - [ ] GitHub Actions CI/CD (build + tests)
 - [ ] Vercel deployment pipeline
 - [ ] Docker/Docker Compose files kept updated as fallback
 - [ ] Push to clean GitHub repo (ahmetmyuksel/cecess-web.git)
-- [ ] Translation-ready structure (no hardcoded strings, TR/EN)
 
 ### Out of Scope
 
@@ -98,7 +98,7 @@ The web must look like a legitimate, trust-worthy fintech startup — not a hobb
 | Dashboard is read-only on web | Web is viewer, mobile is primary CRUD interface | — Pending |
 | Keep Docker alongside Vercel | Flexibility — Docker as fallback, Vercel as primary | — Pending |
 | Scroll-animated landing page redesign | Current landing is too generic; needs fintech-grade feel with app mockup | — Pending |
-| Account deletion instructions-only on web | Actual deletion happens in mobile app per RTBF | — Pending |
+| Account deletion instructions-only on web | Actual deletion happens in mobile app per RTBF | ✓ Validated in Phase 02 |
 | Landing page placeholder mockup | Use provided placeholder image until real app screenshots are ready | — Pending |
 
 ## Evolution
@@ -119,4 +119,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-03 after initialization*
+*Last updated: 2026-04-03 after Phase 02 completion*
