@@ -1,9 +1,8 @@
-﻿export const runtime = 'edge';
+export const runtime = 'edge';
 
 import { LanguageProvider } from "@/features/i18n/context/language-context";
-import { PrivacyView } from "@/features/public/components/privacy-view";
-
 import { createClient } from "@/utils/supabase/server";
+import { DynamicPrivacyView } from "@/features/public/components/dynamic-views";
 
 export default async function PrivacyPage() {
   const supabase = await createClient();
@@ -11,7 +10,7 @@ export default async function PrivacyPage() {
 
   return (
     <LanguageProvider>
-      <PrivacyView isLoggedIn={!!user} />
+      <DynamicPrivacyView isLoggedIn={!!user} />
     </LanguageProvider>
   );
 }
