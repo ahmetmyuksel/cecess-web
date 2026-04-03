@@ -11,13 +11,13 @@ import {
 } from "@/components/ui/accordion";
 
 interface FaqViewProps {
-    isLoggedIn: boolean;
+    // isLoggedIn removed for static support
 }
 
-export function FaqView({ isLoggedIn }: FaqViewProps) {
+export function FaqView({ }: FaqViewProps) {
     return (
         <div className="flex min-h-screen flex-col bg-white">
-            <PublicNavbar isLoggedIn={isLoggedIn} />
+            <PublicNavbar />
 
             <main className="flex-1 py-16 bg-slate-50 pt-24">
                 <div className="container mx-auto px-4 max-w-3xl">
