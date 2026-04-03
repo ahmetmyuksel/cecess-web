@@ -138,7 +138,6 @@ export const tr: Dictionary = {
             name: "İşlem Adı",
             category: "Kategori",
             amount: "Tutar",
-            date: "Tarih (İsteğe Bağlı)",
             date: "Tarih (İsteğe Bağlı)"
         }
     },
@@ -198,7 +197,6 @@ export const tr: Dictionary = {
             type: "Hesap Türü",
             currency: "Para Birimi",
             currentBalance: "Güncel Bakiye",
-            initialBalance: "Başlangıç Bakiyesi",
             initialBalance: "Başlangıç Bakiyesi"
         }
     },
@@ -219,7 +217,6 @@ export const tr: Dictionary = {
             name: "Ad",
             type: "Tür",
             icon: "İkon",
-            pickIcon: "İkon Seç",
             pickIcon: "İkon Seç"
         }
     },
