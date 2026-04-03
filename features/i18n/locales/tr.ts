@@ -92,25 +92,10 @@ export const tr: Dictionary = {
         },
         data: {
             title: "Veri Yönetimi",
-            export: {
-                title: "Veri İndir",
-                desc: "Finansal verilerinizi CSV dosyası olarak indirin.",
-                button: "CSV İndir"
-            },
-            import: {
-                title: "Veri Yükle",
-                desc: "İşlemleri CSV dosyasından içe aktarın.",
-                button: "CSV Yükle"
-            },
             delete: {
                 desc: "Bir yıldan eski işlem verilerini kalıcı olarak silin.",
                 button: "Verileri Sil"
             }
-        },
-        deleteAccount: {
-            title: "Hesabı Sil",
-            desc: "Hesabınızı ve tüm verilerinizi kalıcı olarak silin. Bu işlem geri alınamaz.",
-            button: "Hesabımı Sil"
         },
         supportContact: "Yardıma mı ihtiyacınız var? Bize ulaşın: info@cecess.com",
         modals: {
@@ -147,10 +132,6 @@ export const tr: Dictionary = {
     },
     transactions: {
         title: "Tüm İşlemler",
-        addTransaction: "+ İşlem Ekle",
-        editTransaction: "İşlem Düzenle",
-        deleteSelected: "Sil",
-        deleteConfirm: "{count} işlemi silmek istediğinize emin misiniz?",
         rows: "Satır:",
         of: "/",
         form: {
@@ -158,9 +139,7 @@ export const tr: Dictionary = {
             category: "Kategori",
             amount: "Tutar",
             date: "Tarih (İsteğe Bağlı)",
-            cancel: "İptal",
-            add: "İşlem Ekle",
-            save: "Kaydet"
+            date: "Tarih (İsteğe Bağlı)"
         }
     },
     common: {
@@ -203,8 +182,6 @@ export const tr: Dictionary = {
     accounts: {
         title: "Hesaplar",
         subtitle: "Finansal hesaplarınızı yönetin.",
-        addManual: "+ Manuel Ekle",
-        linkBank: "Banka Hesabı Bağla",
         noAccounts: {
             title: "Henüz hesap yok",
             desc: "Finansal takibe başlamak için banka hesabınızı bağlayın veya manuel olarak ekleyin.",
@@ -216,26 +193,18 @@ export const tr: Dictionary = {
             balance: "Bakiye",
             actions: "İşlemler"
         },
-        modals: {
-            add: "Manuel Hesap Ekle",
-            edit: "Hesabı Düzenle",
-            deleteConfirm: "Bu hesabı silmek istediğinize emin misiniz? İlgili tüm işlemler de silinecektir."
-        },
         form: {
             name: "Hesap Adı",
             type: "Hesap Türü",
             currency: "Para Birimi",
             currentBalance: "Güncel Bakiye",
             initialBalance: "Başlangıç Bakiyesi",
-            cancel: "İptal",
-            add: "Hesap Ekle",
-            update: "Hesabı Güncelle"
+            initialBalance: "Başlangıç Bakiyesi"
         }
     },
     categories: {
         title: "Kategoriler",
         subtitle: "Harcama kategorilerinizi yönetin (Sıralamak için sürükleyin).",
-        addCategory: "+ Kategori Ekle",
         sort: {
             manual: "Manuel",
             name: "İsim",
@@ -246,101 +215,12 @@ export const tr: Dictionary = {
             type: "Tür",
             actions: "İşlemler"
         },
-        modals: {
-            add: "Kategori Ekle",
-            edit: "Kategoriyi Düzenle"
-        },
         form: {
             name: "Ad",
             type: "Tür",
             icon: "İkon",
             pickIcon: "İkon Seç",
-            cancel: "İptal",
-            save: "Kaydet",
-            saving: "Kaydediliyor..."
-        }
-    },
-    importFlow: {
-        title: "Dosya İçe Aktar",
-        subtitle: "Finansal verilerinizi CSV veya Excel dosyasından yükleyin ve içe aktarın.",
-        upload: {
-            title: "Dosya Yükle",
-            desc: "Başlamak için işlem dosyanızı seçin.",
-            currency: "Para Birimi:",
-            clickToUpload: "Yüklemek için Tıkla",
-            orDragDrop: "veya sürükle bırak",
-            supportedFormats: "Desteklenen formatlar: CSV, Excel (.xls, .xlsx)"
-        },
-        instructions: {
-            title: "Talimatlar",
-            step1: "İşlem verilerini içeren dosyanızı yükleyin.",
-            step2: "Dosyanızdaki sütunları sistem alanlarımızla eşleştirin (Tarih, Açıklama, Tutar).",
-            step3: "İşlemlerinizi tamamlamadan önce gözden geçirin ve kategorilere ayırın."
-        },
-        mapping: {
-            title: "Sütunları Eşle",
-            subtitle: "Dosya sütunlarını doğru veri alanlarıyla eşleştirin.",
-            columnMapping: "Sütun Eşleme",
-            warning: "Sütunların doğru eşleştiğinden emin olmak için lütfen aşağıdaki <strong>Canlı Önizleme</strong> alanını kontrol edin. Hatalı eşleme eksik tarih veya tutarlara yol açabilir.",
-            mapTo: "Eşle:",
-            livePreview: "Canlı Önizleme",
-            previewDesc: "Mevcut eşleme ile verilerinizin nasıl göründüğünü inceleyin.",
-            buttons: {
-                back: "Geri",
-                next: "İleri: Kategorileri Düzenle →"
-            },
-            headers: {
-                date: "Tarih",
-                description: "Açıklama",
-                amount: "Tutar"
-            },
-            placeholders: {
-                selectColumn: "Sütun seç...",
-                searchColumn: "Sütun ara...",
-                noColumn: "Sütun bulunamadı.",
-                unmapped: "Eşleşmedi"
-            }
-        },
-        arrange: {
-            title: "Kategorileri Düzenle",
-            subtitle: "İçe aktarılan işlemlerinizi gözden geçirin ve kategorilere ayırın.",
-            buttons: {
-                back: "Geri",
-                analyze: "Analiz ediliyor...",
-                aiCategorize: "AI Otomatik Kategorize Et",
-                finish: "İçe Aktarmayı Bitir"
-            },
-            newCategories: {
-                title: "Yeni Kategoriler Bulundu",
-                desc: "Yapay zeka bu yeni kategorileri tespit etti. Listeye eklemek için tıklayın (işlemler otomatik atanmaz).",
-                add: "+ Ekle"
-            },
-            importedTransactions: {
-                title: "İçe Aktarılan İşlemler",
-                desc: "{count} işlem içe aktarıldı. Lütfen aşağıdan kategorize edin."
-            },
-            table: {
-                date: "Tarih",
-                description: "Açıklama",
-                amount: "Tutar",
-                category: "Kategori"
-            },
-            placeholders: {
-                selectCategory: "Kategori seç...",
-                searchCategory: "Kategori ara...",
-                noCategory: "Kategori bulunamadı."
-            },
-            alerts: {
-                allCategorized: "Tüm işlemler zaten kategorize edilmiş!",
-                errorAI: "AI kategorizasyonu sırasında bir hata oluştu.",
-                uncategorizedWarn: "{count} adet kategorize edilmemiş işleminiz var. Devam edilsin mi?",
-                success: "Başarıyla {count} işlem içe aktarıldı!"
-            },
-            aiPopup: {
-                title: "Yapay Zeka Gücünü Aç",
-                desc: "Bunun için Premium veya Pro plana sahip olmalısın.",
-                button: "Planı Yükselt"
-            }
+            pickIcon: "İkon Seç"
         }
     },
     public: {

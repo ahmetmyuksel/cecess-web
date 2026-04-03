@@ -30,7 +30,7 @@ _New phases will be added after user feedback review._
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
-| — | No active phases | — | — |
+| 1 | Read-only refactor and xlsx removal for bundle optimization | Not planned | 0 |
 
 Progress: ░░░░░░░░░░ 0%
 
@@ -48,5 +48,12 @@ Progress: ░░░░░░░░░░ 0%
 | Build: pnpm run build → .next output | infra | Matches Cloudflare Dashboard settings |
 | opennextjs-cloudflare removed from build | infra | Conflicts with Pages setup |
 
+## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 1 added: Read-only refactor and xlsx removal for bundle optimization (2026-04-03)
+
 ---
-*Last updated: 2026-04-03 — phases cleared, Cloudflare build locked*
+*Last updated: 2026-04-03 — Phase 1 added*
+

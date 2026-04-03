@@ -92,25 +92,10 @@ export const en: Dictionary = {
         },
         data: {
             title: "Data Management",
-            export: {
-                title: "Export Data",
-                desc: "Download your financial data as a CSV file.",
-                button: "Export CSV"
-            },
-            import: {
-                title: "Import Data",
-                desc: "Import transactions from a CSV file.",
-                button: "Import CSV"
-            },
             delete: {
                 desc: "Permanently delete transaction data older than one year.",
                 button: "Delete Data"
             }
-        },
-        deleteAccount: {
-            title: "Delete Account",
-            desc: "Permanently delete your account and all of your data. This action is irreversible.",
-            button: "Delete My Account"
         },
         supportContact: "Need help? Contact us at info@cecess.com",
         modals: {
@@ -147,20 +132,13 @@ export const en: Dictionary = {
     },
     transactions: {
         title: "All Transactions",
-        addTransaction: "+ Add Transaction",
-        editTransaction: "Edit Transaction",
-        deleteSelected: "Delete",
-        deleteConfirm: "Are you sure you want to delete {count} transactions?",
         rows: "Rows:",
         of: "of",
         form: {
             name: "Transaction Name",
             category: "Category",
             amount: "Amount",
-            date: "Date",
-            cancel: "Cancel",
-            add: "Add Transaction",
-            save: "Save"
+            date: "Date"
         }
     },
     common: {
@@ -203,8 +181,6 @@ export const en: Dictionary = {
     accounts: {
         title: "Accounts",
         subtitle: "Manage your financial accounts.",
-        addManual: "+ Add Manual",
-        linkBank: "Link Bank Account",
         noAccounts: {
             title: "No accounts yet",
             desc: "Link your bank account or add one manually to start tracking your finances.",
@@ -216,26 +192,17 @@ export const en: Dictionary = {
             balance: "Balance",
             actions: "Actions"
         },
-        modals: {
-            add: "Add Manual Account",
-            edit: "Edit Account",
-            deleteConfirm: "Are you sure you want to delete this account? This will also delete related transactions."
-        },
         form: {
             name: "Account Name",
             type: "Account Type",
             currency: "Currency",
             currentBalance: "Current Balance",
-            initialBalance: "Initial Balance",
-            cancel: "Cancel",
-            add: "Add Account",
-            update: "Update Account"
+            initialBalance: "Initial Balance"
         }
     },
     categories: {
         title: "Categories",
         subtitle: "Manage your spending categories (Drag handle to reorder).",
-        addCategory: "+ Add Category",
         sort: {
             manual: "Manual",
             name: "Name",
@@ -246,101 +213,11 @@ export const en: Dictionary = {
             type: "Type",
             actions: "Actions"
         },
-        modals: {
-            add: "Add Category",
-            edit: "Edit Category"
-        },
         form: {
             name: "Name",
             type: "Type",
             icon: "Icon",
-            pickIcon: "Pick an Icon",
-            cancel: "Cancel",
-            save: "Save",
-            saving: "Saving..."
-        }
-    },
-    importFlow: {
-        title: "Import File",
-        subtitle: "Upload and import your financial data from a CSV or Excel file.",
-        upload: {
-            title: "Upload File",
-            desc: "Select your transaction file to get started.",
-            currency: "Currency:",
-            clickToUpload: "Click to Upload",
-            orDragDrop: "or drag and drop",
-            supportedFormats: "Supported formats: CSV, Excel (.xls, .xlsx)"
-        },
-        instructions: {
-            title: "Instructions",
-            step1: "Upload your file containing transaction data.",
-            step2: "Map the columns from your file to our system fields (Date, Description, Amount).",
-            step3: "Review and categorize your transactions before finalizing."
-        },
-        mapping: {
-            title: "Map Columns",
-            subtitle: "Match your file columns to the correct data fields.",
-            columnMapping: "Column Mapping",
-            warning: "Please verify the <strong>Live Preview</strong> below to ensure columns are mapped correctly. Incorrect mapping may lead to missing dates or amounts.",
-            mapTo: "Map to",
-            livePreview: "Live Preview",
-            previewDesc: "See how your data looks with the current mapping.",
-            buttons: {
-                back: "Back",
-                next: "Next: Arrange Categories →"
-            },
-            headers: {
-                date: "Date",
-                description: "Description",
-                amount: "Amount"
-            },
-            placeholders: {
-                selectColumn: "Select column...",
-                searchColumn: "Search column...",
-                noColumn: "No column found.",
-                unmapped: "Unmapped"
-            }
-        },
-        arrange: {
-            title: "Arrange Categories",
-            subtitle: "Review and assign categories to your imported transactions.",
-            buttons: {
-                back: "Back",
-                analyze: "Analyzing...",
-                aiCategorize: "AI Auto-Categorize",
-                finish: "Finish Importing"
-            },
-            newCategories: {
-                title: "New Categories Found",
-                desc: "The AI identified these new categories. Click to add them to your list (transactions will not be auto-assigned).",
-                add: "+ Add"
-            },
-            importedTransactions: {
-                title: "Imported Transactions",
-                desc: "We've imported {count} transactions. Please categorize them below."
-            },
-            table: {
-                date: "Date",
-                description: "Description",
-                amount: "Amount",
-                category: "Category"
-            },
-            placeholders: {
-                selectCategory: "Select category...",
-                searchCategory: "Search category...",
-                noCategory: "No category found."
-            },
-            alerts: {
-                allCategorized: "All transactions are already categorized!",
-                errorAI: "An error occurred during AI categorization.",
-                uncategorizedWarn: "You have {count} uncategorized transactions. Continue?",
-                success: "Successfully imported {count} transactions!"
-            },
-            aiPopup: {
-                title: "Unlock AI Power",
-                desc: "You must have a Premium or Pro plan to use this feature.",
-                button: "Upgrade Plan"
-            }
+            pickIcon: "Pick an Icon"
         }
     },
     public: {

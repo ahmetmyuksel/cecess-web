@@ -90,25 +90,10 @@ export type Dictionary = {
         };
         data: {
             title: string;
-            export: {
-                title: string;
-                desc: string;
-                button: string;
-            };
-            import: {
-                title: string;
-                desc: string;
-                button: string;
-            };
             delete: {
                 desc: string;
                 button: string;
             };
-        };
-        deleteAccount: {
-            title: string;
-            desc: string;
-            button: string;
         };
         supportContact: string;
         modals: {
@@ -145,10 +130,6 @@ export type Dictionary = {
     };
     transactions: {
         title: string;
-        addTransaction: string;
-        editTransaction: string;
-        deleteSelected: string;
-        deleteConfirm: string;
         rows: string;
         of: string;
         form: {
@@ -156,9 +137,6 @@ export type Dictionary = {
             category: string;
             amount: string;
             date: string;
-            cancel: string;
-            add: string;
-            save: string;
         };
     };
     common: {
@@ -201,8 +179,6 @@ export type Dictionary = {
     accounts: {
         title: string;
         subtitle: string;
-        addManual: string;
-        linkBank: string;
         noAccounts: {
             title: string;
             desc: string;
@@ -214,26 +190,17 @@ export type Dictionary = {
             balance: string;
             actions: string;
         };
-        modals: {
-            add: string;
-            edit: string;
-            deleteConfirm: string;
-        };
         form: {
             name: string;
             type: string;
             currency: string;
             currentBalance: string;
             initialBalance: string;
-            cancel: string;
-            add: string;
-            update: string;
         };
     };
     categories: {
         title: string;
         subtitle: string;
-        addCategory: string;
         sort: {
             manual: string;
             name: string;
@@ -244,101 +211,11 @@ export type Dictionary = {
             type: string;
             actions: string;
         };
-        modals: {
-            add: string;
-            edit: string;
-        };
         form: {
             name: string;
             type: string;
             icon: string;
             pickIcon: string;
-            cancel: string;
-            save: string;
-            saving: string;
-        };
-    };
-    importFlow: {
-        title: string;
-        subtitle: string;
-        upload: {
-            title: string;
-            desc: string;
-            currency: string;
-            clickToUpload: string;
-            orDragDrop: string;
-            supportedFormats: string;
-        };
-        instructions: {
-            title: string;
-            step1: string;
-            step2: string;
-            step3: string;
-        };
-        mapping: {
-            title: string;
-            subtitle: string;
-            columnMapping: string;
-            warning: string;
-            mapTo: string;
-            livePreview: string;
-            previewDesc: string;
-            buttons: {
-                back: string;
-                next: string;
-            };
-            headers: {
-                date: string;
-                description: string;
-                amount: string;
-            };
-            placeholders: {
-                selectColumn: string;
-                searchColumn: string;
-                noColumn: string;
-                unmapped: string;
-            };
-        };
-        arrange: {
-            title: string;
-            subtitle: string;
-            buttons: {
-                back: string;
-                analyze: string;
-                aiCategorize: string;
-                finish: string;
-            };
-            newCategories: {
-                title: string;
-                desc: string;
-                add: string;
-            };
-            importedTransactions: {
-                title: string;
-                desc: string;
-            };
-            table: {
-                date: string;
-                description: string;
-                amount: string;
-                category: string;
-            };
-            placeholders: {
-                selectCategory: string;
-                searchCategory: string;
-                noCategory: string;
-            };
-            alerts: {
-                allCategorized: string;
-                errorAI: string;
-                uncategorizedWarn: string;
-                success: string;
-            };
-            aiPopup: {
-                title: string;
-                desc: string;
-                button: string;
-            };
         };
     };
     public: {
