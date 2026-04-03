@@ -1,3 +1,4 @@
+﻿export const runtime = 'edge';
 
 import { SignupView } from "@/features/auth/components/signup-view";
 

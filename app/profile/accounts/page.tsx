@@ -1,3 +1,4 @@
+﻿export const runtime = 'edge';
 import { AccountsView } from "@/features/accounts/components/accounts-view";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";

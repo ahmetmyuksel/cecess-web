@@ -7,8 +7,8 @@
     "productionBranch": "main"
   },
   "build": {
-    "command": "pnpm run build",
-    "outputDirectory": ".next",
+    "command": "pnpm run build && npx @cloudflare/next-on-pages",
+    "outputDirectory": ".vercel/output/static",
     "frameworkPreset": "None",
     "nodeVersion": "20",
     "pnpmVersion": "10.33.0"

@@ -2,6 +2,8 @@ import { createClient } from "@/utils/supabase/server";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 
+export const runtime = 'edge';
+
 export async function GET() {
     try {
         // 1. Verify Authentication using standard server client (Cookies)
