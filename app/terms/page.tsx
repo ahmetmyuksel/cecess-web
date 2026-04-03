@@ -1,17 +1,12 @@
-﻿export const runtime = 'edge';
+export const dynamic = 'force-static';
 
 import { TermsView } from "@/features/public/components/terms-view";
-import { createClient } from "@/utils/supabase/server";
-
 import { LanguageProvider } from "@/features/i18n/context/language-context";
 
-export default async function TermsPage() {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-
+export default function TermsPage() {
     return (
         <LanguageProvider>
-            <TermsView isLoggedIn={!!user} />
+            <TermsView />
         </LanguageProvider>
     );
 }

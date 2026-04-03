@@ -10,10 +10,10 @@ import { PublicNavbar } from "./public-navbar";
 
 
 interface PricingViewProps {
-    isLoggedIn: boolean;
+    // isLoggedIn removed for static support
 }
 
-export function PricingView({ isLoggedIn }: PricingViewProps) {
+export function PricingView({ }: PricingViewProps) {
     const { t } = useLanguage();
     const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
 
@@ -137,7 +137,7 @@ export function PricingView({ isLoggedIn }: PricingViewProps) {
             <div className="pointer-events-none absolute left-[-120px] top-28 h-64 w-64 rounded-full bg-blue-200/40 blur-3xl" />
             <div className="pointer-events-none absolute right-[-120px] top-48 h-72 w-72 rounded-full bg-sky-200/40 blur-3xl" />
 
-            <PublicNavbar isLoggedIn={isLoggedIn} />
+            <PublicNavbar />
 
             <main className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-24 pt-20">
                 <section className="space-y-6 text-center">

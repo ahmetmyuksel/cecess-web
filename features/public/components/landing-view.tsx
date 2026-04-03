@@ -18,10 +18,10 @@ import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { cn } from "@/lib/utils";
 
 interface LandingViewProps {
-    isLoggedIn: boolean;
+    // isLoggedIn removed for static support
 }
 
-export function LandingView({ isLoggedIn }: LandingViewProps) {
+export function LandingView({ }: LandingViewProps) {
     const { t } = useLanguage();
     
     // Animation Refs
@@ -59,7 +59,7 @@ export function LandingView({ isLoggedIn }: LandingViewProps) {
             </div>
 
             {/* Navbar */}
-            <PublicNavbar isLoggedIn={isLoggedIn} />
+            <PublicNavbar />
 
             <main className="flex-1">
                 {/* Hero Section */}

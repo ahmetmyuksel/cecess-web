@@ -5,10 +5,10 @@ import { PublicNavbar } from "./public-navbar";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 
 interface AccountDeletionViewProps {
-    isLoggedIn: boolean;
+    // isLoggedIn removed for static support
 }
 
-export function AccountDeletionView({ isLoggedIn }: AccountDeletionViewProps) {
+export function AccountDeletionView({ }: AccountDeletionViewProps) {
     const { t } = useLanguage();
     // Assuming we added accountDeletion to public dictionary
     const { accountDeletion } = t.public;
@@ -29,7 +29,7 @@ export function AccountDeletionView({ isLoggedIn }: AccountDeletionViewProps) {
 
     return (
         <div className="flex min-h-screen flex-col bg-slate-50 selection:bg-blue-100">
-            <PublicNavbar isLoggedIn={isLoggedIn} />
+            <PublicNavbar />
 
             <main className="flex-1 py-12 pt-32 pb-24">
                 <article className="container mx-auto px-4 max-w-3xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 prose prose-slate prose-lg">

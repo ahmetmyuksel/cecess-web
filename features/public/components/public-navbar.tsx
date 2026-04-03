@@ -6,14 +6,17 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { Switch } from "@/components/ui/switch";
+import { useUser } from "@/features/auth/hooks/use-user";
 
 interface PublicNavbarProps {
-    isLoggedIn?: boolean;
+    // isLoggedIn removed as it now uses client-side hook
 }
 
-export function PublicNavbar({ isLoggedIn }: PublicNavbarProps) {
+export function PublicNavbar({ }: PublicNavbarProps) {
     const pathname = usePathname();
     const { t, language, setLanguage } = useLanguage();
+    const { user } = useUser();
+    const isLoggedIn = !!user;
 
     const navLinks = [
         { name: t.public.nav.home, href: "/", match: "exact" },
