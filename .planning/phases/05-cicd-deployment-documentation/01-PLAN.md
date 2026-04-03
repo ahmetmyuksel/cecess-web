@@ -40,12 +40,12 @@ This ensures that when we push, the Cloudflare Dashboard build will not fail wit
 
 <action>
 Verify remote `origin` is set to `https://github.com/ahmetmyuksel/cecess-web.git`.
-Push the `master` branch (and any other relevant branches) to `origin`.
+Push the `main` branch to `origin`.
 This triggers the automatic deployment on Cloudflare (which the user has already configured).
 </action>
 
 <acceptance_criteria>
-- `git push origin master` succeeds.
+- `git push origin main` succeeds.
 - Repository at GitHub reflects current local state.
 </acceptance_criteria>
 
