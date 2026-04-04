@@ -22,42 +22,33 @@ export function LoginView() {
     };
 
     return (
-        <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-white via-slate-50 to-blue-50 text-slate-900">
-            <div className="pointer-events-none absolute inset-y-0 left-[-120px] w-[340px] bg-gradient-to-b from-blue-100/70 via-white to-transparent blur-3xl" />
-            <div className="pointer-events-none absolute inset-y-0 right-[-140px] w-[360px] bg-gradient-to-b from-emerald-100/50 via-blue-50 to-transparent blur-3xl" />
+        <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-white via-slate-50 to-blue-50 text-slate-900 pt-16 sm:pt-0">
+            <div className="pointer-events-none absolute inset-y-0 left-[-120px] w-[340px] bg-gradient-to-b from-blue-100/70 via-white to-transparent blur-3xl opacity-60" />
+            <div className="pointer-events-none absolute inset-y-0 right-[-140px] w-[360px] bg-gradient-to-b from-emerald-100/50 via-blue-50 to-transparent blur-3xl opacity-60" />
 
-            <div className="absolute left-6 top-6">
-                <Link
-                    href="/"
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
-                >
-                    ← {t.public.nav.home}
-                </Link>
-            </div>
-
-            <div className="relative mx-auto flex w-full max-w-lg flex-col items-center gap-6 px-6">
-                <div className="flex flex-col items-center gap-4">
+            <div className="relative mx-auto flex w-full max-w-lg flex-col items-center gap-6 px-4 sm:px-6">
+                <div className="flex flex-col items-center gap-4 hidden sm:flex">
                     <div className="relative h-14 w-48">
                         <Image
                             src="/cecess-logo.png"
                             alt="cecess Logo"
                             fill
                             className="object-contain"
-                            sizes="(max-width: 768px) 192px, 192px"
+                            sizes="192px"
                             priority
                         />
                     </div>
                 </div>
 
-                <div className="text-center space-y-1">
-                    <h1 className="text-2xl font-semibold text-slate-900">Welcome back</h1>
-                    <p className="text-sm text-slate-600">Log in to your account to continue.</p>
+                <div className="text-center space-y-2 mt-4 sm:mt-0">
+                    <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">{t.auth.login.title}</h1>
+                    <p className="text-sm sm:text-base text-slate-500 font-medium">{t.auth.login.subtitle}</p>
                 </div>
 
-                <div className="w-full rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] space-y-6">
+                <div className="w-full rounded-[2rem] sm:rounded-3xl border border-slate-200 bg-white/90 p-6 sm:p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] space-y-6">
                     <button
                         onClick={handleGoogleLogin}
-                        className="flex w-full items-center justify-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:border-slate-300"
+                        className="flex w-full items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:border-slate-300 shadow-sm active:scale-[0.98]"
                     >
                         <svg className="h-5 w-5" viewBox="0 0 24 24">
                             <path
@@ -82,17 +73,17 @@ export function LoginView() {
 
                     <div className="relative flex items-center gap-4">
                         <div className="h-px flex-1 bg-slate-200" />
-                        <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">or</span>
+                        <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">{t.auth.login.divider}</span>
                         <div className="h-px flex-1 bg-slate-200" />
                     </div>
 
                     <form className="space-y-4" action={action}>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-800">Email</label>
+                            <label className="text-sm font-medium text-slate-800">{t.auth.login.emailLabel}</label>
                             <input
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 outline-none transition focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-blue-100"
                                 type="email"
-                                placeholder="you@example.com"
+                                placeholder={t.auth.login.emailPlaceholder}
                                 name="email"
                                 required
                                 suppressHydrationWarning
@@ -101,11 +92,11 @@ export function LoginView() {
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-800">Password</label>
+                            <label className="text-sm font-medium text-slate-800">{t.auth.login.passwordLabel}</label>
                             <input
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 outline-none transition focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-blue-100"
                                 type="password"
-                                placeholder="••••••••"
+                                placeholder={t.auth.login.passwordPlaceholder}
                                 name="password"
                                 required
                                 suppressHydrationWarning
@@ -115,16 +106,16 @@ export function LoginView() {
                         <div className="flex items-center justify-between text-sm text-slate-700">
                             <label className="flex items-center gap-2">
                                 <input type="checkbox" className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-200" />
-                                <span>Remember me</span>
+                                <span>{t.auth.login.rememberMe}</span>
                             </label>
                             <Link href="/forgot-password" className="text-blue-600 hover:text-blue-700 font-medium">
-                                Forgot Password?
+                                {t.auth.login.forgotPassword}
                             </Link>
                         </div>
 
                         {state.error && <p className="text-sm font-medium text-rose-600">{state.error}</p>}
 
-                        <SubmitButton />
+                        <SubmitButton idleLabel={t.auth.login.submit} pendingLabel={t.auth.login.submitting} />
                     </form>
                 </div>
             </div >

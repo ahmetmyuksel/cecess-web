@@ -3,6 +3,7 @@
 import { createClient } from "@/utils/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { useEffect, useState, useCallback, createContext, useContext } from "react";
+import { signOutUser } from "../services/auth-service";
 
 type Profile = {
     id: string;
@@ -26,6 +27,8 @@ type UserContextType = {
     loading: boolean;
     error: string | null;
     refreshProfile: () => Promise<void>;
+    signOut: () => Promise<void>;
+    signOutLoading: boolean;
 };
 
 const UserContext = createContext<UserContextType>({
@@ -34,6 +37,8 @@ const UserContext = createContext<UserContextType>({
     loading: true,
     error: null,
     refreshProfile: async () => { },
+    signOut: async () => { },
+    signOutLoading: false,
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
@@ -41,6 +46,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     const [profile, setProfile] = useState<Profile | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [signOutLoading, setSignOutLoading] = useState(false);
     const [supabase] = useState(() => createClient());
 
     const fetchProfile = useCallback(async (userId: string) => {
@@ -95,6 +101,24 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
             await fetchProfile(user.id);
         }
     }, [user, fetchProfile]);
+
+    const signOut = useCallback(async () => {
+        setSignOutLoading(true);
+        setError(null);
+
+        try {
+            await signOutUser();
+            setUser(null);
+            setProfile(null);
+            setLoading(false);
+        } catch (err) {
+            console.error("useUser: Sign out failed", err);
+            setError("Sign out failed");
+            throw err;
+        } finally {
+            setSignOutLoading(false);
+        }
+    }, []);
 
     useEffect(() => {
         let mounted = true;
@@ -156,7 +180,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         return () => clearTimeout(timer);
     }, [loading]);
 
-    const value = { user, profile, loading, error, refreshProfile };
+    const value = { user, profile, loading, error, refreshProfile, signOut, signOutLoading };
 
     return (
         <UserContext.Provider value={value} >

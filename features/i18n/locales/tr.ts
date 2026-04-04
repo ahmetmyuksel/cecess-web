@@ -221,6 +221,42 @@ export const tr: Dictionary = {
             pickIcon: "İkon Seç"
         }
     },
+    auth: {
+        login: {
+            title: "Tekrar hoş geldin",
+            subtitle: "Devam etmek için hesabına giriş yap.",
+            divider: "veya",
+            emailLabel: "E-posta",
+            emailPlaceholder: "ornek@eposta.com",
+            passwordLabel: "Şifre",
+            passwordPlaceholder: "Şifrenizi girin",
+            rememberMe: "Beni hatırla",
+            forgotPassword: "Şifremi Unuttum",
+            submit: "Giriş Yap",
+            submitting: "Giriş yapılıyor..."
+        },
+        forgotPassword: {
+            backToLogin: "Girişe Dön",
+            title: "Şifre Sıfırla",
+            subtitle: "E-posta adresinizi girin, size şifre sıfırlama bağlantısı gönderelim.",
+            emailLabel: "E-posta Adresi",
+            emailPlaceholder: "ornek@eposta.com",
+            successTitle: "E-postanı kontrol et",
+            successDescription: "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.",
+            submit: "Sıfırlama Bağlantısı Gönder",
+            submitting: "Gönderiliyor..."
+        },
+        resetPassword: {
+            title: "Yeni Şifre Belirle",
+            subtitle: "Hesabını güvenceye almak için yeni şifreni aşağıya gir.",
+            passwordLabel: "Yeni Şifre",
+            passwordPlaceholder: "En az 8 karakter girin",
+            confirmPasswordLabel: "Şifreyi Onayla",
+            confirmPasswordPlaceholder: "Şifrenizi tekrar girin",
+            submit: "Şifreyi Güncelle",
+            submitting: "Güncelleniyor..."
+        }
+    },
     public: {
         nav: {
             home: "Anasayfa",

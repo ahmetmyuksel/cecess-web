@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useResetPassword } from "../hooks/use-reset-password";
 import { SubmitButton } from "./submit-button";
+import { useLanguage } from "@/features/i18n/hooks/use-language";
 
 export function ResetPasswordView() {
     const { state, action } = useResetPassword();
+    const { t } = useLanguage();
 
     return (
         <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-white via-slate-50 to-blue-50 text-slate-900">
@@ -28,29 +29,29 @@ export function ResetPasswordView() {
                 </div>
 
                 <div className="text-center space-y-1">
-                    <h1 className="text-2xl font-semibold text-slate-900">Set New Password</h1>
-                    <p className="text-sm text-slate-600">Enter your new password below to secure your account.</p>
+                    <h1 className="text-2xl font-semibold text-slate-900">{t.auth.resetPassword.title}</h1>
+                    <p className="text-sm text-slate-600">{t.auth.resetPassword.subtitle}</p>
                 </div>
 
                 <div className="w-full rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
                     <form className="space-y-4" action={action}>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-800">New Password</label>
+                            <label className="text-sm font-medium text-slate-800">{t.auth.resetPassword.passwordLabel}</label>
                             <input
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 outline-none transition focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-blue-100"
                                 type="password"
-                                placeholder="Min. 8 chars (A-Z, 0-9, symbol)"
+                                placeholder={t.auth.resetPassword.passwordPlaceholder}
                                 name="password"
                                 required
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-800">Confirm Password</label>
+                            <label className="text-sm font-medium text-slate-800">{t.auth.resetPassword.confirmPasswordLabel}</label>
                             <input
                                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 outline-none transition focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-blue-100"
                                 type="password"
-                                placeholder="Re-enter password"
+                                placeholder={t.auth.resetPassword.confirmPasswordPlaceholder}
                                 name="confirmPassword"
                                 required
                             />
@@ -61,7 +62,10 @@ export function ResetPasswordView() {
                         )}
                         {state.error && <p className="text-sm font-medium text-rose-600">{state.error}</p>}
 
-                        <SubmitButton />
+                        <SubmitButton
+                            idleLabel={t.auth.resetPassword.submit}
+                            pendingLabel={t.auth.resetPassword.submitting}
+                        />
                     </form>
                 </div>
             </div>

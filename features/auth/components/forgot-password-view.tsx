@@ -4,9 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useForgotPassword } from "../hooks/use-forgot-password";
 import { SubmitButton } from "./submit-button";
+import { useLanguage } from "@/features/i18n/hooks/use-language";
 
 export function ForgotPasswordView() {
     const { state, action } = useForgotPassword();
+    const { t } = useLanguage();
 
     return (
         <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-white via-slate-50 to-blue-50 text-slate-900">
@@ -18,7 +20,7 @@ export function ForgotPasswordView() {
                     href="/login"
                     className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
                 >
-                    ← Back to Login
+                    {"<-"} {t.auth.forgotPassword.backToLogin}
                 </Link>
             </div>
 
@@ -37,8 +39,8 @@ export function ForgotPasswordView() {
                 </div>
 
                 <div className="text-center space-y-1">
-                    <h1 className="text-2xl font-semibold text-slate-900">Reset Password</h1>
-                    <p className="text-sm text-slate-600">Enter your email and we'll send you a link to reset your password.</p>
+                    <h1 className="text-2xl font-semibold text-slate-900">{t.auth.forgotPassword.title}</h1>
+                    <p className="text-sm text-slate-600">{t.auth.forgotPassword.subtitle}</p>
                 </div>
 
                 <div className="w-full rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
@@ -49,19 +51,17 @@ export function ForgotPasswordView() {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                 </svg>
                             </div>
-                            <h3 className="text-lg font-medium text-slate-900">Check your email</h3>
-                            <p className="text-sm text-slate-600">
-                                We have sent a password reset link to your email address.
-                            </p>
+                            <h3 className="text-lg font-medium text-slate-900">{t.auth.forgotPassword.successTitle}</h3>
+                            <p className="text-sm text-slate-600">{t.auth.forgotPassword.successDescription}</p>
                         </div>
                     ) : (
                         <form className="space-y-4" action={action}>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-slate-800">Email Address</label>
+                                <label className="text-sm font-medium text-slate-800">{t.auth.forgotPassword.emailLabel}</label>
                                 <input
                                     className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 outline-none transition focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-blue-100"
                                     type="email"
-                                    placeholder="you@example.com"
+                                    placeholder={t.auth.forgotPassword.emailPlaceholder}
                                     name="email"
                                     required
                                 />
@@ -69,7 +69,10 @@ export function ForgotPasswordView() {
 
                             {state.error && <p className="text-sm font-medium text-rose-600">{state.error}</p>}
 
-                            <SubmitButton />
+                            <SubmitButton
+                                idleLabel={t.auth.forgotPassword.submit}
+                                pendingLabel={t.auth.forgotPassword.submitting}
+                            />
                         </form>
                     )}
                 </div>

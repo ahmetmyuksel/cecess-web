@@ -219,6 +219,42 @@ export type Dictionary = {
             pickIcon: string;
         };
     };
+    auth: {
+        login: {
+            title: string;
+            subtitle: string;
+            divider: string;
+            emailLabel: string;
+            emailPlaceholder: string;
+            passwordLabel: string;
+            passwordPlaceholder: string;
+            rememberMe: string;
+            forgotPassword: string;
+            submit: string;
+            submitting: string;
+        };
+        forgotPassword: {
+            backToLogin: string;
+            title: string;
+            subtitle: string;
+            emailLabel: string;
+            emailPlaceholder: string;
+            successTitle: string;
+            successDescription: string;
+            submit: string;
+            submitting: string;
+        };
+        resetPassword: {
+            title: string;
+            subtitle: string;
+            passwordLabel: string;
+            passwordPlaceholder: string;
+            confirmPasswordLabel: string;
+            confirmPasswordPlaceholder: string;
+            submit: string;
+            submitting: string;
+        };
+    };
     public: {
         nav: {
             home: string;

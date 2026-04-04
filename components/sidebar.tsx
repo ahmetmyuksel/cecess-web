@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import Image from "next/image";
 import {
     LayoutDashboard,
     CreditCard,
@@ -14,31 +15,21 @@ import {
     Sparkles,
     Settings,
 } from "lucide-react";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { logoutAction } from "@/features/auth/actions/auth-action";
+import { cn } from "@/lib/utils";
+import bannerImage from "@/assets/images/banner.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
-
-
-
 import { useUser } from "@/features/auth/hooks/use-user";
 
 export function Sidebar({ initialProfile }: { initialProfile?: any }) {
     const pathname = usePathname();
+    const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
-    const { user, profile, loading, error } = useUser();
+    const { user, profile, loading, error, signOut, signOutLoading } = useUser();
     const { t } = useLanguage();
 
-    // Use server profile if client profile is not yet loaded, or fallback to client one
-    // Actually, useUser should ideally hydrate from this, but for simple display:
     const effectiveProfile = profile || initialProfile;
-
-    // Override loading state if we have initialProfile (SSR)
     const isLoading = loading && !effectiveProfile;
-
-    // Note: 'user' might be null initially on client even if SSR fetched user.
-    // So we rely on effectiveProfile for data display.
 
     const navigation = [
         { name: t.sidebar.dashboard, href: "/profile/dashboard", icon: LayoutDashboard },
@@ -49,124 +40,177 @@ export function Sidebar({ initialProfile }: { initialProfile?: any }) {
         { name: t.sidebar.subscription, href: "/profile/subscription", icon: Zap },
     ];
 
-    // Default fallback values
-    // Strict loading: If loading, username is ignored by UI. If loaded and no profile, use email or "Unknown".
-    // We removed "Guest User" string fallback as requested.
     const username = effectiveProfile?.first_name
         ? (effectiveProfile.last_name ? `${effectiveProfile.first_name} ${effectiveProfile.last_name}` : effectiveProfile.first_name)
-        : (effectiveProfile?.username || (effectiveProfile?.email ? effectiveProfile.email.split('@')[0] : (user?.email?.split('@')[0] || "")));
+        : (effectiveProfile?.username || (effectiveProfile?.email ? effectiveProfile.email.split("@")[0] : (user?.email?.split("@")[0] || "")));
 
-    const email = effectiveProfile?.email || "";
-    // If avatar_url is a relative path or full URL, use it. If null, empty string which triggers fallback.
     const avatarUrl = effectiveProfile?.avatar_url || "";
-
     const tier = effectiveProfile?.subscription_tier || "Free";
     const tierLabel = t.subscriptionPage.plans.title.replace("{tier}", tier);
+
+    const closeSidebar = () => setIsOpen(false);
+
+    const handleNavigation = (href: string) => {
+        closeSidebar();
+        router.push(href);
+    };
+
+    const handleSignOut = async () => {
+        await signOut();
+        closeSidebar();
+        router.replace("/");
+        router.refresh();
+    };
+
+    const navItems = (
+        <nav className="space-y-1 px-3 pt-4">
+            {navigation.map((item) => {
+                const isActive = pathname.startsWith(item.href);
+
+                return (
+                    <button
+                        key={item.href}
+                        type="button"
+                        onClick={() => handleNavigation(item.href)}
+                        className={cn(
+                            "flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
+                            isActive
+                                ? "bg-primary/10 text-primary"
+                                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                        )}
+                    >
+                        <item.icon className="h-5 w-5 shrink-0" />
+                        <span>{item.name}</span>
+                    </button>
+                );
+            })}
+        </nav>
+    );
+
+    const footerContent = (
+        <div className="px-4 pb-4">
+            <div className="mb-3 flex items-center gap-3 px-2">
+                <Avatar className="h-10 w-10 border border-slate-200">
+                    <AvatarImage src={avatarUrl} alt={username} />
+                    <AvatarFallback>
+                        {isLoading ? (
+                            <div className="h-full w-full animate-pulse bg-slate-200" />
+                        ) : (
+                            username.charAt(0).toUpperCase()
+                        )}
+                    </AvatarFallback>
+                </Avatar>
+
+                <div className="min-w-0 flex-1">
+                    {isLoading ? (
+                        <>
+                            <div className="mb-1 h-4 w-24 animate-pulse rounded bg-slate-200" />
+                            <div className="h-3 w-16 animate-pulse rounded bg-slate-200" />
+                        </>
+                    ) : (
+                        <>
+                            <span className="block truncate text-sm font-semibold text-foreground">{username}</span>
+                            <span className="block truncate text-xs text-muted-foreground">{tierLabel}</span>
+                            {error && <span className="text-[10px] text-red-500" title={error}>! Error loading profile</span>}
+                        </>
+                    )}
+                </div>
+
+                <button
+                    type="button"
+                    onClick={() => handleNavigation("/profile/settings")}
+                    className="p-2 text-slate-400 transition-colors hover:text-slate-600"
+                    aria-label={t.settings.profile.title}
+                >
+                    <Settings className="h-4 w-4" />
+                </button>
+            </div>
+
+            <button
+                type="button"
+                onClick={handleSignOut}
+                disabled={signOutLoading}
+                className="flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm font-medium text-rose-600 transition-colors hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-70"
+            >
+                <LogOut className="h-4 w-4 shrink-0" />
+                <span>{t.sidebar.signOut}</span>
+            </button>
+        </div>
+    );
 
     return (
         <>
             <button
-                className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-md bg-background border"
-                onClick={() => setIsOpen(!isOpen)}
+                type="button"
+                className="fixed left-4 top-4 z-[80] rounded-md border bg-background p-2 md:hidden"
+                onClick={() => setIsOpen((prev) => !prev)}
+                aria-label="Toggle sidebar"
             >
                 <Menu className="h-6 w-6" />
             </button>
 
-            <div
-                className={cn(
-                    "fixed inset-y-0 left-0 z-40 w-64 bg-card border-r transform transition-transform duration-200 ease-in-out md:translate-x-0 md:sticky md:top-0 md:h-screen",
-                    isOpen ? "translate-x-0" : "-translate-x-full"
-                )}
-            >
-                <div className="flex flex-col h-full">
+            <aside className="sticky top-0 hidden h-screen w-64 border-r bg-card md:flex md:flex-col">
+                <div className="flex h-16 items-center justify-center border-b px-6">
+                    <Link href="/" className="relative h-10 w-32">
+                        <Image
+                            src={bannerImage}
+                            alt="cecess"
+                            fill
+                            sizes="128px"
+                            className="object-contain"
+                            priority
+                        />
+                    </Link>
+                </div>
+
+                <div className="min-h-0 flex-1 overflow-y-auto">
+                    {navItems}
+                </div>
+
+                <div className="mt-auto border-t pt-4">
+                    {footerContent}
+                </div>
+            </aside>
+
+            <div className={cn("fixed inset-0 z-[70] md:hidden", isOpen ? "pointer-events-auto" : "pointer-events-none")}>
+                <button
+                    type="button"
+                    aria-label="Close sidebar"
+                    onClick={closeSidebar}
+                    className={cn(
+                        "absolute inset-0 bg-black/50 transition-opacity",
+                        isOpen ? "opacity-100" : "opacity-0"
+                    )}
+                />
+
+                <aside
+                    className={cn(
+                        "absolute bottom-0 left-0 top-0 flex h-[100svh] max-h-[100svh] w-[calc(100vw-56px)] max-w-64 flex-col border-r bg-card shadow-xl transition-transform duration-200 ease-in-out",
+                        isOpen ? "translate-x-0" : "-translate-x-full"
+                    )}
+                >
                     <div className="flex h-16 items-center justify-center border-b px-6">
-                        <Link href="/" className="relative h-12 w-40">
+                        <Link href="/" className="relative h-10 w-32" onClick={closeSidebar}>
                             <Image
-                                src="/cecess-logo.png"
+                                src={bannerImage}
                                 alt="cecess"
                                 fill
-                                sizes="(max-width: 768px) 160px, 160px"
+                                sizes="128px"
                                 className="object-contain"
                                 priority
                             />
                         </Link>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto py-4">
-                        <nav className="space-y-1 px-3">
-                            {navigation.map((item) => {
-                                const isActive = pathname.startsWith(item.href);
-                                return (
-                                    <Link
-                                        key={item.href} // Key should be href as name changes with language
-                                        href={item.href}
-                                        className={cn(
-                                            "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                                            isActive
-                                                ? "bg-primary/10 text-primary"
-                                                : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                                        )}
-                                    >
-                                        <item.icon className="h-5 w-5" />
-                                        {item.name}
-                                    </Link>
-                                );
-                            })}
-                        </nav>
+                    <div className="min-h-0 flex-1 overflow-y-auto">
+                        {navItems}
                     </div>
 
-                    <div className="border-t p-4">
-                        <div className="mb-3 flex items-center gap-3 px-3">
-                            <Avatar className="h-10 w-10 border border-slate-200">
-                                <AvatarImage src={avatarUrl} alt={username} />
-                                <AvatarFallback>
-                                    {isLoading ? (
-                                        <div className="h-full w-full animate-pulse bg-slate-200" />
-                                    ) : (
-                                        username.charAt(0).toUpperCase()
-                                    )}
-                                </AvatarFallback>
-                            </Avatar>
-                            <div className="flex flex-col overflow-hidden">
-                                {isLoading ? (
-                                    <>
-                                        <div className="h-4 w-24 animate-pulse rounded bg-slate-200 mb-1" />
-                                        <div className="h-3 w-16 animate-pulse rounded bg-slate-200" />
-                                    </>
-                                ) : (
-                                    <>
-                                        <span className="truncate text-sm font-semibold text-foreground">
-                                            {username}
-                                        </span>
-                                        <span className="truncate text-xs text-muted-foreground">{tierLabel}</span>
-                                        {error && <span className="text-[10px] text-red-500 truncate" title={error}>! Error loading profile</span>}
-                                    </>
-                                )}
-                            </div>
-                            <Link href="/profile/settings" className="p-2 text-slate-400 hover:text-slate-600 transition-colors">
-                                <Settings className="h-4 w-4" />
-                            </Link>
-                        </div>
-                        <form action={logoutAction}>
-                            <button
-                                type="submit"
-                                className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-rose-600 hover:bg-rose-50 transition-colors"
-                            >
-                                <LogOut className="h-4 w-4" />
-                                {t.sidebar.signOut}
-                            </button>
-                        </form>
+                    <div className="mt-auto pt-4">
+                        {footerContent}
                     </div>
-                </div>
+                </aside>
             </div>
-
-            {/* Overlay for mobile */}
-            {isOpen && (
-                <div
-                    className="fixed inset-0 z-30 bg-black/50 md:hidden"
-                    onClick={() => setIsOpen(false)}
-                />
-            )}
         </>
     );
 }

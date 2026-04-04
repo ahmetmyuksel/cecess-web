@@ -221,6 +221,42 @@ export const en: Dictionary = {
             pickIcon: "Pick an Icon"
         }
     },
+    auth: {
+        login: {
+            title: "Welcome back",
+            subtitle: "Log in to your account to continue.",
+            divider: "or",
+            emailLabel: "Email",
+            emailPlaceholder: "you@example.com",
+            passwordLabel: "Password",
+            passwordPlaceholder: "Enter your password",
+            rememberMe: "Remember me",
+            forgotPassword: "Forgot Password?",
+            submit: "Log in",
+            submitting: "Logging in..."
+        },
+        forgotPassword: {
+            backToLogin: "Back to Login",
+            title: "Reset Password",
+            subtitle: "Enter your email and we'll send you a link to reset your password.",
+            emailLabel: "Email Address",
+            emailPlaceholder: "you@example.com",
+            successTitle: "Check your email",
+            successDescription: "We have sent a password reset link to your email address.",
+            submit: "Send reset link",
+            submitting: "Sending..."
+        },
+        resetPassword: {
+            title: "Set New Password",
+            subtitle: "Enter your new password below to secure your account.",
+            passwordLabel: "New Password",
+            passwordPlaceholder: "Min. 8 chars (A-Z, 0-9, symbol)",
+            confirmPasswordLabel: "Confirm Password",
+            confirmPasswordPlaceholder: "Re-enter password",
+            submit: "Update password",
+            submitting: "Updating..."
+        }
+    },
     public: {
         nav: {
             home: "Home",

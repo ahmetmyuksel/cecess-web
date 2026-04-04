@@ -18,6 +18,13 @@
 - [ ] Double `LanguageProvider` wraps causing flickering and state issues.
 - [ ] Navbar re-mounting on every client navigation.
 
+
 ---
+
+## Accumulated Context
+
+### Roadmap Evolution
+- Phase 1 added: Mobile responsiveness improvements - all pages shifted/broken on mobile
+- Phase 2 added: Login sayfasi dil tutarliligi kontrolu ve signout sonrasi navbar auth state duzeltmesi
 
 *State Reset: 2026-04-03 for Bugfixes Milestone*
