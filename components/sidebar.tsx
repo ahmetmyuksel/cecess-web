@@ -11,7 +11,6 @@ import {
     LogOut,
     Menu,
     FolderOpen,
-    Zap,
     Sparkles,
     Settings,
 } from "lucide-react";
@@ -37,7 +36,6 @@ export function Sidebar({ initialProfile }: { initialProfile?: any }) {
         { name: t.sidebar.accounts, href: "/profile/accounts", icon: Wallet },
         { name: t.sidebar.categories, href: "/profile/categories", icon: FolderOpen },
         { name: t.sidebar.reports, href: "/profile/reports", icon: Sparkles },
-        { name: t.sidebar.subscription, href: "/profile/subscription", icon: Zap },
     ];
 
     const username = effectiveProfile?.first_name

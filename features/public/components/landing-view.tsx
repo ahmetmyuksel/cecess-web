@@ -84,7 +84,7 @@ export function LandingView({ }: LandingViewProps) {
                                 </div>
                             </a>
                             <a 
-                                href="https://play.google.com/store/apps/details?id=com.ahmetmyuksel.cecess"
+                                href="https://play.google.com/store/apps/details?id=com.cecess.app"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1"
@@ -206,7 +206,7 @@ export function LandingView({ }: LandingViewProps) {
                                         </div>
                                     </a>
                                     <a 
-                                        href="https://play.google.com/store/apps/details?id=com.ahmetmyuksel.cecess"
+                                        href="https://play.google.com/store/apps/details?id=com.cecess.app"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1"

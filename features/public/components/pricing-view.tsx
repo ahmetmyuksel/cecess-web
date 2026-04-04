@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/features/i18n/context/language-context";
 import { Switch } from "@/components/ui/switch";
-
+import { pricingComparisonRows, pricingPlanContent } from "@/features/public/domain/pricing-content";
 
 interface PricingViewProps {
     // isLoggedIn removed for static support
@@ -16,79 +15,34 @@ export function PricingView({ }: PricingViewProps) {
     const { t } = useLanguage();
     const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
 
-    const navLinks = [
-        { label: t.public.nav.home, href: "/" },
-        { label: t.public.nav.pricing, href: "/pricing" },
-        { label: t.public.nav.privacy, href: "/privacy" },
-        { label: t.public.nav.faq, href: "/faq" },
-    ];
-
     const plans = [
         {
+            key: "free" as const,
             name: t.public.pricing.plans.free.name,
-            description: t.public.pricing.plans.free.desc,
-            priceMonthly: "€0",
-            priceAnnual: "€0",
+            description: "For getting started with your first 100 transactions.",
+            priceMonthly: "EUR 0",
+            priceAnnual: "EUR 0",
             cta: t.public.pricing.plans.free.cta,
             popular: false,
-            accent: "from-slate-100 to-slate-50",
-            features: [
-                "1 bank account connection",
-                "50 transactions limit",
-                "Basic expense categorization",
-                "Standard reports",
-                "Community support",
-            ],
         },
         {
+            key: "premium" as const,
             name: t.public.pricing.plans.premium.name,
-            description: t.public.pricing.plans.premium.desc,
-            priceMonthly: "€4.99",
-            priceAnnual: "€49.90",
+            description: "For users who want unlimited tracking and budgeting controls.",
+            priceMonthly: "EUR 4.99",
+            priceAnnual: "EUR 49.90",
             cta: t.public.pricing.plans.premium.cta,
             popular: true,
-            accent: "from-blue-600 to-blue-700",
-            features: [
-                "Up to 5 bank connections",
-                "Unlimited transactions",
-                "Start with 500 AI credits",
-                "AI-supported categorization",
-                "Multi-currency support",
-                "Data export (CSV, Excel)",
-            ],
         },
         {
+            key: "pro" as const,
             name: t.public.pricing.plans.pro.name,
-            description: t.public.pricing.plans.pro.desc,
-            priceMonthly: "€12.99",
-            priceAnnual: "€129.90",
+            description: "For advanced forecasting, AI analysis, and export workflows.",
+            priceMonthly: "EUR 12.99",
+            priceAnnual: "EUR 129.90",
             cta: t.public.pricing.plans.pro.cta,
             popular: false,
-            accent: "from-slate-100 to-slate-50",
-            features: [
-                "Unlimited bank connections",
-                "Unlimited transactions",
-                "Start with 1000 AI credits",
-                "Priority email support",
-                "Advanced AI Analytics",
-                "Dedicated account manager",
-            ],
         },
-    ];
-
-    const billingOptions = [
-        { id: "monthly", label: t.public.pricing.monthly },
-        { id: "annual", label: t.public.pricing.annual },
-    ];
-
-    const comparisons = [
-        { feature: "Bank Connections", values: ["1", "Up to 5", "Unlimited"] },
-        { feature: "AI-supported Categorization", values: ["no", "yes", "yes"] },
-        { feature: "Budgeting Tools", values: ["no", "yes", "yes"] },
-        { feature: "Advanced AI Analytics", values: ["Basic", "Basic", "Advanced"] },
-        { feature: "Data Export", values: ["no", "yes", "yes"] },
-        { feature: "Multi-user Access", values: ["no", "no", "yes"] },
-        { feature: "Support", values: ["Community", "Priority Email", "24/7 Priority"] },
     ];
 
     const faqs = [
@@ -114,13 +68,13 @@ export function PricingView({ }: PricingViewProps) {
 
     const Check = () => (
         <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-            ✓
+            +
         </span>
     );
 
     const X = () => (
         <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-rose-50 text-rose-500">
-            ×
+            -
         </span>
     );
 
@@ -146,14 +100,14 @@ export function PricingView({ }: PricingViewProps) {
                     </p>
 
                     <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-                        <span className={`text-xs sm:text-sm font-semibold ${billingCycle === 'monthly' ? 'text-slate-900' : 'text-slate-500'}`}>
+                        <span className={`text-xs sm:text-sm font-semibold ${billingCycle === "monthly" ? "text-slate-900" : "text-slate-500"}`}>
                             {t.public.pricing.monthly}
                         </span>
                         <Switch
                             checked={billingCycle === "annual"}
                             onCheckedChange={(checked) => setBillingCycle(checked ? "annual" : "monthly")}
                         />
-                        <span className={`text-xs sm:text-sm font-semibold ${billingCycle === 'annual' ? 'text-slate-900' : 'text-slate-500'}`}>
+                        <span className={`text-xs sm:text-sm font-semibold ${billingCycle === "annual" ? "text-slate-900" : "text-slate-500"}`}>
                             {t.public.pricing.annual}
                         </span>
                         <span className="inline-flex items-center rounded-full bg-blue-100 px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold text-blue-700">
@@ -165,11 +119,14 @@ export function PricingView({ }: PricingViewProps) {
                 <section className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {plans.map((plan) => {
                         const price = billingCycle === "monthly" ? plan.priceMonthly : plan.priceAnnual;
+                        const features = pricingPlanContent.find((item) => item.key === plan.key)?.features ?? [];
+
                         return (
                             <div
                                 key={plan.name}
-                                className={`relative rounded-[2.5rem] sm:rounded-3xl border bg-white/90 p-6 sm:p-8 shadow-[0_16px_50px_rgba(15,23,42,0.06)] transition-all duration-300 hover:shadow-xl ${plan.popular ? "border-blue-400 shadow-[0_28px_80px_rgba(37,99,235,0.18)]" : "border-slate-200"
-                                    }`}
+                                className={`relative rounded-[2.5rem] sm:rounded-3xl border bg-white/90 p-6 sm:p-8 shadow-[0_16px_50px_rgba(15,23,42,0.06)] transition-all duration-300 hover:shadow-xl ${
+                                    plan.popular ? "border-blue-400 shadow-[0_28px_80px_rgba(37,99,235,0.18)]" : "border-slate-200"
+                                }`}
                             >
                                 {plan.popular && (
                                     <div className="absolute inset-x-10 -top-3.5 flex justify-center">
@@ -184,15 +141,15 @@ export function PricingView({ }: PricingViewProps) {
                                 </div>
                                 <div className="flex items-baseline gap-2 pb-8">
                                     <span className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">{price}</span>
-                                    <span className="text-sm font-medium text-slate-400">/ {billingCycle === 'monthly' ? t.public.pricing.monthly.toLowerCase() : t.public.pricing.annual.toLowerCase()}</span>
+                                    <span className="text-sm font-medium text-slate-400">
+                                        / {billingCycle === "monthly" ? t.public.pricing.monthly.toLowerCase() : t.public.pricing.annual.toLowerCase()}
+                                    </span>
                                 </div>
-                                <Link 
+                                <Link
                                     href="/register"
                                     className={cn(
                                         "flex w-full items-center justify-center rounded-2xl py-4 text-sm font-bold transition-all shadow-sm mb-8",
-                                        plan.popular 
-                                            ? "bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200" 
-                                            : "bg-slate-900 text-white hover:bg-slate-800"
+                                        plan.popular ? "bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200" : "bg-slate-900 text-white hover:bg-slate-800"
                                     )}
                                 >
                                     {plan.cta}
@@ -200,12 +157,12 @@ export function PricingView({ }: PricingViewProps) {
                                 <div className="space-y-4 pt-2">
                                     <div className="text-sm font-bold text-slate-900 uppercase tracking-widest text-[10px]">What&apos;s included:</div>
                                     <ul className="space-y-3.5">
-                                        {plan.features.map((item) => (
-                                            <li key={item} className="flex items-start gap-3 text-sm text-slate-600">
+                                        {features.map((feature) => (
+                                            <li key={feature} className="flex items-start gap-3 text-sm text-slate-600">
                                                 <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
                                                     <Check />
                                                 </div>
-                                                <span className="leading-snug">{item}</span>
+                                                <span className="leading-snug">{feature}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -219,7 +176,7 @@ export function PricingView({ }: PricingViewProps) {
                     <div className="text-center mb-8">
                         <h2 className="text-2xl sm:text-3xl font-black text-slate-900">{t.public.pricing.compare}</h2>
                         <p className="mt-3 text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
-                            A detailed breakdown of what each plan offers to help you make the best choice for your financial journey.
+                            A direct breakdown of what is included at each tier.
                         </p>
                     </div>
                     <div className="overflow-x-auto -mx-4 sm:mx-0 rounded-[2rem] border border-slate-100 bg-white p-2 shadow-inner">
@@ -233,7 +190,7 @@ export function PricingView({ }: PricingViewProps) {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-50">
-                                {comparisons.map((row) => (
+                                {pricingComparisonRows.map((row) => (
                                     <tr key={row.feature} className="hover:bg-slate-50/50 transition-colors">
                                         <td className="p-5 text-sm font-semibold text-slate-700">{row.feature}</td>
                                         <td className="p-5 text-center">{renderStatus(row.values[0])}</td>

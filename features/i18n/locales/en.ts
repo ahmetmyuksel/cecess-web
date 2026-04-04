@@ -131,6 +131,35 @@ export const en: Dictionary = {
             generic: "No data found yet. Sync your finances from the mobile app."
         }
     },
+    reports: {
+        title: "AI Financial Report",
+        subtitle: "Saved reports are loaded directly from your account data.",
+        monthEmpty: "No saved reports",
+        generateInApp: "Generate in App",
+        recentReports: "Recent Reports",
+        hide: "Hide",
+        showAll: "Show All",
+        noReportsTitle: "No reports yet",
+        noReportsDescription: "Generated reports from the mobile app will appear here once they are saved in the reports table.",
+        executiveSummary: "Executive Summary",
+        financialHealth: "Financial Health",
+        spendingBreakdown: "Spending Breakdown",
+        noCategoryData: "No category data available.",
+        detectedSubscriptions: "Detected Subscriptions",
+        noSubscriptions: "No recurring subscriptions detected.",
+        recommendations: "CFO Recommendations",
+        generateAlert: "Generating reports is only available in the mobile app.",
+        chart: {
+            loading: "Loading trends...",
+            emptyTitle: "No spending data yet",
+            emptyDescription: "Start adding transactions to see your spending trends over time here.",
+            title: "Spending Trends",
+            subtitle: "Track your expenses over time.",
+            totalSpending: "Total Spending",
+            lastMonths: "Last 6 Months",
+            recordedExpenses: "Values based on recorded expenses"
+        }
+    },
     transactions: {
         title: "All Transactions",
         rows: "Rows:",

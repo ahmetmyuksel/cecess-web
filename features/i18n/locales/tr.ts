@@ -131,6 +131,35 @@ export const tr: Dictionary = {
             generic: "Henüz veri bulunamadı. Finansal verilerinizi mobil uygulamadan senkronize edin."
         }
     },
+    reports: {
+        title: "Yapay Zeka Finansal Raporu",
+        subtitle: "Kaydedilen raporlar dogrudan hesap verilerinizden yuklenir.",
+        monthEmpty: "Kayitli rapor yok",
+        generateInApp: "Uygulamada Olustur",
+        recentReports: "Son Raporlar",
+        hide: "Gizle",
+        showAll: "Tumunu Goster",
+        noReportsTitle: "Henuz rapor yok",
+        noReportsDescription: "Mobil uygulamada olusturulan raporlar, reports tablosuna kaydedildiginde burada gorunecek.",
+        executiveSummary: "Yonetici Ozeti",
+        financialHealth: "Finansal Saglik",
+        spendingBreakdown: "Harcama Dagilimi",
+        noCategoryData: "Kategori verisi bulunamadi.",
+        detectedSubscriptions: "Tespit Edilen Abonelikler",
+        noSubscriptions: "Tekrarlayan abonelik tespit edilmedi.",
+        recommendations: "CFO Onerileri",
+        generateAlert: "Rapor olusturma sadece mobil uygulamada kullanilabilir.",
+        chart: {
+            loading: "Trendler yukleniyor...",
+            emptyTitle: "Henuz harcama verisi yok",
+            emptyDescription: "Zaman icindeki harcama trendlerinizi burada gormek icin islem eklemeye baslayin.",
+            title: "Harcama Trendleri",
+            subtitle: "Giderlerinizi zaman icinde takip edin.",
+            totalSpending: "Toplam Harcama",
+            lastMonths: "Son 6 Ay",
+            recordedExpenses: "Degerler kaydedilen giderlere gore hesaplanir"
+        }
+    },
     transactions: {
         title: "Tüm İşlemler",
         rows: "Satır:",

@@ -129,6 +129,35 @@ export type Dictionary = {
             generic: string;
         };
     };
+    reports: {
+        title: string;
+        subtitle: string;
+        monthEmpty: string;
+        generateInApp: string;
+        recentReports: string;
+        hide: string;
+        showAll: string;
+        noReportsTitle: string;
+        noReportsDescription: string;
+        executiveSummary: string;
+        financialHealth: string;
+        spendingBreakdown: string;
+        noCategoryData: string;
+        detectedSubscriptions: string;
+        noSubscriptions: string;
+        recommendations: string;
+        generateAlert: string;
+        chart: {
+            loading: string;
+            emptyTitle: string;
+            emptyDescription: string;
+            title: string;
+            subtitle: string;
+            totalSpending: string;
+            lastMonths: string;
+            recordedExpenses: string;
+        };
+    };
     transactions: {
         title: string;
         rows: string;
