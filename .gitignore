@@ -53,3 +53,10 @@ scripts/
 
 # planning artifacts
 .planning/
+
+# lock files (npm only)
+pnpm-lock.yaml
+yarn.lock
+
+# claude
+.claude/
