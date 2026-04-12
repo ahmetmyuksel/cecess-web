@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cecess | Email Verified</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f7fb;
+        --panel: rgba(255, 255, 255, 0.92);
+        --text: #162033;
+        --muted: #667085;
+        --line: rgba(22, 32, 51, 0.08);
+        --accent: #1f6feb;
+        --accent-soft: rgba(31, 111, 235, 0.12);
+        --success: #12b76a;
+        --shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        font-family: Inter, "Segoe UI", Roboto, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(31, 111, 235, 0.12), transparent 34%),
+          linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      }
+
+      .card {
+        width: min(100%, 560px);
+        padding: 40px 32px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        text-align: center;
+        backdrop-filter: blur(14px);
+      }
+
+      .badge {
+        width: 84px;
+        height: 84px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, rgba(18, 183, 106, 0.18), rgba(18, 183, 106, 0.08));
+        color: var(--success);
+        box-shadow: inset 0 0 0 1px rgba(18, 183, 106, 0.14);
+      }
+
+      .badge svg {
+        width: 42px;
+        height: 42px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(28px, 4vw, 38px);
+        line-height: 1.08;
+      }
+
+      p {
+        margin: 0 auto;
+        max-width: 40ch;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .status {
+        margin-top: 22px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .actions {
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 20px;
+        font: inherit;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button-primary {
+        background: var(--accent);
+        color: white;
+      }
+
+      .button-secondary {
+        background: white;
+        color: var(--text);
+        border: 1px solid var(--line);
+      }
+
+      @media (max-width: 640px) {
+        .card {
+          padding: 32px 22px;
+          border-radius: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"></path>
+        </svg>
+      </div>
+      <h1>Email Verified!</h1>
+      <p id="message">
+        We verified your email successfully. If the Cecess app is installed, we will try to open it automatically.
+      </p>
+      <div class="status" id="status">Opening Cecess...</div>
+      <div class="actions">
+        <button class="button button-primary" id="open-app" type="button">Open Cecess App</button>
+        <button class="button button-secondary" id="close-window" type="button">Close Window</button>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        // Forward hash fragments (access_token, refresh_token, etc.) to the app
+        const hash = window.location.hash || "";
+        const query = window.location.search || "";
+        const deepLink = "cecess://auth-callback" + query + hash;
+        const openAppButton = document.getElementById("open-app");
+        const closeWindowButton = document.getElementById("close-window");
+        const message = document.getElementById("message");
+        const status = document.getElementById("status");
+        let appLaunchDetected = false;
+
+        function tryOpenApp() {
+          window.location.href = deepLink;
+        }
+
+        function showFallback() {
+          if (appLaunchDetected) return;
+          status.textContent = "You can close this window and continue in the app.";
+          message.textContent =
+            "Email Verified! You can now close this window and open the Cecess app on your phone to log in.";
+        }
+
+        window.addEventListener("blur", function () {
+          appLaunchDetected = true;
+        });
+
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "hidden") {
+            appLaunchDetected = true;
+          }
+        });
+
+        openAppButton.addEventListener("click", tryOpenApp);
+        closeWindowButton.addEventListener("click", function () {
+          window.close();
+        });
+
+        setTimeout(showFallback, 2000);
+        tryOpenApp();
+      })();
+    </script>
+  </body>
+</html>
