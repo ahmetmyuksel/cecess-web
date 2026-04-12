@@ -42,7 +42,7 @@ type ReportRow = {
     created_at: string;
     summary: string | null;
     sentiment: ReportSentiment | null;
-    financialHealthScore: number | null;
+    financialhealthscore: number | null;
     data: ReportDataPayload | null;
 };
 
@@ -59,7 +59,7 @@ export function mapReportRowToRecord(row: ReportRow): ReportRecord {
         createdAt: row.created_at,
         summary: row.summary ?? payload.summary ?? "",
         sentiment: row.sentiment ?? payload.sentiment ?? "Needs Improvement",
-        financialHealthScore: Number(row.financialHealthScore ?? payload.financialHealthScore ?? 0),
+        financialHealthScore: Number(row.financialhealthscore ?? payload.financialHealthScore ?? 0),
         categoryBreakdown: Array.isArray(payload.categoryBreakdown) ? payload.categoryBreakdown : EMPTY_BREAKDOWN,
         subscriptionWarnings: Array.isArray(payload.subscriptionWarnings) ? payload.subscriptionWarnings : EMPTY_WARNINGS,
         savingsTips: Array.isArray(payload.savingsTips) ? payload.savingsTips : EMPTY_TIPS,

@@ -14,7 +14,7 @@ type ReportRow = {
     created_at: string;
     summary: string | null;
     sentiment: "Great" | "Good" | "Needs Improvement" | "Critical" | null;
-    financialHealthScore: number | null;
+    financialhealthscore: number | null;
     data: {
         financialHealthScore?: number | null;
         summary?: string | null;
@@ -35,7 +35,7 @@ export async function getReportsHistory(): Promise<ActionResponse<ReportRecord[]
 
     const { data, error } = await supabase
         .from("reports")
-        .select("id, month, created_at, summary, sentiment, financialHealthScore, data")
+        .select("id, month, created_at, summary, sentiment, financialhealthscore, data")
         .eq("user_id", user.id)
         .order("created_at", { ascending: false });
 
