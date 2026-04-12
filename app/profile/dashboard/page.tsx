@@ -8,10 +8,6 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  if (!user) {
-    return <div>Unauthorized</div>;
-  }
-
   // Calculate Date Range based on SearchParams
   const now = new Date();
   let startDate: Date | undefined;
@@ -78,10 +74,10 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
   })) || [];
 
   // Extract user metadata for initial display
-  const initialUser = {
+  const initialUser = user ? {
     first_name: user.user_metadata.first_name,
     email: user.email
-  };
+  } : undefined;
 
   return <DashboardView
     initialTransactions={formattedTransactions}

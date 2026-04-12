@@ -317,12 +317,37 @@ export type Dictionary = {
             monthly: string;
             annual: string;
             discount: string;
+            perMonth: string;
+            perYear: string;
+            footnote: string;
             plans: {
                 free: { name: string; desc: string; cta: string; };
                 premium: { name: string; desc: string; cta: string; };
                 pro: { name: string; desc: string; cta: string; };
             };
             compare: string;
+            features: {
+                transactionLimit: string;
+                manualEntry: string;
+                ocrScan: string;
+                basicReports: string;
+                singleCurrency: string;
+                aiRequestFree: string;
+                multiCurrency: string;
+                detailedCharts: string;
+                budgetAlerts: string;
+                aiAnalysis: string;
+                aiInsightsHub: string;
+                excelCsvExport: string;
+                prioritySupport: string;
+                unlimitedTransactions: string;
+                unlimitedAiRequests: string;
+            };
+            values: {
+                unlimited: string;
+                onePerWeek: string;
+                comingSoon: string;
+            };
         };
         faq: {
             title: string;

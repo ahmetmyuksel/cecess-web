@@ -122,44 +122,21 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         let mounted = true;
+        let profileFetched = false;
 
-        // 1. Get Session Immediately & Subscribe
         const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
             if (!mounted) return;
 
-            try {
-                setUser(session?.user ?? null);
+            setUser(session?.user ?? null);
 
-                if (session?.user) {
-                    // Only fetch if we don't have a profile or it's a new session type
-                    if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION') {
-                        await fetchProfile(session.user.id);
-                    }
-                } else {
-                    // console.warn("[useUser] No user in session. Clearing profile.");
-                    setProfile(null);
-                    setLoading(false); // No user, so we are done loading
+            if (session?.user) {
+                if (!profileFetched && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION')) {
+                    profileFetched = true;
+                    await fetchProfile(session.user.id);
                 }
-            } catch (err) {
-                console.error("useUser: Error in auth change", err);
-                setError("Auth state change error");
+            } else {
+                setProfile(null);
                 setLoading(false);
-            }
-        });
-
-        // 2. Fetch initial session explicitly
-        supabase.auth.getSession().then(({ data: { session }, error }) => {
-            if (error) {
-                console.error("[useUser] getSession Error:", error);
-            }
-            if (mounted) {
-                if (session) {
-                    setUser(session.user);
-                    fetchProfile(session.user.id);
-                } else {
-                    // console.warn("[useUser] No initial session found.");
-                    setLoading(false); // No session, stop loading
-                }
             }
         });
 

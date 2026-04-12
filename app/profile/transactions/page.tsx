@@ -3,15 +3,9 @@ import { createClient } from "@/utils/supabase/server";
 import { getTransactions } from "@/features/transactions/services/transaction-service";
 import { format } from "date-fns";
 import { formatCurrency } from "@/utils/currency-converter";
-import { redirect } from "next/navigation";
 
 export default async function TransactionsPage() {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
 
   // Fetch data server-side
   const rawTransactions = await getTransactions();

@@ -3,11 +3,6 @@ import { createClient } from "@/utils/supabase/server";
 
 export default async function CategoriesPage() {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    return <div>Unauthorized</div>;
-  }
 
   const { data: categories } = await supabase
     .from("categories")

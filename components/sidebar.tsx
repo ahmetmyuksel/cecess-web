@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import {
     LayoutDashboard,
@@ -46,18 +46,12 @@ export function Sidebar({ initialProfile }: { initialProfile?: any }) {
     const tier = effectiveProfile?.subscription_tier || "Free";
     const tierLabel = t.subscriptionPage.plans.title.replace("{tier}", tier);
 
-    const closeSidebar = () => setIsOpen(false);
-
-    const handleNavigation = (href: string) => {
-        closeSidebar();
-        router.push(href);
-    };
+    const closeSidebar = useCallback(() => setIsOpen(false), []);
 
     const handleSignOut = async () => {
         await signOut();
         closeSidebar();
         router.replace("/");
-        router.refresh();
     };
 
     const navItems = (
@@ -66,10 +60,11 @@ export function Sidebar({ initialProfile }: { initialProfile?: any }) {
                 const isActive = pathname.startsWith(item.href);
 
                 return (
-                    <button
+                    <Link
                         key={item.href}
-                        type="button"
-                        onClick={() => handleNavigation(item.href)}
+                        href={item.href}
+                        prefetch={true}
+                        onClick={closeSidebar}
                         className={cn(
                             "flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
                             isActive
@@ -79,7 +74,7 @@ export function Sidebar({ initialProfile }: { initialProfile?: any }) {
                     >
                         <item.icon className="h-5 w-5 shrink-0" />
                         <span>{item.name}</span>
-                    </button>
+                    </Link>
                 );
             })}
         </nav>
@@ -114,14 +109,15 @@ export function Sidebar({ initialProfile }: { initialProfile?: any }) {
                     )}
                 </div>
 
-                <button
-                    type="button"
-                    onClick={() => handleNavigation("/profile/settings")}
+                <Link
+                    href="/profile/settings"
+                    prefetch={true}
+                    onClick={closeSidebar}
                     className="p-2 text-slate-400 transition-colors hover:text-slate-600"
                     aria-label={t.settings.profile.title}
                 >
                     <Settings className="h-4 w-4" />
-                </button>
+                </Link>
             </div>
 
             <button
