@@ -1,20 +1,39 @@
 "use client";
 
+import { useState } from "react";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 
-interface AccountDeletionViewProps {
-    // isLoggedIn removed for static support
-}
-
-export function AccountDeletionView({ }: AccountDeletionViewProps) {
+export function AccountDeletionView() {
     const { t } = useLanguage();
-    // Assuming we added accountDeletion to public dictionary
     const { accountDeletion } = t.public;
+
+    const [username, setUsername] = useState("");
+    const [reason, setReason] = useState("");
+    const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!username.trim()) return;
+
+        setSubmitting(true);
+
+        const subject = encodeURIComponent("Account Deletion Request");
+        const body = encodeURIComponent(
+            `Account Deletion Request\n\nUsername: ${username.trim()}\nReason: ${reason.trim() || "Not specified"}`
+        );
+        window.open(`mailto:info@cecess.net?subject=${subject}&body=${body}`, "_self");
+
+        setTimeout(() => {
+            setSubmitted(true);
+            setSubmitting(false);
+        }, 500);
+    };
 
     // Helper to render text with bold keys
     const renderContent = (text: string) => {
         const parts = text.split(":");
-        if (parts.length > 1 && parts[0].length < 50 && !text.startsWith("http") && !text.startsWith("support@")) {
+        if (parts.length > 1 && parts[0].length < 50 && !text.startsWith("http") && !text.startsWith("info@")) {
             return (
                 <span>
                     <strong className="text-slate-900 font-semibold">{parts[0]}:</strong>
@@ -71,13 +90,61 @@ export function AccountDeletionView({ }: AccountDeletionViewProps) {
                                         </p>
                                     ))}
                                 </div>
+
+                                {/* Web Form inside the webForm section */}
+                                {key === "webForm" && (
+                                    <div className="mt-6">
+                                        {submitted ? (
+                                            <div className="p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm font-medium">
+                                                {accountDeletion.form.success}
+                                            </div>
+                                        ) : (
+                                            <form onSubmit={handleSubmit} className="space-y-4">
+                                                <div>
+                                                    <label htmlFor="username" className="block text-sm font-semibold text-slate-700 mb-1">
+                                                        {accountDeletion.form.username} <span className="text-red-500">*</span>
+                                                    </label>
+                                                    <input
+                                                        id="username"
+                                                        type="text"
+                                                        required
+                                                        value={username}
+                                                        onChange={(e) => setUsername(e.target.value)}
+                                                        placeholder={accountDeletion.form.usernamePlaceholder}
+                                                        className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="reason" className="block text-sm font-semibold text-slate-700 mb-1">
+                                                        {accountDeletion.form.reason}
+                                                    </label>
+                                                    <textarea
+                                                        id="reason"
+                                                        rows={3}
+                                                        value={reason}
+                                                        onChange={(e) => setReason(e.target.value)}
+                                                        placeholder={accountDeletion.form.reasonPlaceholder}
+                                                        className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition resize-none"
+                                                    />
+                                                </div>
+                                                <button
+                                                    type="submit"
+                                                    disabled={submitting || !username.trim()}
+                                                    className="w-full rounded-lg bg-red-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                                                >
+                                                    {submitting ? "..." : accountDeletion.form.submit}
+                                                </button>
+                                            </form>
+                                        )}
+                                    </div>
+                                )}
                             </section>
                         ))}
                     </div>
 
                     {/* Footer Note */}
                     <div className="mt-12 pt-8 border-t border-slate-100 text-center text-slate-500 text-sm">
-                        For any further assistance, do not hesitate to contact our support team.
+                        For any further assistance, contact us at info@cecess.net
                     </div>
                 </article>
             </main>

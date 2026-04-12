@@ -381,39 +381,29 @@ export const tr: Dictionary = {
             search: "Bir soru arayın...",
             items: {
                 q1: {
-                    q: "Kategorizasyon için ne tür bir yapay zeka kullanılıyor?",
-                    a: "Harcamalarınızı otomatik ve doğru bir şekilde kategorize etmek için milyonlarca finansal işlem üzerinde eğitilmiş tescilli bir makine öğrenimi modeli kullanıyoruz. Zamanla daha da akıllı hale gelmek için düzeltmelerinizi öğrenir.",
+                    q: "AI özelliği nasıl çalışır?",
+                    a: "cecess, finanslarınızı daha akıllı yönetmeniz için Google Gemini AI kullanır. AI, gelir ve giderlerinizi analiz ederek kişiselleştirilmiş bir finansal sağlık puanı (0–100), harcama analizleri, uyarılar ve uygulanabilir ipuçları üretir — tamamı tercih ettiğiniz dilde. Ayrıca banka ekstrelerinizi (PDF veya görsel) okuyup işlemlerinizi otomatik olarak çıkarabilen Akıllı İçe Aktarma özelliğini de destekler. İçe aktarma sırasında AI, işlemlerinizi akıllıca kategorize eder ve gerektiğinde yeni kategoriler önerir. Ücretsiz planda haftada 1 AI isteği hakkınız vardır. Premium ve Pro kullanıcılar sınırsız AI erişiminden yararlanır.",
                     cat: "Features"
                 },
                 q2: {
-                    q: "Özel harcama kategorileri oluşturabilir miyim?",
-                    a: "Evet. Bütçenize ve harcama takibinize uyması için özel kategoriler oluşturabilir, yeniden adlandırabilir ve silebilirsiniz.",
-                    cat: "Features"
+                    q: "Deneme süresi var mı?",
+                    a: "cecess, süresi dolmayan cömert bir Ücretsiz plan sunar — kredi kartı gerekmez. Ücretsiz plan ile 100'e kadar işlem takip edebilir, haftada 1 AI destekli Akıllı İçe Aktarma kullanabilir, OCR ile fatura tarayabilir ve temel raporlara erişebilirsiniz. Daha fazlasına hazır olduğunuzda, App Store veya Google Play üzerinden istediğiniz zaman Premium veya Pro'ya yükseltebilirsiniz. Herhangi bir taahhüt yoktur — aboneliğinizi istediğiniz zaman iptal edebilirsiniz.",
+                    cat: "Pricing"
                 },
                 q3: {
-                    q: "Uygulama yinelenen ödemeleri ve abonelikleri takip ediyor mu?",
-                    a: "Kesinlikle. Yinelenen ödemeler ve abonelikler otomatik olarak algılanır, bu da kaçırılan yenilemelerden kaçınmanıza ve tasarruf fırsatlarını fark etmenize yardımcı olur.",
+                    q: "Banka hesabımı doğrudan bağlayabilir miyim?",
+                    a: "cecess, banka hesabınıza doğrudan bağlanmaz ve bu tasarım gereğidir — banka bilgileriniz sizde kalır. Bunun yerine verilerinizi içe aktarmak için esnek yollar sunarız: bankanızdan CSV veya Excel dışa aktarımlarını yükleyebilir, Akıllı İçe Aktarma ile banka ekstrelerinizi (PDF veya fotoğraf) AI destekli çıkarma ile taratabilir, cihaz üzerinde OCR ile fiş ve faturaları tarayabilir veya işlemleri manuel olarak ekleyebilirsiniz. Finansal verileriniz, banka giriş bilgilerinizi paylaşmadan cecess'e aktarılır.",
                     cat: "Features"
                 },
                 q4: {
-                    q: "Premium özellikler için ücretsiz deneme sunuyor musunuz?",
-                    a: "Evet. Yeni kullanıcılar, kredi kartı gerekmeden premium özelliklerin 14 günlük ücretsiz deneme sürümünü alır.",
-                    cat: "Pricing"
-                },
-                q5: {
-                    q: "Bağlı banka hesaplarımı nasıl güncellerim?",
-                    a: "Bağlı kurumları istediğiniz zaman eklemek, yenilemek veya kaldırmak için Hesap Ayarları → Bağlantılar'a gidin. Değişiklikler anında senkronize edilir.",
+                    q: "Hesabımı kalıcı olarak silebilir miyim?",
+                    a: "Evet. Hesabınızı Profil → Hesabı Sil yolunu izleyerek kalıcı olarak silebilirsiniz. İki onay adımından sonra, işlemler, kategoriler, AI analizleri ve profiliniz dahil tüm verileriniz sunucularımızdan tamamen ve geri dönüşü olmayacak şekilde kaldırılır. Aktif bir aboneliğiniz varsa, hesabınızı silmeden önce App Store veya Google Play üzerinden iptal ettiğinizden emin olun.",
                     cat: "Account Management"
                 },
-                q6: {
-                    q: "Finansal verilerim nasıl korunuyor?",
-                    a: "Banka düzeyinde şifreleme, periyodik güvenlik incelemeleri kullanıyoruz ve verilerinizi asla satmıyoruz. Hesapların bağlantısını istediğiniz zaman kesebilirsiniz.",
+                q5: {
+                    q: "Verilerim nasıl güvende tutuluyor?",
+                    a: "Güvenliğiniz önceliğimizdir. Tüm veriler şifreli HTTPS/TLS bağlantıları üzerinden iletilir. Veritabanı düzeyinde bile yalnızca sizin verilerinize erişebilmenizi sağlayan Satır Düzeyinde Güvenlik (RLS) ile Supabase kullanıyoruz. Ödemeler, PCI Seviye 1 uyumluluğuna sahip Apple ve Google uygulama mağazaları üzerinden işlenir; kart bilgilerinizi asla görmez veya saklamayız. AI banka ekstrelerinizi işlerken, hesap numaraları ve isimler gibi kişisel bilgiler açıkça hariç tutulur. OCR ile fatura tarama tamamen cihazınızda çalışır — fiş görselleriniz hiçbir sunucuya yüklenmez.",
                     cat: "Security"
-                },
-                q7: {
-                    q: "Destek ekibine nasıl ulaşabilirim?",
-                    a: "İletişim e-posta adresimizi profilinizin Ayarlar bölümünde bulabilirsiniz.",
-                    cat: "Support"
                 }
             },
             categories: {
@@ -556,32 +546,50 @@ export const tr: Dictionary = {
         },
         accountDeletion: {
             title: "Hesap Silme Talimatları",
-            lastUpdated: "Son Güncelleme: 3 Nisan 2026",
-            intro: "cecess'te gizlilik hakkınıza saygı duyuyoruz ve hesabınızı ve ilgili tüm kişisel verilerinizi silmek için net bir yol sunuyoruz. Google Play'in Unutulma Hakkı gereksinimlerine uymak için lütfen aşağıdaki adımları izleyin.",
+            lastUpdated: "Son Güncelleme: 13 Nisan 2026",
+            intro: "cecess'te gizlilik hakkınıza saygı duyuyoruz ve hesabınızı ve ilgili tüm kişisel verilerinizi silmek için net bir yol sunuyoruz. Google Play'in Unutulma Hakkı gereksinimlerine uymak için aşağıdaki yöntemlerden herhangi birini kullanabilirsiniz.",
             sections: {
                 mobileApp: {
-                    title: "Hesabınızı Nasıl Silersiniz?",
+                    title: "Seçenek 1: Mobil Uygulama Üzerinden Silme",
                     body: [
                         "Adım 1: Cihazınızda cecess mobil uygulamasını açın.",
                         "Adım 2: Hesabınıza giriş yapın.",
-                        "Adım 3: Profil sekmesi üzerinden 'Ayarlar'a gidin.",
-                        "Adım 4: Menünün altındaki 'Hesabımı Sil' seçeneğine dokunun.",
-                        "Adım 5: Kararınızı onaylayın. Hesabınız ve ilgili tüm veriler derhal silinmek üzere işleme alınacaktır."
+                        "Adım 3: Ayarlar'a gidin.",
+                        "Adım 4: Profil Bilgileri'ne dokunun.",
+                        "Adım 5: Alt kısımdaki 'Hesabımı Sil' seçeneğine dokunun.",
+                        "Adım 6: Silme onayını vererek kararınızı doğrulayın.",
+                        "Hesabınız ve ilgili tüm veriler kalıcı olarak ve anında silinecektir."
                     ]
                 },
                 dataHandling: {
                     title: "Hangi Veriler Silinir?",
                     body: [
-                        "Onayınızın ardından şu veriler aktif veritabanlarımızdan kalıcı olarak kaldırılır: kullanıcı profiliniz (ad, e-posta), tüm işlem geçmişi, hesap kayıtları, özel kategoriler ve oluşturulan finansal raporlar.",
+                        "Onayınızın ardından şu veriler sunucularımızdan kalıcı olarak kaldırılır: kullanıcı profiliniz (ad, e-posta, telefon, doğum tarihi), tüm işlem geçmişi, hesap kayıtları, özel kategoriler, AI tarafından oluşturulan raporlar ve öngörüler ile ilgili tüm meta veriler.",
                         "Silme işlemi tamamlandıktan sonra finansal verilerinizin kopyalarını tutmuyoruz."
                     ]
                 },
-                contact: {
-                    title: "Manuel Silme Talebi",
+                emailRequest: {
+                    title: "Seçenek 2: E-posta ile Silme Talebi",
                     body: [
-                        "Mobil uygulamaya erişemiyorsanız, hesabınızla ilişkili e-posta adresinden support@cecess.com adresine e-posta göndererek manuel hesap silme talebinde bulunabilirsiniz. Talebinizi 48 saat içinde işleme alacağız."
+                        "Mobil uygulamaya erişemiyorsanız, hesap silme talebinizi e-posta ile gönderebilirsiniz.",
+                        "Kayıtlı e-posta adresinizden info@cecess.net adresine 'Hesap Silme Talebi' konu başlığıyla bir e-posta gönderin.",
+                        "Talebiniz 3 iş günü içerisinde işleme alınacaktır."
+                    ]
+                },
+                webForm: {
+                    title: "Seçenek 3: Silme Talep Formu",
+                    body: [
+                        "Aşağıdaki formu doldurarak da hesap silme talebinde bulunabilirsiniz. Lütfen kayıtlı kullanıcı adınızı ve talebinizin nedenini belirtin."
                     ]
                 }
+            },
+            form: {
+                username: "Kayıtlı Kullanıcı Adı",
+                usernamePlaceholder: "Kayıtlı kullanıcı adınızı girin",
+                reason: "Silme Nedeni",
+                reasonPlaceholder: "Hesabınızı neden silmek istediğinizi belirtin (isteğe bağlı)",
+                submit: "Silme Talebi Gönder",
+                success: "Silme talebiniz başarıyla gönderildi. 3 iş günü içerisinde işleme alınacaktır."
             }
         },
         landing: {

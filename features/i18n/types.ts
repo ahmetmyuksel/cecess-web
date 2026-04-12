@@ -359,8 +359,6 @@ export type Dictionary = {
                 q3: { q: string; a: string; cat: string };
                 q4: { q: string; a: string; cat: string };
                 q5: { q: string; a: string; cat: string };
-                q6: { q: string; a: string; cat: string };
-                q7: { q: string; a: string; cat: string };
             };
             categories: {
                 features: string;
@@ -407,7 +405,16 @@ export type Dictionary = {
             sections: {
                 mobileApp: { title: string; body: string[] };
                 dataHandling: { title: string; body: string[] };
-                contact: { title: string; body: string[] };
+                emailRequest: { title: string; body: string[] };
+                webForm: { title: string; body: string[] };
+            };
+            form: {
+                username: string;
+                usernamePlaceholder: string;
+                reason: string;
+                reasonPlaceholder: string;
+                submit: string;
+                success: string;
             };
         };
         landing: {

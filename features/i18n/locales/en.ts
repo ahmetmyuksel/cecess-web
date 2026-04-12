@@ -381,39 +381,29 @@ export const en: Dictionary = {
             search: "Search for a question...",
             items: {
                 q1: {
-                    q: "What kind of AI is used for categorization?",
-                    a: "We use a proprietary machine learning model trained on millions of financial transactions to automatically and accurately categorize your expenses. It learns from your corrections to become even smarter over time.",
+                    q: "How does the AI feature work?",
+                    a: "cecess uses Google Gemini AI to help you manage your finances smarter. The AI analyzes your income and expenses to generate a personalized financial health score (0–100), spending insights, warnings, and actionable tips — all in your preferred language. It also powers Smart Import, which can read your bank statements (PDF or image) and automatically extract transactions. During imports, AI categorizes your transactions intelligently and even suggests new categories when needed. On the Free plan, you get 1 AI request per week. Premium and Pro users enjoy unlimited AI access.",
                     cat: "Features"
                 },
                 q2: {
-                    q: "Can I create custom spending categories?",
-                    a: "Yes. You can create, rename, and delete custom categories to match how you budget and track spending.",
-                    cat: "Features"
+                    q: "Is there a trial period?",
+                    a: "cecess offers a generous Free plan that never expires — no credit card required. With the Free plan, you can track up to 100 transactions, use 1 AI-powered Smart Import per week, scan bills with OCR, and access basic reports. When you're ready for more, you can upgrade to Premium or Pro at any time through the App Store or Google Play. There's no commitment — you can cancel your subscription anytime.",
+                    cat: "Pricing"
                 },
                 q3: {
-                    q: "Does the app track recurring payments and subscriptions?",
-                    a: "Absolutely. Recurring payments and subscriptions are detected automatically, helping you avoid missed renewals and spot savings opportunities.",
+                    q: "Can I connect my bank account directly?",
+                    a: "cecess does not connect directly to your bank account, and that's by design — your banking credentials stay with you. Instead, we offer flexible ways to import your data: you can upload CSV or Excel exports from your bank, use Smart Import to scan bank statements (PDF or photo) with AI-powered extraction, scan receipts and bills using on-device OCR, or simply add transactions manually. Your financial data gets into cecess without ever sharing your bank login.",
                     cat: "Features"
                 },
                 q4: {
-                    q: "Do you offer a free trial for premium features?",
-                    a: "Yes. New users receive a 14-day free trial of premium features with no credit card required.",
-                    cat: "Pricing"
-                },
-                q5: {
-                    q: "How do I update my linked bank accounts?",
-                    a: "Navigate to Account Settings → Connections to add, refresh, or remove linked institutions at any time. Changes sync instantly.",
+                    q: "Can I delete my account permanently?",
+                    a: "Yes. You can permanently delete your account from Profile → Delete Account. After two confirmation steps, all your data — including transactions, categories, AI insights, and your profile — is completely and irreversibly removed from our servers. If you have an active subscription, make sure to cancel it through the App Store or Google Play before deleting your account.",
                     cat: "Account Management"
                 },
-                q6: {
-                    q: "How is my financial data protected?",
-                    a: "We use bank-grade encryption, periodic security reviews, and never sell your data. You can disconnect accounts whenever you choose.",
+                q5: {
+                    q: "How is my data secured?",
+                    a: "Your security is our priority. All data is transmitted over encrypted HTTPS/TLS connections. We use Supabase with Row-Level Security (RLS), meaning only you can access your own data — even at the database level. Payments are processed through Apple and Google's app stores with PCI Level 1 compliance; we never see or store your card details. When AI processes your bank statements, personal information like account numbers and names is explicitly excluded. Bill scanning with OCR runs entirely on your device — your receipt images are never uploaded to any server.",
                     cat: "Security"
-                },
-                q7: {
-                    q: "How can I contact support?",
-                    a: "You can find our contact email address in the Settings section of your profile.",
-                    cat: "Support"
                 }
             },
             categories: {
@@ -556,32 +546,50 @@ export const en: Dictionary = {
         },
         accountDeletion: {
             title: "Account Deletion Instructions",
-            lastUpdated: "Last Updated: April 3, 2026",
-            intro: "At cecess, we respect your right to privacy and offer a clear path to delete your account and all associated personal data. To comply with Google Play's Right to be Forgotten requirements, please follow the steps below.",
+            lastUpdated: "Last Updated: April 13, 2026",
+            intro: "At cecess, we respect your right to privacy and offer a clear path to delete your account and all associated personal data. To comply with Google Play's Right to be Forgotten requirements, you can use any of the methods below.",
             sections: {
                 mobileApp: {
-                    title: "How to Delete Your Account",
+                    title: "Option 1: Delete via Mobile App",
                     body: [
                         "Step 1: Open the cecess mobile application on your device.",
                         "Step 2: Sign in to your account.",
-                        "Step 3: Navigate to 'Settings' via the profile tab.",
-                        "Step 4: Tap on 'Delete My Account' at the bottom of the menu.",
-                        "Step 5: Confirm your decision. Your account and all associated data will be processed for immediate deletion."
+                        "Step 3: Go to Settings.",
+                        "Step 4: Tap on Profile Information.",
+                        "Step 5: Tap 'Delete My Account' at the bottom.",
+                        "Step 6: Confirm your decision by approving the deletion prompt.",
+                        "Your account and all associated data will be permanently and immediately deleted."
                     ]
                 },
                 dataHandling: {
                     title: "What Data is Deleted?",
                     body: [
-                        "Upon confirmation, the following data is permanently removed from our active databases: your user profile (name, email), all transaction history, account records, custom categories, and generated financial reports.",
+                        "Upon confirmation, the following data is permanently removed from our servers: your user profile (name, email, phone, date of birth), all transaction history, account records, custom categories, AI-generated reports and insights, and all related metadata.",
                         "We do not retain copies of your financial data once the deletion is processed."
                     ]
                 },
-                contact: {
-                    title: "Manual Deletion Request",
+                emailRequest: {
+                    title: "Option 2: Request Deletion via Email",
                     body: [
-                        "If you are unable to access the mobile application, you can request manual account deletion by emailing us at support@cecess.com from the email address associated with your account. We will process your request within 48 hours."
+                        "If you are unable to access the mobile application, you can request account deletion by email.",
+                        "Send an email from your registered email address to info@cecess.net with the subject line 'Account Deletion Request'.",
+                        "Your request will be processed within 3 business days."
+                    ]
+                },
+                webForm: {
+                    title: "Option 3: Submit a Deletion Request Form",
+                    body: [
+                        "You can also submit an account deletion request using the form below. Please provide your registered username and the reason for your request."
                     ]
                 }
+            },
+            form: {
+                username: "Registered Username",
+                usernamePlaceholder: "Enter your registered username",
+                reason: "Reason for Deletion",
+                reasonPlaceholder: "Please tell us why you want to delete your account (optional)",
+                submit: "Submit Deletion Request",
+                success: "Your deletion request has been submitted successfully. We will process it within 3 business days."
             }
         },
         landing: {
