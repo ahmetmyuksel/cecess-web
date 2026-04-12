@@ -382,17 +382,17 @@ export const tr: Dictionary = {
             items: {
                 q1: {
                     q: "AI özelliği nasıl çalışır?",
-                    a: "cecess, finanslarınızı daha akıllı yönetmeniz için Google Gemini AI kullanır. AI, gelir ve giderlerinizi analiz ederek kişiselleştirilmiş bir finansal sağlık puanı (0–100), harcama analizleri, uyarılar ve uygulanabilir ipuçları üretir — tamamı tercih ettiğiniz dilde. Ayrıca banka ekstrelerinizi (PDF veya görsel) okuyup işlemlerinizi otomatik olarak çıkarabilen Akıllı İçe Aktarma özelliğini de destekler. İçe aktarma sırasında AI, işlemlerinizi akıllıca kategorize eder ve gerektiğinde yeni kategoriler önerir. Ücretsiz planda haftada 1 AI isteği hakkınız vardır. Premium ve Pro kullanıcılar sınırsız AI erişiminden yararlanır.",
+                    a: "cecess, finanslarınızı daha akıllı yönetmeniz için Google Gemini AI kullanır. AI, gelir ve giderlerinizi analiz ederek kişiselleştirilmiş bir finansal sağlık puanı (0–100), harcama analizleri, uyarılar ve uygulanabilir ipuçları üretir -tamamı tercih ettiğiniz dilde. Ayrıca banka ekstrelerinizi (PDF veya görsel) okuyup işlemlerinizi otomatik olarak çıkarabilen Akıllı İçe Aktarma özelliğini de destekler. İçe aktarma sırasında AI, işlemlerinizi akıllıca kategorize eder ve gerektiğinde yeni kategoriler önerir. Ücretsiz planda haftada 1 AI isteği hakkınız vardır. Premium ve Pro kullanıcılar sınırsız AI erişiminden yararlanır.",
                     cat: "Features"
                 },
                 q2: {
                     q: "Deneme süresi var mı?",
-                    a: "cecess, süresi dolmayan cömert bir Ücretsiz plan sunar — kredi kartı gerekmez. Ücretsiz plan ile 100'e kadar işlem takip edebilir, haftada 1 AI destekli Akıllı İçe Aktarma kullanabilir, OCR ile fatura tarayabilir ve temel raporlara erişebilirsiniz. Daha fazlasına hazır olduğunuzda, App Store veya Google Play üzerinden istediğiniz zaman Premium veya Pro'ya yükseltebilirsiniz. Herhangi bir taahhüt yoktur — aboneliğinizi istediğiniz zaman iptal edebilirsiniz.",
+                    a: "cecess, süresi dolmayan cömert bir Ücretsiz plan sunar -kredi kartı gerekmez. Ücretsiz plan ile 100'e kadar işlem takip edebilir, haftada 1 AI destekli Akıllı İçe Aktarma kullanabilir, OCR ile fatura tarayabilir ve temel raporlara erişebilirsiniz. Daha fazlasına hazır olduğunuzda, App Store veya Google Play üzerinden istediğiniz zaman Premium veya Pro'ya yükseltebilirsiniz. Herhangi bir taahhüt yoktur -aboneliğinizi istediğiniz zaman iptal edebilirsiniz.",
                     cat: "Pricing"
                 },
                 q3: {
                     q: "Banka hesabımı doğrudan bağlayabilir miyim?",
-                    a: "cecess, banka hesabınıza doğrudan bağlanmaz ve bu tasarım gereğidir — banka bilgileriniz sizde kalır. Bunun yerine verilerinizi içe aktarmak için esnek yollar sunarız: bankanızdan CSV veya Excel dışa aktarımlarını yükleyebilir, Akıllı İçe Aktarma ile banka ekstrelerinizi (PDF veya fotoğraf) AI destekli çıkarma ile taratabilir, cihaz üzerinde OCR ile fiş ve faturaları tarayabilir veya işlemleri manuel olarak ekleyebilirsiniz. Finansal verileriniz, banka giriş bilgilerinizi paylaşmadan cecess'e aktarılır.",
+                    a: "cecess, banka hesabınıza doğrudan bağlanmaz ve bu tasarım gereğidir -banka bilgileriniz sizde kalır. Bunun yerine verilerinizi içe aktarmak için esnek yollar sunarız: bankanızdan CSV veya Excel dışa aktarımlarını yükleyebilir, Akıllı İçe Aktarma ile banka ekstrelerinizi (PDF veya fotoğraf) AI destekli çıkarma ile taratabilir, cihaz üzerinde OCR ile fiş ve faturaları tarayabilir veya işlemleri manuel olarak ekleyebilirsiniz. Finansal verileriniz, banka giriş bilgilerinizi paylaşmadan cecess'e aktarılır.",
                     cat: "Features"
                 },
                 q4: {
@@ -402,7 +402,7 @@ export const tr: Dictionary = {
                 },
                 q5: {
                     q: "Verilerim nasıl güvende tutuluyor?",
-                    a: "Güvenliğiniz önceliğimizdir. Tüm veriler şifreli HTTPS/TLS bağlantıları üzerinden iletilir. Veritabanı düzeyinde bile yalnızca sizin verilerinize erişebilmenizi sağlayan Satır Düzeyinde Güvenlik (RLS) ile Supabase kullanıyoruz. Ödemeler, PCI Seviye 1 uyumluluğuna sahip Apple ve Google uygulama mağazaları üzerinden işlenir; kart bilgilerinizi asla görmez veya saklamayız. AI banka ekstrelerinizi işlerken, hesap numaraları ve isimler gibi kişisel bilgiler açıkça hariç tutulur. OCR ile fatura tarama tamamen cihazınızda çalışır — fiş görselleriniz hiçbir sunucuya yüklenmez.",
+                    a: "Güvenliğiniz önceliğimizdir. Tüm veriler şifreli HTTPS/TLS bağlantıları üzerinden iletilir. Veritabanı düzeyinde bile yalnızca sizin verilerinize erişebilmenizi sağlayan Satır Düzeyinde Güvenlik (RLS) ile Supabase kullanıyoruz. Ödemeler, PCI Seviye 1 uyumluluğuna sahip Apple ve Google uygulama mağazaları üzerinden işlenir; kart bilgilerinizi asla görmez veya saklamayız. AI banka ekstrelerinizi işlerken, hesap numaraları ve isimler gibi kişisel bilgiler açıkça hariç tutulur. OCR ile fatura tarama tamamen cihazınızda çalışır -fiş görselleriniz hiçbir sunucuya yüklenmez.",
                     cat: "Security"
                 }
             },
@@ -445,7 +445,7 @@ export const tr: Dictionary = {
                     title: "3. Veri Depolama ve Güvenlik",
                     body: [
                         "Verileriniz Supabase (PostgreSQL) üzerinde durağan halde şifreleme (AES-256) ve aktarım sırasında şifreleme (TLS 1.2+) ile saklanır.",
-                        "Parolalar Supabase Auth aracılığıyla Bcrypt kullanılarak hashlenir — düz metin kimlik bilgilerini asla saklamıyoruz."
+                        "Parolalar Supabase Auth aracılığıyla Bcrypt kullanılarak hashlenir -düz metin kimlik bilgilerini asla saklamıyoruz."
                     ]
                 },
                 security: {
@@ -579,13 +579,13 @@ export const tr: Dictionary = {
                 webForm: {
                     title: "Seçenek 3: Silme Talep Formu",
                     body: [
-                        "Aşağıdaki formu doldurarak da hesap silme talebinde bulunabilirsiniz. Lütfen kayıtlı kullanıcı adınızı ve talebinizin nedenini belirtin."
+                        "Aşağıdaki formu doldurarak da hesap silme talebinde bulunabilirsiniz. Lütfen kayıtlı e-posta adresinizi ve talebinizin nedenini belirtin."
                     ]
                 }
             },
             form: {
-                username: "Kayıtlı Kullanıcı Adı",
-                usernamePlaceholder: "Kayıtlı kullanıcı adınızı girin",
+                email: "Kayıtlı E-posta",
+                emailPlaceholder: "Kayıtlı e-posta adresinizi girin",
                 reason: "Silme Nedeni",
                 reasonPlaceholder: "Hesabınızı neden silmek istediğinizi belirtin (isteğe bağlı)",
                 submit: "Silme Talebi Gönder",

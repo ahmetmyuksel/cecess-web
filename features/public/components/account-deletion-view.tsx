@@ -7,20 +7,20 @@ export function AccountDeletionView() {
     const { t } = useLanguage();
     const { accountDeletion } = t.public;
 
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [reason, setReason] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [submitting, setSubmitting] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!username.trim()) return;
+        if (!email.trim()) return;
 
         setSubmitting(true);
 
         const subject = encodeURIComponent("Account Deletion Request");
         const body = encodeURIComponent(
-            `Account Deletion Request\n\nUsername: ${username.trim()}\nReason: ${reason.trim() || "Not specified"}`
+            `Account Deletion Request\n\nE-mail: ${email.trim()}\nReason: ${reason.trim() || "Not specified"}`
         );
         window.open(`mailto:info@cecess.net?subject=${subject}&body=${body}`, "_self");
 
@@ -101,16 +101,16 @@ export function AccountDeletionView() {
                                         ) : (
                                             <form onSubmit={handleSubmit} className="space-y-4">
                                                 <div>
-                                                    <label htmlFor="username" className="block text-sm font-semibold text-slate-700 mb-1">
-                                                        {accountDeletion.form.username} <span className="text-red-500">*</span>
+                                                    <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-1">
+                                                        {accountDeletion.form.email} <span className="text-red-500">*</span>
                                                     </label>
                                                     <input
-                                                        id="username"
-                                                        type="text"
+                                                        id="email"
+                                                        type="email"
                                                         required
-                                                        value={username}
-                                                        onChange={(e) => setUsername(e.target.value)}
-                                                        placeholder={accountDeletion.form.usernamePlaceholder}
+                                                        value={email}
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        placeholder={accountDeletion.form.emailPlaceholder}
                                                         className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
                                                     />
                                                 </div>
@@ -129,7 +129,7 @@ export function AccountDeletionView() {
                                                 </div>
                                                 <button
                                                     type="submit"
-                                                    disabled={submitting || !username.trim()}
+                                                    disabled={submitting || !email.trim()}
                                                     className="w-full rounded-lg bg-red-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition"
                                                 >
                                                     {submitting ? "..." : accountDeletion.form.submit}

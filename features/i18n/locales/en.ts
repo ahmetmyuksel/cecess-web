@@ -382,27 +382,27 @@ export const en: Dictionary = {
             items: {
                 q1: {
                     q: "How does the AI feature work?",
-                    a: "cecess uses Google Gemini AI to help you manage your finances smarter. The AI analyzes your income and expenses to generate a personalized financial health score (0–100), spending insights, warnings, and actionable tips — all in your preferred language. It also powers Smart Import, which can read your bank statements (PDF or image) and automatically extract transactions. During imports, AI categorizes your transactions intelligently and even suggests new categories when needed. On the Free plan, you get 1 AI request per week. Premium and Pro users enjoy unlimited AI access.",
+                    a: "cecess uses Google Gemini AI to help you manage your finances smarter. The AI analyzes your income and expenses to generate a personalized financial health score (0–100), spending insights, warnings, and actionable tips -all in your preferred language. It also powers Smart Import, which can read your bank statements (PDF or image) and automatically extract transactions. During imports, AI categorizes your transactions intelligently and even suggests new categories when needed. On the Free plan, you get 1 AI request per week. Premium and Pro users enjoy unlimited AI access.",
                     cat: "Features"
                 },
                 q2: {
                     q: "Is there a trial period?",
-                    a: "cecess offers a generous Free plan that never expires — no credit card required. With the Free plan, you can track up to 100 transactions, use 1 AI-powered Smart Import per week, scan bills with OCR, and access basic reports. When you're ready for more, you can upgrade to Premium or Pro at any time through the App Store or Google Play. There's no commitment — you can cancel your subscription anytime.",
+                    a: "cecess offers a generous Free plan that never expires -no credit card required. With the Free plan, you can track up to 100 transactions, use 1 AI-powered Smart Import per week, scan bills with OCR, and access basic reports. When you're ready for more, you can upgrade to Premium or Pro at any time through the App Store or Google Play. There's no commitment -you can cancel your subscription anytime.",
                     cat: "Pricing"
                 },
                 q3: {
                     q: "Can I connect my bank account directly?",
-                    a: "cecess does not connect directly to your bank account, and that's by design — your banking credentials stay with you. Instead, we offer flexible ways to import your data: you can upload CSV or Excel exports from your bank, use Smart Import to scan bank statements (PDF or photo) with AI-powered extraction, scan receipts and bills using on-device OCR, or simply add transactions manually. Your financial data gets into cecess without ever sharing your bank login.",
+                    a: "cecess does not connect directly to your bank account, and that's by design -your banking credentials stay with you. Instead, we offer flexible ways to import your data: you can upload CSV or Excel exports from your bank, use Smart Import to scan bank statements (PDF or photo) with AI-powered extraction, scan receipts and bills using on-device OCR, or simply add transactions manually. Your financial data gets into cecess without ever sharing your bank login.",
                     cat: "Features"
                 },
                 q4: {
                     q: "Can I delete my account permanently?",
-                    a: "Yes. You can permanently delete your account from Profile → Delete Account. After two confirmation steps, all your data — including transactions, categories, AI insights, and your profile — is completely and irreversibly removed from our servers. If you have an active subscription, make sure to cancel it through the App Store or Google Play before deleting your account.",
+                    a: "Yes. You can permanently delete your account from Profile → Delete Account. After two confirmation steps, all your data -including transactions, categories, AI insights, and your profile -is completely and irreversibly removed from our servers. If you have an active subscription, make sure to cancel it through the App Store or Google Play before deleting your account.",
                     cat: "Account Management"
                 },
                 q5: {
                     q: "How is my data secured?",
-                    a: "Your security is our priority. All data is transmitted over encrypted HTTPS/TLS connections. We use Supabase with Row-Level Security (RLS), meaning only you can access your own data — even at the database level. Payments are processed through Apple and Google's app stores with PCI Level 1 compliance; we never see or store your card details. When AI processes your bank statements, personal information like account numbers and names is explicitly excluded. Bill scanning with OCR runs entirely on your device — your receipt images are never uploaded to any server.",
+                    a: "Your security is our priority. All data is transmitted over encrypted HTTPS/TLS connections. We use Supabase with Row-Level Security (RLS), meaning only you can access your own data -even at the database level. Payments are processed through Apple and Google's app stores with PCI Level 1 compliance; we never see or store your card details. When AI processes your bank statements, personal information like account numbers and names is explicitly excluded. Bill scanning with OCR runs entirely on your device -your receipt images are never uploaded to any server.",
                     cat: "Security"
                 }
             },
@@ -445,7 +445,7 @@ export const en: Dictionary = {
                     title: "3. Data Storage & Security",
                     body: [
                         "Your data is stored in Supabase (PostgreSQL) with encryption at rest (AES-256) and encryption in transit (TLS 1.2+).",
-                        "Passwords are hashed using Bcrypt via Supabase Auth — we never store plaintext credentials."
+                        "Passwords are hashed using Bcrypt via Supabase Auth -we never store plaintext credentials."
                     ]
                 },
                 security: {
@@ -579,13 +579,13 @@ export const en: Dictionary = {
                 webForm: {
                     title: "Option 3: Submit a Deletion Request Form",
                     body: [
-                        "You can also submit an account deletion request using the form below. Please provide your registered username and the reason for your request."
+                        "You can also submit an account deletion request using the form below. Please provide your registered e-mail address and the reason for your request."
                     ]
                 }
             },
             form: {
-                username: "Registered Username",
-                usernamePlaceholder: "Enter your registered username",
+                email: "Registered E-mail",
+                emailPlaceholder: "Enter your registered e-mail address",
                 reason: "Reason for Deletion",
                 reasonPlaceholder: "Please tell us why you want to delete your account (optional)",
                 submit: "Submit Deletion Request",

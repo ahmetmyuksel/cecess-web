@@ -409,8 +409,8 @@ export type Dictionary = {
                 webForm: { title: string; body: string[] };
             };
             form: {
-                username: string;
-                usernamePlaceholder: string;
+                email: string;
+                emailPlaceholder: string;
                 reason: string;
                 reasonPlaceholder: string;
                 submit: string;
