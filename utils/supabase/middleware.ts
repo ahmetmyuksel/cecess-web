@@ -1,13 +1,22 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-
 export async function updateSession(request: NextRequest) {
     let response = NextResponse.next({
         request: {
             headers: request.headers,
         },
     })
+
+    // Security headers
+    response.headers.set('X-Content-Type-Options', 'nosniff')
+    response.headers.set('X-Frame-Options', 'DENY')
+    response.headers.set('X-XSS-Protection', '1; mode=block')
+    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+    response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+    if (process.env.NODE_ENV === 'production') {
+        response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
+    }
 
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://mock.supabase.co',
@@ -30,6 +39,16 @@ export async function updateSession(request: NextRequest) {
                             headers: request.headers,
                         },
                     })
+                    // Re-apply security headers after response recreation
+                    response.headers.set('X-Content-Type-Options', 'nosniff')
+                    response.headers.set('X-Frame-Options', 'DENY')
+                    response.headers.set('X-XSS-Protection', '1; mode=block')
+                    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+                    response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+                    if (process.env.NODE_ENV === 'production') {
+                        response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
+                    }
+
                     cookiesToSet.forEach(({ name, value, options }) =>
                         response.cookies.set({
                             name,
@@ -42,22 +61,17 @@ export async function updateSession(request: NextRequest) {
         }
     )
 
-    const { data: { user }, error } = await supabase.auth.getUser()
+    const { data: { user } } = await supabase.auth.getUser()
 
-    // Protected Routes Pattern
+    // Protected Routes
     if (request.nextUrl.pathname.startsWith('/profile') && !user) {
         return NextResponse.redirect(new URL('/login', request.url))
     }
 
-    // Auth Routes Pattern (Redirect to dashboard if already logged in)
+    // Auth Routes (Redirect to dashboard if already logged in)
     if ((request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/signup')) && user) {
         return NextResponse.redirect(new URL('/profile/dashboard', request.url))
     }
-
-    // Root route handling - allow access to landing page even if logged in
-    // if (request.nextUrl.pathname === '/' && user) {
-    //     return NextResponse.redirect(new URL('/profile/dashboard', request.url))
-    // }
 
     return response
 }

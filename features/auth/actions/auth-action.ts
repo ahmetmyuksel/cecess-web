@@ -97,9 +97,12 @@ export async function forgotPasswordAction(
 
     const supabase = await createClient();
     const headersList = await (await import('next/headers')).headers();
-    const origin = headersList.get('origin') || '';
+    const rawOrigin = headersList.get('origin') || '';
 
-    // Construct callback URL so user is logged in and redirected to reset-password page
+    // Validate origin against allowed hosts
+    const allowedOrigins = (process.env.ALLOWED_ORIGINS || process.env.NEXT_PUBLIC_SITE_URL || '').split(',').map(s => s.trim()).filter(Boolean);
+    const origin = allowedOrigins.includes(rawOrigin) ? rawOrigin : (allowedOrigins[0] || '');
+
     const redirectTo = `${origin}/auth/callback?next=/reset-password`;
 
     const { error } = await supabase.auth.resetPasswordForEmail(validatedFields.data.email, {

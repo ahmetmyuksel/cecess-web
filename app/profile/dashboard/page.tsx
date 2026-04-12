@@ -14,7 +14,8 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
   let endDate: Date | undefined;
 
   const { period: rawPeriod, from, to } = await searchParams;
-  const period = rawPeriod || "this_month"; // Default to this month if nothing
+  const ALLOWED_PERIODS = ["this_month", "last_30_days", "this_year", "custom"];
+  const period = ALLOWED_PERIODS.includes(rawPeriod || "") ? rawPeriod! : "this_month";
 
   if (period === "this_month") {
     startDate = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -27,10 +28,17 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
     startDate = new Date(now.getFullYear(), 0, 1);
     endDate = new Date(now.getFullYear(), 11, 31, 23, 59, 59);
   } else if (period === "custom" && from && to) {
-    startDate = new Date(from);
-    endDate = new Date(to);
-    // Ensure end date includes the full day
-    endDate.setHours(23, 59, 59, 999);
+    const parsedFrom = new Date(from);
+    const parsedTo = new Date(to);
+    // Validate dates are real and within reasonable bounds (last 10 years)
+    const minDate = new Date();
+    minDate.setFullYear(minDate.getFullYear() - 10);
+    if (!isNaN(parsedFrom.getTime()) && !isNaN(parsedTo.getTime()) &&
+        parsedFrom >= minDate && parsedTo >= minDate && parsedTo >= parsedFrom) {
+      startDate = parsedFrom;
+      endDate = parsedTo;
+      endDate.setHours(23, 59, 59, 999);
+    }
   }
 
   // Fetch Transactions with Date Filter (No limit, so we see all for the period)

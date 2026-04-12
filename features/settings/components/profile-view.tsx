@@ -51,10 +51,12 @@ export function ProfileView() {
         const fetchFromApi = async () => {
             try {
                 const res = await fetch('/api/auth/me');
+                if (!res.ok) return;
                 const json = await res.json();
+                if (json.error) return;
                 setApiData(json);
-            } catch (e) {
-                // error handling silent or UI
+            } catch {
+                // Network error — silently ignore, profile context is primary source
             }
         };
         fetchFromApi();

@@ -4,6 +4,13 @@ import { CategorizeInput } from "../schemas/ai-schema";
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
+function geminiHeaders(): HeadersInit {
+    return {
+        "Content-Type": "application/json",
+        "x-goog-api-key": GEMINI_API_KEY!,
+    };
+}
+
 
 
 export const categorizeTransaction = async (input: CategorizeInput): Promise<string> => {
@@ -35,11 +42,9 @@ export const categorizeTransaction = async (input: CategorizeInput): Promise<str
     };
 
     try {
-        const response = await fetch(`${API_URL}?key=${GEMINI_API_KEY}`, {
+        const response = await fetch(API_URL, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: geminiHeaders(),
             body: JSON.stringify(body),
         });
 
@@ -115,11 +120,9 @@ export const categorizeBatch = async (descriptions: string[], categories: string
     };
 
     try {
-        const response = await fetch(`${API_URL}?key=${GEMINI_API_KEY}`, {
+        const response = await fetch(API_URL, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: geminiHeaders(),
             body: JSON.stringify(body),
         });
 
