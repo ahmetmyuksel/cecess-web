@@ -1,29 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Tx, useTransactions } from "../hooks/use-transactions";
-import { Modal } from "@/components/ui/modal";
 import { DatePicker } from "@/components/ui/date-picker";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { useUser } from "@/features/auth/hooks/use-user";
-import { Category } from "@/features/categories/hooks/use-categories";
 import { ReadonlyStatus } from "@/components/ui/readonly-status";
 
-export function TransactionsView({
-    initialTransactions,
-    initialCategories
-}: {
-    initialTransactions?: Tx[],
-    initialCategories?: Category[]
-}) {
+export function TransactionsView() {
 
     const { t } = useLanguage();
     const { profile } = useUser();
-    // Initialize hook with server data
+    // Initialize hook - it will auto-fetch from API
     const {
         transactions,
-        allCategories, // New exposed prop
+        allCategories,
         visibleRows,
         pageSize,
         currentPage,
@@ -39,22 +30,17 @@ export function TransactionsView({
         changePage,
         totalFiltered,
         isLoading
-    } = useTransactions(initialTransactions, initialCategories);
-
-    // Selection Handlers
-
+    } = useTransactions();
 
     const getSortIcon = (key: any) => {
-        if (sortConfig.key !== key) return <span className="text-slate-300 ml-1">⇅</span>;
-        return <span className="text-blue-600 ml-1">{sortConfig.direction === "asc" ? "↑" : "↓"}</span>;
+        if (sortConfig.key !== key) return <span className="text-slate-300 ml-1">&#8645;</span>;
+        return <span className="text-blue-600 ml-1">{sortConfig.direction === "asc" ? "\u2191" : "\u2193"}</span>;
     };
 
     // Calculate available years from transactions for DatePicker limits
     const transactionYears = transactions.map(t => new Date(t.date).getFullYear());
     const minYear = transactionYears.length > 0 ? Math.min(...transactionYears) : new Date().getFullYear();
     const maxYear = transactionYears.length > 0 ? Math.max(...transactionYears) : new Date().getFullYear();
-
-
 
     return (
         <div className="flex min-h-screen bg-slate-50 text-slate-900">
@@ -245,7 +231,7 @@ export function TransactionsView({
                                             disabled={currentPage === 1}
                                             className="rounded border px-2 py-1 hover:bg-slate-50 disabled:opacity-50"
                                         >
-                                            ◀
+                                            &#9664;
                                         </button>
                                         <button className="rounded bg-blue-600 px-3 py-1 text-white text-sm">
                                             {currentPage}
@@ -255,7 +241,7 @@ export function TransactionsView({
                                             disabled={currentPage === totalPages}
                                             className="rounded border px-2 py-1 hover:bg-slate-50 disabled:opacity-50"
                                         >
-                                            ▶
+                                            &#9654;
                                         </button>
                                     </div>
                                 </div>
@@ -264,7 +250,6 @@ export function TransactionsView({
                     )}
                 </section>
             </main>
-
-        </div >
+        </div>
     );
 }

@@ -1,17 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const IncomeExpenseChart = dynamic(() => import("@/components/charts/income-expense-chart").then(mod => mod.IncomeExpenseChart), { 
+const IncomeExpenseChart = dynamic(() => import("@/components/charts/income-expense-chart").then(mod => mod.IncomeExpenseChart), {
     ssr: false,
     loading: () => <Skeleton className="h-full w-full rounded-xl" />
 });
 
-const CategoryPieChart = dynamic(() => import("@/components/charts/category-pie-chart").then(mod => mod.CategoryPieChart), { 
+const CategoryPieChart = dynamic(() => import("@/components/charts/category-pie-chart").then(mod => mod.CategoryPieChart), {
     ssr: false,
     loading: () => <Skeleton className="h-full w-full rounded-xl" />
 });
@@ -26,15 +26,6 @@ import { ReadonlyStatus } from "@/components/ui/readonly-status";
 import { Tx } from "@/features/transactions/hooks/use-transactions";
 import { Category } from "@/features/categories/hooks/use-categories";
 
-interface DashboardViewProps {
-    initialTransactions?: Tx[];
-    initialCategories?: Category[];
-    user?: {
-        first_name?: string;
-        email?: string;
-    };
-}
-
 type DateRange = "This Month" | "Last 30 Days" | "This Year" | "Custom Range";
 
 const formatDate = (dateStr: string) => {
@@ -42,20 +33,61 @@ const formatDate = (dateStr: string) => {
     return format(new Date(dateStr), "MMM dd, yyyy");
 };
 
-export function DashboardView({ initialTransactions = [], initialCategories = [], user: serverUser }: DashboardViewProps) {
+function getDateRangeForPeriod(period: string, from?: string, to?: string) {
+    const now = new Date();
+    let startDate: string | undefined;
+    let endDate: string | undefined;
+
+    if (period === "this_month") {
+        startDate = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+        endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59).toISOString();
+    } else if (period === "last_30_days") {
+        const start = new Date();
+        start.setDate(now.getDate() - 30);
+        startDate = start.toISOString();
+        endDate = now.toISOString();
+    } else if (period === "this_year") {
+        startDate = new Date(now.getFullYear(), 0, 1).toISOString();
+        endDate = new Date(now.getFullYear(), 11, 31, 23, 59, 59).toISOString();
+    } else if (period === "custom" && from && to) {
+        const parsedFrom = new Date(from);
+        const parsedTo = new Date(to);
+        const minDate = new Date();
+        minDate.setFullYear(minDate.getFullYear() - 10);
+        if (!isNaN(parsedFrom.getTime()) && !isNaN(parsedTo.getTime()) &&
+            parsedFrom >= minDate && parsedTo >= minDate && parsedTo >= parsedFrom) {
+            startDate = parsedFrom.toISOString();
+            const end = new Date(parsedTo);
+            end.setHours(23, 59, 59, 999);
+            endDate = end.toISOString();
+        }
+    }
+
+    return { startDate, endDate };
+}
+
+export function DashboardView() {
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    // Server-filtered data is passed here
-    const { transactions, isLoading: txLoading } = useTransactions(initialTransactions, initialCategories);
-
     const currentPeriod = searchParams.get("period") || "this_month";
-    const { user, profile, loading: userLoading, error } = useUser();
+    const customFrom = searchParams.get("from") || undefined;
+    const customTo = searchParams.get("to") || undefined;
+
+    // Fetch transactions with date filter via client-side API
+    const { transactions, isLoading: txLoading, fetchTransactions } = useTransactions();
+    const { user, profile, loading: userLoading } = useUser();
     const { t } = useLanguage();
+
+    // Fetch transactions when period/params change
+    useEffect(() => {
+        const { startDate, endDate } = getDateRangeForPeriod(currentPeriod, customFrom, customTo);
+        fetchTransactions({ startDate, endDate });
+    }, [currentPeriod, customFrom, customTo, fetchTransactions]);
 
     const loading = txLoading || userLoading;
 
-    const username = profile?.first_name || profile?.username || user?.email?.split('@')[0] || serverUser?.first_name || "User";
+    const username = profile?.first_name || profile?.username || user?.email?.split('@')[0] || "User";
 
     // Filter Buttons Logic (URL Based)
     const handleRangeChange = (period: string) => {
@@ -81,7 +113,7 @@ export function DashboardView({ initialTransactions = [], initialCategories = []
     const [tempStartDate, setTempStartDate] = useState("");
     const [tempEndDate, setTempEndDate] = useState("");
 
-    // Calculate Stats specifically from the transactions we HAVE (which are already filtered by Server)
+    // Calculate Stats specifically from the transactions we HAVE (which are already filtered)
     const { income, expense, balance } = useMemo(() => {
         let inc = 0;
         let exp = 0;
@@ -127,9 +159,6 @@ export function DashboardView({ initialTransactions = [], initialCategories = []
             if (actualVal > 0) stats[cat].income += converted;
             else stats[cat].expense += Math.abs(converted);
 
-            // Monthly Stats (YYYY-MM-DD to simplify chart grouping if needed, or by month if range is large)
-            // For simpler charts, let's group by "Day" if 'This Month', else 'Month'
-            // For now, staying simple: group by date
             const dateKey = t.date;
             if (!monthlyGroups[dateKey]) monthlyGroups[dateKey] = { income: 0, expense: 0 };
             if (actualVal > 0) monthlyGroups[dateKey].income += converted;
@@ -190,8 +219,8 @@ export function DashboardView({ initialTransactions = [], initialCategories = []
     };
 
     const getSortIcon = (key: string) => {
-        if (sortConfig.key !== key) return <span className="text-slate-300 ml-1">↕</span>;
-        return <span className="text-blue-600 ml-1">{sortConfig.direction === "asc" ? "↑" : "↓"}</span>;
+        if (sortConfig.key !== key) return <span className="text-slate-300 ml-1">&#8597;</span>;
+        return <span className="text-blue-600 ml-1">{sortConfig.direction === "asc" ? "\u2191" : "\u2193"}</span>;
     };
 
 

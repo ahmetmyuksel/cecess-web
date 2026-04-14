@@ -20,14 +20,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { useUser } from "@/features/auth/hooks/use-user";
 
-export function Sidebar({ initialProfile }: { initialProfile?: any }) {
+export function Sidebar() {
     const pathname = usePathname();
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
     const { user, profile, loading, error, signOut, signOutLoading } = useUser();
     const { t } = useLanguage();
 
-    const effectiveProfile = profile || initialProfile;
+    const effectiveProfile = profile;
     const isLoading = loading && !effectiveProfile;
 
     const navigation = [

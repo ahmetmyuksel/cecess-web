@@ -1,62 +1,43 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { formatCurrency } from "@/utils/currency-converter";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { ReadonlyStatus } from "@/components/ui/readonly-status";
+import { useAccounts } from "@/features/accounts/hooks/use-accounts";
 
-const CURRENCIES = ["USD", "EUR", "TRY", "GBP", "JPY"];
-
-export type AccountDTO = {
+type Account = {
     id: string;
     name: string;
     type: string;
-    balance: number | string;
+    balance: string;
+    balanceValue: number;
+    positive: boolean;
+    source: "manual" | "gocardless";
     currency: string;
     is_encrypted?: boolean;
     user_id?: string;
     created_at?: string;
 };
 
-type Account = AccountDTO & {
-    balance: string; // Formatted display string
-    balanceValue: number; // Raw number
-    positive: boolean;
-    source: "manual" | "gocardless";
-};
-
-interface AccountsViewProps {
-    initialAccounts?: any[];
-}
-
-export function AccountsView({ initialAccounts = [] }: AccountsViewProps) {
+export function AccountsView() {
     const { profile } = useUser();
     const { t } = useLanguage();
+    const { accounts: rawAccounts, loading } = useAccounts();
 
-    const mapToView = (data: any[]): Account[] => {
-        return data.map(acc => ({
-            id: acc.id,
-            name: acc.name,
-            type: acc.type,
-            balanceValue: Number(acc.balance),
-            currency: acc.currency || "USD",
-            balance: formatCurrency(acc.balance, acc.currency || "USD"),
-            positive: acc.balance >= 0,
-            source: acc.is_encrypted ? "gocardless" : "manual",
-            is_encrypted: acc.is_encrypted,
-            user_id: acc.user_id,
-            created_at: acc.created_at
-        }));
-    };
-
-    const [accounts, setAccounts] = useState<Account[]>(mapToView(initialAccounts));
-
-    useEffect(() => {
-        setAccounts(mapToView(initialAccounts));
-    }, [initialAccounts]);
-
-    // Read-only on the web. Manage through the app.
+    const accounts: Account[] = rawAccounts.map(acc => ({
+        id: acc.id,
+        name: acc.name,
+        type: acc.type,
+        balanceValue: Number(acc.balance),
+        currency: acc.currency || "USD",
+        balance: formatCurrency(acc.balance, acc.currency || "USD"),
+        positive: acc.balance >= 0,
+        source: acc.is_encrypted ? "gocardless" : "manual",
+        is_encrypted: acc.is_encrypted,
+        user_id: acc.user_id,
+        created_at: acc.created_at
+    }));
 
     return (
         <div className="flex min-h-screen bg-slate-50 text-slate-900">
@@ -70,9 +51,19 @@ export function AccountsView({ initialAccounts = [] }: AccountsViewProps) {
                 </header>
 
                 <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                    {accounts.length === 0 ? (
+                    {loading ? (
+                        <div className="space-y-4 animate-pulse">
+                            {[1, 2, 3].map(i => (
+                                <div key={i} className="flex items-center justify-between py-3 border-b border-slate-50">
+                                    <div className="h-4 bg-slate-100 rounded w-32"></div>
+                                    <div className="h-4 bg-slate-100 rounded w-20"></div>
+                                    <div className="h-4 bg-slate-100 rounded w-24"></div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : accounts.length === 0 ? (
                         <div className="flex flex-col items-center justify-center py-12 text-center">
-                            <div className="mb-4 text-4xl">🏦</div>
+                            <div className="mb-4 text-4xl">&#127974;</div>
                             <h3 className="text-lg font-medium text-slate-900">{t.accounts.noAccounts.title}</h3>
                             <p className="mt-1 max-w-sm text-sm text-slate-500">
                                 {t.dashboard.empty.generic}
@@ -96,7 +87,7 @@ export function AccountsView({ initialAccounts = [] }: AccountsViewProps) {
                                                     <span className="font-medium text-slate-900">{acc.name}</span>
                                                     {acc.source === "gocardless" && (
                                                         <span className="text-[10px] uppercase tracking-wide text-blue-600 font-bold flex items-center gap-1">
-                                                            ⚡ Linked
+                                                            &#9889; Linked
                                                         </span>
                                                     )}
                                                 </div>
@@ -113,8 +104,6 @@ export function AccountsView({ initialAccounts = [] }: AccountsViewProps) {
                     )}
                 </section>
             </main>
-
-
         </div>
     );
 }

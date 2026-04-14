@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export type Category = {
     id: string;
@@ -11,18 +11,37 @@ export type Category = {
 
 const EMPTY_CATEGORIES: Category[] = [];
 
-export const useCategories = (initialData: Category[] = EMPTY_CATEGORIES) => {
-    const [categories, setCategories] = useState<Category[]>(initialData);
-    const [isLoaded, setIsLoaded] = useState(true);
+export const useCategories = (initialData?: Category[]) => {
+    const [categories, setCategories] = useState<Category[]>(initialData || EMPTY_CATEGORIES);
+    const [isLoaded, setIsLoaded] = useState(!!initialData);
+    const [loading, setLoading] = useState(!initialData);
+
+    const fetchCategories = useCallback(async () => {
+        try {
+            setLoading(true);
+            const res = await fetch("/api/categories");
+            if (!res.ok) return;
+            const data: Category[] = await res.json();
+            setCategories(data);
+            setIsLoaded(true);
+        } catch (err) {
+            console.error("Failed to fetch categories:", err);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
 
     useEffect(() => {
-        setCategories(initialData);
-    }, [initialData]);
+        if (!initialData) {
+            fetchCategories();
+        }
+    }, [initialData, fetchCategories]);
 
     return {
         categories,
         setCategories,
         isLoaded,
-        refresh: () => { }
+        loading,
+        refresh: fetchCategories
     };
 };

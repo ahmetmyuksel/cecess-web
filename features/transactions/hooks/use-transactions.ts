@@ -1,8 +1,10 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { useCategories, Category } from "@/features/categories/hooks/use-categories";
+import { format } from "date-fns";
+import { formatCurrency } from "@/utils/currency-converter";
 
 export type Tx = {
     id: string;
@@ -15,22 +17,69 @@ export type Tx = {
 };
 
 const EMPTY_TXS: Tx[] = [];
-const EMPTY_CATS: Category[] = [];
 
-export const useTransactions = (initialData: Tx[] = EMPTY_TXS, initialCategories: Category[] = EMPTY_CATS) => {
-    const [transactions, setTransactions] = useState<Tx[]>(initialData);
-    const [isLoaded, setIsLoaded] = useState(true);
+function formatRawTransactions(raw: any[]): Tx[] {
+    return raw.map((t: any) => {
+        const val = Number(t.amount);
+        const isPositive = val >= 0;
+        const formatted = formatCurrency(Math.abs(val), t.currency || "USD");
+        const formattedAmount = (isPositive ? "+" : "-") + formatted.replace("-", "");
+        const catName = t.categories?.name || "Uncategorized";
+
+        return {
+            id: t.id,
+            name: t.description || t.merchant || "Unknown",
+            category: catName,
+            date: format(new Date(t.date), "MMM d, yyyy"),
+            amount: formattedAmount,
+            positive: isPositive,
+            currency: t.currency || "USD"
+        };
+    });
+}
+
+export const useTransactions = (initialData?: Tx[], initialCategories?: Category[]) => {
+    const [transactions, setTransactions] = useState<Tx[]>(initialData || EMPTY_TXS);
+    const [loading, setLoading] = useState(!initialData);
 
     const { user, profile } = useUser();
     const { categories } = useCategories(initialCategories);
 
+    const fetchTransactions = useCallback(async (params?: { startDate?: string; endDate?: string }) => {
+        try {
+            setLoading(true);
+            const url = new URL("/api/transactions", window.location.origin);
+            if (params?.startDate) url.searchParams.set("startDate", params.startDate);
+            if (params?.endDate) url.searchParams.set("endDate", params.endDate);
+
+            const res = await fetch(url.toString());
+            if (!res.ok) return;
+            const raw = await res.json();
+            setTransactions(formatRawTransactions(raw));
+        } catch (err) {
+            console.error("Failed to fetch transactions:", err);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    // Auto-fetch on mount if no initial data provided
     useEffect(() => {
-        setTransactions(initialData);
+        if (!initialData) {
+            fetchTransactions();
+        }
+    }, [initialData, fetchTransactions]);
+
+    // Sync if initialData changes (for backward compat)
+    useEffect(() => {
+        if (initialData) {
+            setTransactions(initialData);
+        }
     }, [initialData]);
 
     const [pageSize, setPageSize] = useState<number>(10);
     const [page, setPage] = useState<number>(1);
-    
+
     // Read-only state
     const [dateRange, setDateRange] = useState<{ from: string; to: string }>({ from: "", to: "" });
     const [selectedCategory, setSelectedCategory] = useState<string>("All Categories");
@@ -119,6 +168,7 @@ export const useTransactions = (initialData: Tx[] = EMPTY_TXS, initialCategories
         totalFiltered: filteredAndSortedTransactions.length,
         changePageSize,
         changePage,
-        isLoading: !isLoaded,
+        isLoading: loading,
+        fetchTransactions,
     };
 };
