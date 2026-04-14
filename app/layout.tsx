@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import logo from "@/assets/images/logo.png";
+import { baseMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,13 +15,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "cecess",
-  description: "Cecess ile varliklarini takip et, islemlerini AI ile kategorize et ve finansal durumunu tek bir dashboard uzerinden yonet.",
+  ...baseMetadata,
   icons: {
     icon: [{ url: logo.src, type: "image/png" }],
     shortcut: [{ url: logo.src, type: "image/png" }],
     apple: [{ url: logo.src, type: "image/png" }],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#ffffff",
 };
 
 import { UserProvider } from "@/features/auth/hooks/use-user";
