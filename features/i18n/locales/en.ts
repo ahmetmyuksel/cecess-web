@@ -355,14 +355,14 @@ export const en: Dictionary = {
             features: {
                 transactionLimit: "Transaction Limit",
                 manualEntry: "Manual Transaction Entry",
+                manualCsvExcelImport: "Manual CSV / Excel Import",
                 ocrScan: "Receipt Scanning (OCR)",
                 basicReports: "Basic Reports (Spending, Income, Recurring)",
-                singleCurrency: "Single Currency",
-                aiRequestFree: "AI Requests (Smart Import)",
+                aiRequestFree: "AI Smart Import (Excel, CSV, PDF, JPEG)",
                 multiCurrency: "Multi-Currency",
                 detailedCharts: "Detailed Charts & Filtering",
                 budgetAlerts: "Budget Limits & Alerts",
-                aiAnalysis: "AI Financial Analysis (Gemini)",
+                unlimitedAiCategorization: "Unlimited AI Auto-Categorization",
                 aiInsightsHub: "AI Insights Hub & History",
                 excelCsvExport: "Excel / CSV Export",
                 prioritySupport: "Priority Support",
@@ -372,6 +372,7 @@ export const en: Dictionary = {
             values: {
                 unlimited: "Unlimited",
                 onePerWeek: "1/week",
+                onePerTwoWeeks: "1 per 2 weeks",
                 comingSoon: "Coming Soon",
             },
         },
@@ -479,7 +480,7 @@ export const en: Dictionary = {
                 contact: {
                     title: "8. Contact Us",
                     body: [
-                        "For privacy inquiries, contact us at support@cecess.com."
+                        "For privacy inquiries, contact us at info@cecess.com."
                     ]
                 }
             }
@@ -539,7 +540,7 @@ export const en: Dictionary = {
                 contact: {
                     title: "7. Contact Us",
                     body: [
-                        "If you have any questions about these Terms, please contact us at support@cecess.com."
+                        "If you have any questions about these Terms, please contact us at info@cecess.com."
                     ]
                 }
             }
@@ -628,6 +629,17 @@ export const en: Dictionary = {
                         title: "Private & Secure",
                         description: "Your data is yours. AES-256 encryption. We meet strict privacy standards."
                     }
+                }
+            },
+            howItWorks: {
+                title: "How it works",
+                subtitle: "Get started in minutes, not hours.",
+                steps: {
+                    step1: { title: "Download the App", description: "Available on Google Play. iOS coming soon." },
+                    step2: { title: "Add Your Spendings", description: "Import bank statements or add your transactions manually." },
+                    step3: { title: "Let AI Organize", description: "Gemini categorizes your transactions automatically." },
+                    step4: { title: "Get AI Insights", description: "Receive personalized tips and smart alerts about your spending habits." },
+                    step5: { title: "Grow Your Wealth", description: "Track net worth, spot trends, and make smarter financial decisions." }
                 }
             },
             cta: {

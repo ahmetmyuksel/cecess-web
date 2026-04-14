@@ -355,14 +355,14 @@ export const tr: Dictionary = {
             features: {
                 transactionLimit: "İşlem Limiti",
                 manualEntry: "Manuel İşlem Girişi",
+                manualCsvExcelImport: "Manuel CSV / Excel İçeri Aktarma",
                 ocrScan: "Fatura Tarama (OCR)",
                 basicReports: "Temel Raporlar (Harcama, Gelir, Tekrar Eden)",
-                singleCurrency: "Tek Para Birimi",
-                aiRequestFree: "AI İstek (Smart Import)",
+                aiRequestFree: "AI Akıllı İçeri Aktarma (Excel, CSV, PDF, JPEG)",
                 multiCurrency: "Çoklu Para Birimi",
                 detailedCharts: "Detaylı Grafikler & Filtreleme",
                 budgetAlerts: "Bütçe Limitleri & Uyarılar",
-                aiAnalysis: "AI Finansal Analiz (Gemini)",
+                unlimitedAiCategorization: "Sınırsız AI Otomatik Kategorilendirme",
                 aiInsightsHub: "AI Insights Hub & Geçmiş",
                 excelCsvExport: "Excel / CSV Dışa Aktarma",
                 prioritySupport: "Öncelikli Destek",
@@ -372,6 +372,7 @@ export const tr: Dictionary = {
             values: {
                 unlimited: "Sınırsız",
                 onePerWeek: "1/hafta",
+                onePerTwoWeeks: "2 haftada 1",
                 comingSoon: "Yakında",
             },
         },
@@ -479,7 +480,7 @@ export const tr: Dictionary = {
                 contact: {
                     title: "8. Bize Ulaşın",
                     body: [
-                        "Gizlilik sorularınız için bize support@cecess.com adresinden ulaşabilirsiniz."
+                        "Gizlilik sorularınız için bize info@cecess.com adresinden ulaşabilirsiniz."
                     ]
                 }
             }
@@ -539,7 +540,7 @@ export const tr: Dictionary = {
                 contact: {
                     title: "7. Bize Ulaşın",
                     body: [
-                        "Bu Koşullar hakkında herhangi bir sorunuz varsa, lütfen bize support@cecess.com adresinden ulaşın."
+                        "Bu Koşullar hakkında herhangi bir sorunuz varsa, lütfen bize info@cecess.com adresinden ulaşın."
                     ]
                 }
             }
@@ -628,6 +629,17 @@ export const tr: Dictionary = {
                         title: "Özel ve Güvenli",
                         description: "Verileriniz sizindir. AES-256 şifreleme. Katı gizlilik standartlarını karşılıyoruz."
                     }
+                }
+            },
+            howItWorks: {
+                title: "Nasıl çalışır",
+                subtitle: "Saatler değil, dakikalar içinde başlayın.",
+                steps: {
+                    step1: { title: "Uygulamayı İndirin", description: "Google Play'de mevcut. iOS yakında geliyor." },
+                    step2: { title: "Harcamalarını Ekle", description: "Banka ekstrelerini içeri aktar veya işlemlerini manuel ekle." },
+                    step3: { title: "AI Düzenlesin", description: "Gemini işlemlerini otomatik olarak kategorize eder." },
+                    step4: { title: "AI Önerilerini Al", description: "Harcama alışkanlıkların hakkında kişisel ipuçları ve akıllı uyarılar al." },
+                    step5: { title: "Varlığını Büyüt", description: "Net değerini takip et, trendleri gör, daha akıllı finansal kararlar ver." }
                 }
             },
             cta: {

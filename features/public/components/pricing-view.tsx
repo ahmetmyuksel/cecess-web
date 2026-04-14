@@ -4,12 +4,18 @@ import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/features/i18n/context/language-context";
+import { useIntersectionObserver } from "@/hooks/use-scroll-animation";
 import { Switch } from "@/components/ui/switch";
 import { pricingComparisonRows, pricingPlanContent } from "@/features/public/domain/pricing-content";
 
 export function PricingView() {
     const { t } = useLanguage();
     const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
+
+    const heroRef = useIntersectionObserver({ threshold: 0.1 });
+    const cardsRef = useIntersectionObserver({ threshold: 0.05 });
+    const compareRef = useIntersectionObserver({ threshold: 0.05 });
+    const faqRef = useIntersectionObserver({ threshold: 0.1 });
 
     const plans = [
         {
@@ -87,6 +93,9 @@ export function PricingView() {
         if (value === "1/week") {
             return <span className="text-xs font-semibold text-slate-600">{t.public.pricing.values.onePerWeek}</span>;
         }
+        if (value === "1/2weeks") {
+            return <span className="text-xs font-semibold text-slate-600">{t.public.pricing.values.onePerTwoWeeks}</span>;
+        }
         if (value === "comingSoon") {
             return <span className="inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700">{t.public.pricing.values.comingSoon}</span>;
         }
@@ -106,7 +115,13 @@ export function PricingView() {
 
             <main className="relative mx-auto flex max-w-6xl flex-col gap-8 sm:gap-16 px-4 sm:px-6 pb-24 pt-20">
                 {/* Hero */}
-                <section className="space-y-4 sm:space-y-6 text-center">
+                <section
+                    ref={heroRef.ref as any}
+                    className={cn(
+                        "space-y-4 sm:space-y-6 text-center reveal-on-scroll",
+                        heroRef.isVisible && "animate-fade-up"
+                    )}
+                >
                     <h1 className="text-3xl font-extrabold leading-tight text-slate-900 sm:text-5xl">
                         {t.public.pricing.title}
                     </h1>
@@ -134,8 +149,8 @@ export function PricingView() {
                 </section>
 
                 {/* Plan Cards */}
-                <section className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    {plans.map((plan) => {
+                <section ref={cardsRef.ref as any} className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    {plans.map((plan, planIndex) => {
                         const price = billingCycle === "monthly" ? plan.priceMonthly : plan.priceAnnual;
                         const { amount, currency } = formatPrice(price);
                         const period = billingCycle === "monthly" ? t.public.pricing.perMonth : t.public.pricing.perYear;
@@ -146,7 +161,9 @@ export function PricingView() {
                             <div
                                 key={plan.key}
                                 className={cn(
-                                    "relative rounded-3xl border bg-white/90 p-6 sm:p-8 shadow-[0_16px_50px_rgba(15,23,42,0.06)] transition-all duration-300 hover:shadow-xl",
+                                    "relative rounded-3xl border bg-white/90 p-6 sm:p-8 shadow-[0_16px_50px_rgba(15,23,42,0.06)] transition-all duration-300 hover:shadow-xl reveal-on-scroll",
+                                    `stagger-${planIndex + 1}`,
+                                    cardsRef.isVisible && "animate-fade-up",
                                     plan.popular ? "border-blue-400 shadow-[0_28px_80px_rgba(37,99,235,0.18)]" : "border-slate-200"
                                 )}
                             >
@@ -200,7 +217,13 @@ export function PricingView() {
                 </p>
 
                 {/* Comparison Table */}
-                <section className="space-y-6 rounded-3xl border border-slate-200 bg-white/50 p-4 sm:p-8 lg:p-12 shadow-sm backdrop-blur-sm">
+                <section
+                    ref={compareRef.ref as any}
+                    className={cn(
+                        "space-y-6 rounded-3xl border border-slate-200 bg-white/50 p-4 sm:p-8 lg:p-12 shadow-sm backdrop-blur-sm reveal-on-scroll",
+                        compareRef.isVisible && "animate-fade-up"
+                    )}
+                >
                     <div className="text-center mb-8">
                         <h2 className="text-2xl sm:text-3xl font-black text-slate-900">{t.public.pricing.compare}</h2>
                     </div>
@@ -230,7 +253,13 @@ export function PricingView() {
 
                 {/* FAQ */}
                 <section className="space-y-8 sm:space-y-12 py-8">
-                    <div className="text-center">
+                    <div
+                        ref={faqRef.ref as any}
+                        className={cn(
+                            "text-center reveal-on-scroll",
+                            faqRef.isVisible && "animate-fade-up"
+                        )}
+                    >
                         <h3 className="text-3xl font-black text-slate-900">{t.public.faq.title}</h3>
                         <p className="mt-3 text-sm sm:text-base text-slate-500">
                             {t.public.faq.subtitle}
@@ -241,7 +270,9 @@ export function PricingView() {
                             <div
                                 key={item.question}
                                 className={cn(
-                                    "group rounded-2xl border bg-white p-6 sm:p-8 text-left transition-all duration-300 hover:shadow-lg",
+                                    "group rounded-2xl border bg-white p-6 sm:p-8 text-left transition-all duration-300 hover:shadow-lg reveal-on-scroll",
+                                    `stagger-${index + 1}`,
+                                    faqRef.isVisible && "animate-fade-up",
                                     index === 0 ? "border-blue-100 shadow-blue-50/50" : "border-slate-100 hover:border-slate-200"
                                 )}
                             >

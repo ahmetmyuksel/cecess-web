@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { useUser } from "@/features/auth/hooks/use-user";
 import { Menu, X } from "lucide-react";
 import bannerImage from "@/assets/images/banner.png";
+import { AppleComingSoonModal } from "./apple-coming-soon-modal";
 
 interface PublicNavbarProps {
     // isLoggedIn removed as it now uses client-side hook
@@ -18,6 +19,7 @@ interface PublicNavbarProps {
 export function PublicNavbar({ }: PublicNavbarProps) {
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showAppleModal, setShowAppleModal] = useState(false);
     const { t, language, setLanguage } = useLanguage();
     const { user } = useUser();
     const isLoggedIn = !!user;
@@ -172,17 +174,15 @@ export function PublicNavbar({ }: PublicNavbarProps) {
                         </div>
                         
                         <div className="flex flex-col gap-4">
-                            <a 
-                                href="https://apps.apple.com/app/cecess/id6740698114"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-slate-900 text-white flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold w-full shadow-lg"
+                            <button
+                                onClick={() => { setIsMenuOpen(false); setShowAppleModal(true); }}
+                                className="bg-slate-900 text-white flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold w-full shadow-lg cursor-pointer"
                             >
                                 <svg className="h-5 w-5" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-83.6-20.8-42.3 0-81.8 24.4-103.2 61.9-43.2 75.3-11.1 185.9 31 246.6 20.6 29.8 45.2 63.3 77.3 63.3 31.1 0 42.7-19.3 80.5-19.3 37.8 0 48.2 19.3 81 19.3 32.8 0 55.4-30.1 76-60 24.3-35.2 34.3-69.3 34.6-70.9-.8-.3-67.2-25.9-67.4-103.5zm-33.1-155.1c32.3-39.7 24.5-85.3 22.8-93.5-27.1 2.3-59.5 20.1-78.5 42.4-18 20.9-33.5 63-28.9 94.5 30.6 3 59.8-13.4 84.6-43.4z" /></svg>
                                 App Store
-                            </a>
-                            <a 
-                                href="https://play.google.com/store/apps/details?id=com.ahmetmyuksel.cecess"
+                            </button>
+                            <a
+                                href="https://play.google.com/store/apps/details?id=com.cecess.app"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="bg-white text-slate-950 border border-slate-200 flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold w-full shadow-sm"
@@ -194,6 +194,8 @@ export function PublicNavbar({ }: PublicNavbarProps) {
                     </div>
                 </nav>
             </div>
+
+            <AppleComingSoonModal open={showAppleModal} onClose={() => setShowAppleModal(false)} />
         </>
     );
 }

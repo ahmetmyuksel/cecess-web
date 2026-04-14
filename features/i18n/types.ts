@@ -329,14 +329,14 @@ export type Dictionary = {
             features: {
                 transactionLimit: string;
                 manualEntry: string;
+                manualCsvExcelImport: string;
                 ocrScan: string;
                 basicReports: string;
-                singleCurrency: string;
                 aiRequestFree: string;
                 multiCurrency: string;
                 detailedCharts: string;
                 budgetAlerts: string;
-                aiAnalysis: string;
+                unlimitedAiCategorization: string;
                 aiInsightsHub: string;
                 excelCsvExport: string;
                 prioritySupport: string;
@@ -346,6 +346,7 @@ export type Dictionary = {
             values: {
                 unlimited: string;
                 onePerWeek: string;
+                onePerTwoWeeks: string;
                 comingSoon: string;
             };
         };
@@ -435,6 +436,17 @@ export type Dictionary = {
                     import: { title: string; description: string };
                     analytics: { title: string; description: string };
                     security: { title: string; description: string };
+                };
+            };
+            howItWorks: {
+                title: string;
+                subtitle: string;
+                steps: {
+                    step1: { title: string; description: string };
+                    step2: { title: string; description: string };
+                    step3: { title: string; description: string };
+                    step4: { title: string; description: string };
+                    step5: { title: string; description: string };
                 };
             };
             cta: {

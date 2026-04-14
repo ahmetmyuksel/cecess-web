@@ -1,19 +1,27 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { 
-    LayoutDashboard, 
-    Sparkles, 
-    Globe, 
-    FileSpreadsheet, 
-    LineChart, 
+import {
+    LayoutDashboard,
+    Sparkles,
+    Globe,
+    FileSpreadsheet,
+    LineChart,
     ShieldCheck,
-    ArrowRight
+    ArrowRight,
+    Download,
+    CreditCard,
+    BrainCircuit,
+    Lightbulb,
+    TrendingUp
 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-scroll-animation";
 import { useLanguage } from "@/features/i18n/hooks/use-language";
 import { cn } from "@/lib/utils";
+import { AppleComingSoonModal } from "./apple-coming-soon-modal";
+import landingPageImage from "@/assets/landing-page-image.png";
 
 interface LandingViewProps {
     // isLoggedIn removed for static support
@@ -21,11 +29,15 @@ interface LandingViewProps {
 
 export function LandingView({ }: LandingViewProps) {
     const { t } = useLanguage();
-    
+    const [showAppleModal, setShowAppleModal] = useState(false);
+
     // Animation Refs
     const heroRef = useIntersectionObserver({ threshold: 0.1 });
     const mockupRef = useIntersectionObserver({ threshold: 0.2 });
     const featuresHeaderRef = useIntersectionObserver({ threshold: 0.5 });
+    const featuresGridRef = useIntersectionObserver({ threshold: 0.1 });
+    const howItWorksRef = useIntersectionObserver({ threshold: 0.2 });
+    const howItWorksStepsRef = useIntersectionObserver({ threshold: 0.05 });
     const ctaRef = useIntersectionObserver({ threshold: 0.5 });
 
     const featureIcons = [
@@ -55,7 +67,7 @@ export function LandingView({ }: LandingViewProps) {
                 <section 
                     ref={heroRef.ref as any}
                     className={cn(
-                        "relative pt-20 pb-12 lg:pt-32 lg:pb-24 overflow-hidden reveal-on-scroll",
+                        "relative pt-20 pb-4 lg:pt-32 lg:pb-8 overflow-hidden reveal-on-scroll",
                         heroRef.isVisible && "animate-fade-up"
                     )}
                 >
@@ -69,11 +81,9 @@ export function LandingView({ }: LandingViewProps) {
                         
                         {/* App Market Badges */}
                         <div className="flex flex-col xs:flex-row justify-center items-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-                            <a 
-                                href="https://apps.apple.com/app/cecess/id6740698114"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1"
+                            <button
+                                onClick={() => setShowAppleModal(true)}
+                                className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1 cursor-pointer"
                             >
                                 <svg className="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 384 512" fill="currentColor">
                                     <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-83.6-20.8-42.3 0-81.8 24.4-103.2 61.9-43.2 75.3-11.1 185.9 31 246.6 20.6 29.8 45.2 63.3 77.3 63.3 31.1 0 42.7-19.3 80.5-19.3 37.8 0 48.2 19.3 81 19.3 32.8 0 55.4-30.1 76-60 24.3-35.2 34.3-69.3 34.6-70.9-.8-.3-67.2-25.9-67.4-103.5zm-33.1-155.1c32.3-39.7 24.5-85.3 22.8-93.5-27.1 2.3-59.5 20.1-78.5 42.4-18 20.9-33.5 63-28.9 94.5 30.6 3 59.8-13.4 84.6-43.4z" />
@@ -82,8 +92,8 @@ export function LandingView({ }: LandingViewProps) {
                                     <div className="text-[9px] sm:text-[10px] font-medium opacity-80 leading-none">Download on the</div>
                                     <div className="text-[15px] sm:text-[17px] font-bold leading-tight">App Store</div>
                                 </div>
-                            </a>
-                            <a 
+                            </button>
+                            <a
                                 href="https://play.google.com/store/apps/details?id=com.cecess.app"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -105,7 +115,7 @@ export function LandingView({ }: LandingViewProps) {
                 <section 
                     ref={mockupRef.ref as any}
                     className={cn(
-                        "relative pb-16 sm:pb-24 lg:pb-40 reveal-on-scroll -mt-8 sm:-mt-16 lg:-mt-24",
+                        "relative pb-8 sm:pb-12 lg:pb-16 reveal-on-scroll -mt-12 sm:-mt-20 lg:-mt-28",
                         mockupRef.isVisible && "animate-fade-up"
                     )}
                 >
@@ -121,7 +131,7 @@ export function LandingView({ }: LandingViewProps) {
                             
                             <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[16/10] overflow-visible">
                                 <Image
-                                    src="https://framerusercontent.com/images/WqI8uAuW6KKCKrmpIrPldBN5M.png"
+                                    src={landingPageImage}
                                     alt="cecess App Mockup"
                                     fill
                                     className="object-contain object-bottom"
@@ -150,14 +160,21 @@ export function LandingView({ }: LandingViewProps) {
                             </p>
                         </div>
 
-                        <div className="grid gap-4 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        <div
+                            ref={featuresGridRef.ref as any}
+                            className="grid gap-4 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                        >
                             {featureKeys.map((key, index) => {
                                 const Icon = featureIcons[index];
                                 const feature = t.public.landing.features.items[key];
                                 return (
-                                    <div 
+                                    <div
                                         key={key}
-                                        className="group p-6 sm:p-8 rounded-[2rem] sm:rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all hover:-translate-y-1 duration-300"
+                                        className={cn(
+                                            "group p-6 sm:p-8 rounded-[2rem] sm:rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all hover:-translate-y-1 duration-300 reveal-on-scroll",
+                                            `stagger-${index + 1}`,
+                                            featuresGridRef.isVisible && "animate-fade-up"
+                                        )}
                                     >
                                         <div className="mb-5 sm:mb-6 inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
                                             <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -166,6 +183,78 @@ export function LandingView({ }: LandingViewProps) {
                                         <p className="text-slate-500 leading-relaxed text-sm">
                                             {feature.description}
                                         </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+
+                {/* How it Works Section */}
+                <section className="py-16 sm:py-24 lg:py-32 bg-white">
+                    <div className="container mx-auto px-4">
+                        <div
+                            ref={howItWorksRef.ref as any}
+                            className={cn(
+                                "text-center mb-12 sm:mb-20 reveal-on-scroll px-2",
+                                howItWorksRef.isVisible && "animate-fade-up"
+                            )}
+                        >
+                            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4 sm:mb-6">
+                                {t.public.landing.howItWorks.title}
+                            </h2>
+                            <p className="text-slate-500 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+                                {t.public.landing.howItWorks.subtitle}
+                            </p>
+                        </div>
+
+                        <div ref={howItWorksStepsRef.ref as any} className="relative max-w-4xl mx-auto">
+                            {/* Connecting line */}
+                            <div className="absolute left-8 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-200 via-blue-400 to-blue-200 hidden sm:block" />
+
+                            {[
+                                { icon: Download, key: "step1" as const },
+                                { icon: CreditCard, key: "step2" as const },
+                                { icon: BrainCircuit, key: "step3" as const },
+                                { icon: Lightbulb, key: "step4" as const },
+                                { icon: TrendingUp, key: "step5" as const }
+                            ].map((item, index) => {
+                                const step = t.public.landing.howItWorks.steps[item.key];
+                                const Icon = item.icon;
+                                const isEven = index % 2 === 0;
+                                return (
+                                    <div
+                                        key={item.key}
+                                        className={cn(
+                                            "relative flex items-center mb-12 last:mb-0 reveal-on-scroll",
+                                            `stagger-${index + 1}`,
+                                            howItWorksStepsRef.isVisible && "animate-fade-up",
+                                            isEven ? "sm:flex-row" : "sm:flex-row-reverse"
+                                        )}
+                                    >
+                                        {/* Step number circle */}
+                                        <div className="absolute left-8 sm:left-1/2 -translate-x-1/2 z-10 hidden sm:flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white font-bold text-sm shadow-lg shadow-blue-200">
+                                            {index + 1}
+                                        </div>
+
+                                        {/* Card */}
+                                        <div className={cn(
+                                            "sm:w-[calc(50%-2rem)] p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm",
+                                            isEven ? "sm:mr-auto sm:pr-12" : "sm:ml-auto sm:pl-12"
+                                        )}>
+                                            <div className="flex items-start gap-4">
+                                                <div className="flex-shrink-0 sm:hidden h-8 w-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
+                                                    {index + 1}
+                                                </div>
+                                                <div className="flex-shrink-0 hidden sm:inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                                                    <Icon className="h-6 w-6" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-lg font-bold text-slate-900 mb-1">{step.title}</h3>
+                                                    <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 );
                             })}
@@ -191,11 +280,9 @@ export function LandingView({ }: LandingViewProps) {
                                     {t.public.landing.cta.subtitle}
                                 </p>
                                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6">
-                                    <a 
-                                        href="https://apps.apple.com/app/cecess/id6740698114"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1"
+                                    <button
+                                        onClick={() => setShowAppleModal(true)}
+                                        className="group h-14 w-44 relative bg-black rounded-xl flex items-center px-4 gap-3 text-white border border-slate-800 hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1 cursor-pointer"
                                     >
                                         <svg className="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 384 512" fill="currentColor">
                                             <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-83.6-20.8-42.3 0-81.8 24.4-103.2 61.9-43.2 75.3-11.1 185.9 31 246.6 20.6 29.8 45.2 63.3 77.3 63.3 31.1 0 42.7-19.3 80.5-19.3 37.8 0 48.2 19.3 81 19.3 32.8 0 55.4-30.1 76-60 24.3-35.2 34.3-69.3 34.6-70.9-.8-.3-67.2-25.9-67.4-103.5zm-33.1-155.1c32.3-39.7 24.5-85.3 22.8-93.5-27.1 2.3-59.5 20.1-78.5 42.4-18 20.9-33.5 63-28.9 94.5 30.6 3 59.8-13.4 84.6-43.4z" />
@@ -204,7 +291,7 @@ export function LandingView({ }: LandingViewProps) {
                                             <div className="text-[9px] sm:text-[10px] font-medium opacity-80 leading-none">Download on the</div>
                                             <div className="text-[15px] sm:text-[17px] font-bold leading-tight">App Store</div>
                                         </div>
-                                    </a>
+                                    </button>
                                     <a 
                                         href="https://play.google.com/store/apps/details?id=com.cecess.app"
                                         target="_blank"
@@ -232,6 +319,7 @@ export function LandingView({ }: LandingViewProps) {
                 </section>
             </main>
 
+            <AppleComingSoonModal open={showAppleModal} onClose={() => setShowAppleModal(false)} />
         </div>
     );
 }
